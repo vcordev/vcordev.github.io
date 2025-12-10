@@ -528,3 +528,260 @@ window.addEventListener('load', () => {
     closeFullscreen(wrapper);
   };
 })();
+
+// ==================================================
+// META PIXEL TRACKING SIMPLIFICADO
+// ==================================================
+
+// Seu Pixel ID
+const META_PIXEL_ID = '219798650101295';
+
+// Verificar se já foi carregado (evitar duplicação)
+if (!window.fbqLoaded) {
+    !function(f,b,e,v,n,t,s){
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', META_PIXEL_ID);
+    fbq('track', 'PageView');
+    window.fbqLoaded = true;
+}
+
+// ==================================================
+// VARIÁVEIS PARA TRACKING DE FORMULÁRIO
+// ==================================================
+let formStartedTime = null;
+let formFieldsInteracted = new Set();
+let formSubmitted = false;
+
+// ==================================================
+// 1. TRACKING DO BOTÃO "RESERVAR AGORA"
+// ==================================================
+
+function trackReserveButton(buttonElement) {
+    if (typeof fbq !== 'undefined') {
+        // Determinar localização do botão
+        let buttonLocation = 'unknown';
+        const locations = [
+            { selector: 'header', name: 'header' },
+            { selector: '.pacote-detalhes', name: 'package_page' },
+            { selector: '.mobile-menu', name: 'mobile_menu' },
+            { selector: '#home', name: 'hero_section' },
+            { selector: '.pacotes', name: 'packages_section' },
+            { selector: '#contactos', name: 'contact_section' }
+        ];
+        
+        locations.forEach(loc => {
+            if (buttonElement.closest(loc.selector)) {
+                buttonLocation = loc.name;
+            }
+        });
+        
+        // Evento padrão do Meta
+        fbq('track', 'InitiateCheckout', {
+            button_location: buttonLocation,
+            page_url: window.location.pathname,
+            button_text: buttonElement.textContent.trim().substring(0, 50)
+        });
+        
+        // Evento personalizado para mais detalhes
+        fbq('trackCustom', 'ReserveButtonClick', {
+            location: buttonLocation,
+            page: window.location.pathname,
+            timestamp: Date.now()
+        });
+        
+        console.log('✅ Pixel: Botão Reservar clicado em', buttonLocation);
+    }
+}
+
+// ==================================================
+// 2. TRACKING DE ABANDONO DE FORMULÁRIO
+// ==================================================
+
+function initFormAbandonmentTracking() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+    
+    // Resetar variáveis
+    formStartedTime = null;
+    formFieldsInteracted.clear();
+    formSubmitted = false;
+    
+    // TRACK: Quando o usuário COMEÇA a preencher o formulário
+    contactForm.addEventListener('focusin', function(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+            // Marcar início do preenchimento (apenas na primeira interação)
+            if (!formStartedTime) {
+                formStartedTime = Date.now();
+                
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Contact'); // Evento padrão do Meta
+                    fbq('trackCustom', 'FormStarted', {
+                        page_url: window.location.pathname,
+                        timestamp: formStartedTime
+                    });
+                }
+                console.log('✅ Pixel: Formulário iniciado');
+            }
+            
+            // Registrar campo interagido
+            const fieldName = e.target.name || e.target.id;
+            if (fieldName) {
+                formFieldsInteracted.add(fieldName);
+            }
+        }
+    }, true);
+    
+    // TRACK: Quando o usuário ENVIA o formulário com sucesso
+    contactForm.addEventListener('submit', function() {
+        formSubmitted = true;
+        
+        if (typeof fbq !== 'undefined' && formStartedTime) {
+            const timeSpent = Date.now() - formStartedTime;
+            const fieldsFilled = formFieldsInteracted.size;
+            
+            fbq('track', 'Lead', {
+                value: 0,
+                currency: 'EUR',
+                time_spent_seconds: Math.round(timeSpent / 1000),
+                fields_completed: fieldsFilled
+            });
+            
+            fbq('trackCustom', 'FormCompleted', {
+                time_spent_seconds: Math.round(timeSpent / 1000),
+                fields_filled: fieldsFilled,
+                page_url: window.location.pathname
+            });
+        }
+        console.log('✅ Pixel: Formulário enviado com sucesso');
+    });
+    
+    // TRACK: Quando o usuário ABANDONA o formulário (muda de página/fecha)
+    window.addEventListener('beforeunload', function() {
+        if (formStartedTime && !formSubmitted) {
+            const timeSpent = Date.now() - formStartedTime;
+            const fieldsFilled = formFieldsInteracted.size;
+            
+            if (timeSpent > 5000) { // Só track se passou pelo menos 5 segundos
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'FormAbandoned', {
+                        time_spent_seconds: Math.round(timeSpent / 1000),
+                        fields_filled: fieldsFilled,
+                        fields_interacted: Array.from(formFieldsInteracted),
+                        page_url: window.location.pathname,
+                        abandonment_reason: 'page_leave'
+                    });
+                }
+                console.log('⚠️ Pixel: Formulário abandonado após', Math.round(timeSpent/1000), 'segundos');
+            }
+        }
+    });
+    
+    // TRACK: Quando o usuário sai do formulário sem preencher (blur nos campos)
+    let formBlurTimeout;
+    contactForm.addEventListener('focusout', function(e) {
+        if (formStartedTime && !formSubmitted) {
+            clearTimeout(formBlurTimeout);
+            formBlurTimeout = setTimeout(() => {
+                // Verificar se o usuário realmente saiu do formulário
+                const activeElement = document.activeElement;
+                const isStillInForm = contactForm.contains(activeElement);
+                
+                if (!isStillInForm) {
+                    const timeSpent = Date.now() - formStartedTime;
+                    if (timeSpent > 10000) { // Só track se passou pelo menos 10 segundos
+                        if (typeof fbq !== 'undefined') {
+                            fbq('trackCustom', 'FormFocusLost', {
+                                time_spent_seconds: Math.round(timeSpent / 1000),
+                                fields_filled: formFieldsInteracted.size,
+                                last_field: e.target.name || e.target.id
+                            });
+                        }
+                        console.log('⚠️ Pixel: Usuário saiu do formulário após', Math.round(timeSpent/1000), 'segundos');
+                    }
+                }
+            }, 5000); // Espera 5 segundos para confirmar se não voltou
+        }
+    });
+}
+
+// ==================================================
+// 3. INICIALIZAR TRACKING QUANDO A PÁGINA CARREGAR
+// ==================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // INICIALIZAR: Tracking de abandono de formulário
+    initFormAbandonmentTracking();
+    
+    // CONFIGURAR: Todos os botões "Reservar Agora"
+    const reserveButtons = document.querySelectorAll('a.cta-button, button.cta-button');
+    reserveButtons.forEach(button => {
+        const buttonText = button.textContent.toLowerCase();
+        if (buttonText.includes('reservar') || 
+            buttonText.includes('agendar') || 
+            buttonText.includes('reserve') ||
+            button.getAttribute('id') === 'reservar') {
+            
+            button.addEventListener('click', function(e) {
+                // Pequeno delay para garantir tracking antes da navegação
+                setTimeout(() => {
+                    trackReserveButton(this);
+                }, 100);
+            });
+        }
+    });
+    
+    // TRACKING ESPECIAL: Botão no header (já tem ID "reservar")
+    const headerReserveBtn = document.querySelector('header .cta-button#reservar');
+    if (headerReserveBtn) {
+        headerReserveBtn.addEventListener('click', function() {
+            setTimeout(() => {
+                trackReserveButton(this);
+            }, 100);
+        });
+    }
+    
+    // TRACKING ESPECIAL: Botão na página do pacote Lisboa
+    const packageReserveBtn = document.querySelector('.pacote-detalhes .cta-button');
+    if (packageReserveBtn) {
+        packageReserveBtn.addEventListener('click', function() {
+            setTimeout(() => {
+                trackReserveButton(this);
+                // Track adicional para pacote específico
+                if (typeof fbq !== 'undefined') {
+                    const packageName = document.getElementById('pacote_titulo')?.textContent || 'Lisboa Clássica';
+                    fbq('trackCustom', 'PackageReserveClick', {
+                        package_name: packageName,
+                        price: '€160'
+                    });
+                }
+            }, 100);
+        });
+    }
+    
+    console.log('✅ Pixel tracking inicializado');
+});
+
+// ==================================================
+// 4. FUNÇÃO PARA TESTAR MANUALMENTE (opcional)
+// ==================================================
+
+// Para testar no console do navegador:
+// testPixelEvent('ReserveButtonClick')
+function testPixelEvent(eventName, params = {}) {
+    if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', eventName, params);
+        console.log('🧪 Teste Pixel:', eventName, params);
+        return true;
+    }
+    console.warn('Pixel não carregado');
+    return false;
+}
+
