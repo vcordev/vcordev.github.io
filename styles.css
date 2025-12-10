@@ -43,7 +43,7 @@ body {
   overflow-x: visible;
 }
 
-input, textare, select, button {
+input, textarea, select, button {
   font-family: Arial, sans-serif;
   line-height: 1.6;
 }
@@ -653,4 +653,5 @@ footer {
   .hamburger { display: none; }
   body { padding-top: 80px; } /* Aplica o padding-top em desktop */
 }
+
 
