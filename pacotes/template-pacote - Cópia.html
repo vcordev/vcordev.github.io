@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title" data-key="lisboa_titulo">Lisboa Clássica - Tours Lisboa</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Cabeçalho Fixo -->
+    <header class="fixed-header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <h1 id="logo" data-key="logo">Tours Lisboa</h1>
+                </a>
+            </div>
+            <nav>
+                <a href="../index.html#home-anchor" id="banner-home" data-key="home">Home</a>
+                <a href="../index.html#pacotes" id="banner-pacotes" data-key="pacotes">Pacotes</a>
+                <a href="../index.html#sobre" id="banner-sobre" data-key="sobre">Sobre Nós</a>
+            </nav>
+            <a href="../index.html#contactos" class="cta-button" id="reservar" data-key="reservar">Agendar Tour</a>
+            <div class="language-buttons">
+                <button onclick="changeLanguage('pt')"><img src="../images/portugal-flag.png" alt="Português"></button>
+                <button onclick="changeLanguage('ru')"><img src="../images/russia-flag.png" alt="Russo"></button>
+                <button onclick="changeLanguage('ro')"><img src="../images/romania-flag.png" alt="Romeno"></button>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+        <span class="close-menu" onclick="closeMenu()">&times;</span>
+        <nav>
+            <a href="../index.html#home-anchor" id="banner-home" data-key="home" onclick="closeMenu()">Home</a>
+            <a href="../index.html#pacotes" id="mobile-pacotes" data-key="pacotes" onclick="closeMenu()">Pacotes</a>
+            <a href="../index.html#sobre" id="mobile-sobre" data-key="sobre" onclick="closeMenu()">Sobre Nós</a>
+            <a href="../index.html#contactos" class="cta-button" id="reservar" data-key="reservar" onclick="closeMenu()">Agendar Tour</a>
+        </nav>
+        <div class="language-buttons mobile">
+            <button onclick="changeLanguage('pt'); closeMenu()"><img src="../images/portugal-flag.png" alt="PT"></button>
+            <button onclick="changeLanguage('ru'); closeMenu()"><img src="../images/russia-flag.png" alt="RU"></button>
+            <button onclick="changeLanguage('ro'); closeMenu()"><img src="../images/romania-flag.png" alt="RO"></button>
+        </div>
+    </div>
+
+    <!-- Conteúdo da Página do Pacote -->
+    <section class="pacote-detalhes">
+        <div class="container">
+            <h1 id="pacote_titulo" data-key="pacote1_titulo">Lisboa Clássica</h1>
+            <div class="imagem-principal">
+                <img src="../images/torre-de-belem-1.jpg" alt="Torre de Belém">
+            </div>
+            <div class="descricao-pacote">
+                <p id="descricao1" data-key="lisboa_descricao1">
+                    O tour Lisboa Clássica é perfeito para quem deseja explorar os principais pontos turísticos da capital portuguesa. Com duração de 4 a 5 horas, este passeio inclui visitas ao icônico Mosteiro dos Jerónimos, à Torre de Belém, ao Monumento aos Descobrimentos e ao bairro histórico de Alfama.
+                </p>
+                <p id="descricao2" data-key="lisboa_descricao2">
+                    O nosso motorista profissional, fluente em português, russo e romeno, garantirá que você tenha uma experiência confortável e informativa. O transporte é feito em um Toyota Corolla Sedan Hybrid, com espaço para até 4 passageiros.
+                </p>
+            </div>
+            <div class="detalhes-pacote">
+                <h2 id="detalhes_titulo" data-key="lisboa_detalhes_titulo">Detalhes do Pacote</h2>
+                <ul>
+                    <li><strong id="duracao_label" data-key="lisboa_duracao">Duração:</strong> <span id="duracao_valor" data-key="lisboa_duracao_valor">4-5 horas</span></li>
+                    <li><strong id="preco_label" data-key="lisboa_preco">Preço:</strong> <span id="preco_valor" data-key="lisboa_preco_valor">€160</span></li>
+                    <li><strong id="idiomas_label" data-key="lisboa_idiomas">Idiomas:</strong> <span id="idiomas_valor" data-key="lisboa_idiomas_valor">Português, Russo, Romeno</span></li>
+                    <li><strong id="transporte_label" data-key="lisboa_transporte">Transporte:</strong> <span id="transporte_valor" data-key="lisboa_transporte_valor">Toyota Corolla Sedan Hybrid (até 4 passageiros)</span></li>
+                    <li><strong id="pontos_interesse_label" data-key="lisboa_pontos_interesse">Pontos de Interesse:</strong> <span id="pontos_interesse_valor" data-key="lisboa_pontos_interesse_valor">Mosteiro dos Jerónimos, Torre de Belém, Monumento aos Descobrimentos, Alfama</span></li>
+                </ul>
+            </div>
+            <a href="../index.html#contactos" class="cta-button" id="reservar_pacote" data-key="reservar">Reservar Agora</a>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="redes-sociais">
+                <a href="https://facebook.com/seu-perfil" target="_blank">
+                    <img src="../images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://instagram.com/seu-perfil" target="_blank">
+                    <img src="../images/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://wa.me/seu-numero" target="_blank">
+                    <img src="../images/whatsapp.png" alt="WhatsApp">
+                </a>
+            </div>
+            <p>&copy; 2025 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts.js"></script>
+</body>
+</html>

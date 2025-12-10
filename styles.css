@@ -1,0 +1,650 @@
+
+/* ================================================== */
+/* 0. Variáveis Globais (novas)                       */
+/* ================================================== */
+:root {
+  --cor-primaria: #003366;
+  --cor-primaria-escura: #002855;
+  --cor-secundaria: #FFD700;
+  --cor-fundo: #f5f5f5;
+  --cor-branco: #ffffff;
+  --cor-cinza-borda: #ccc;
+
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* ================================================== */
+/* 1. Reset e Estilos Globais                         */
+/* ================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--cor-fundo);
+  color: var(--cor-primaria);
+  padding-top: clamp(60px, 8vw, 80px); /* Espaço para o cabeçalho fixo */
+  margin: 0; /* Remove margens padrão do body */
+  padding: 0; /* Remove paddings padrão do body */
+  overflow-x: visible;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+section {
+  padding: clamp(20px, 5vw, 40px) 0;
+  box-sizing: border-box;
+}
+img {
+  max-width: 100%; /* Garante que as imagens não ultrapassem a largura do container */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+/* Acessibilidade: foco visível */
+a:focus-visible,
+button:focus-visible,
+.cta-button:focus-visible {
+  outline: 3px solid var(--cor-secundaria);
+  outline-offset: 3px;
+}
+
+/* ================================================== */
+/* 2. Cabeçalho Fixo                                  */
+/* ================================================== */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(60px, 8vw, 80px);
+  background: linear-gradient(to bottom, var(--cor-primaria-escura), var(--cor-primaria));
+  color: white;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+}
+.fixed-header .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fixed-header nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  padding: 10px;
+  border: 2px solid transparent;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+.fixed-header nav a:hover,
+.fixed-header nav a:focus-visible {
+  color: var(--cor-secundaria);
+  border-bottom: 2px solid var(--cor-secundaria);
+  outline: none;
+}
+.fixed-header.scrolled {
+  background-color: var(--cor-primaria);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.logo h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: white;
+}
+.logo a {
+  text-decoration: none; /* Remove o sublinhado */
+  color: inherit; /* Mantém a cor do texto do logo */
+}
+.language-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.language-buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: transform 0.3s ease;
+}
+.language-buttons button img {
+  width: 38px;
+  height: auto;
+  border: 2px solid white;
+  border-radius: 15%;
+}
+.language-buttons button:hover {
+  transform: scale(1.2);
+}
+.cta-button {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.cta-button:hover {
+  background-color: #e6b800;
+  transform: translateY(-2px);
+}
+
+/* ================================================== */
+/* 3. Menu Mobile                                     */
+/* ================================================== */
+.hamburger {
+  display: none; /* Oculta o ícone por padrão */
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: 10px; /* Pequeno espaço entre o logo e o ícone */
+}
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Overlay full-screen e scroll interno seguro */
+.mobile-menu {
+  position: fixed;
+  inset: 0;              /* top/right/bottom/left: 0 */
+  width: 100%;
+  height: 100dvh;        /* viewport dinâmica (iOS/Android) */
+  background-color: rgba(0, 40, 85, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+
+  z-index: 3000;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;      /* permite scroll dentro do menu */
+}
+.mobile-menu.show {
+  transform: translateX(0); /* Exibe o menu quando a classe "show" é adicionada */
+}
+.close-menu {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Bloqueio de scroll de fundo (ativar via JS: body.menu-open) */
+body.menu-open {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+body.menu-open.fixed-lock {
+  position: fixed;
+  width: 100%;
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.mobile-menu a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+.mobile-menu .cta-button {
+  width: 100%; /* botão ocupa largura total */
+  max-width: 200px; /* limite máximo */
+  text-align: center;
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1.3rem;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.mobile-menu .cta-button:hover {
+  background-color: #e6b800;
+}
+.mobile-menu .language-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+.mobile-menu .language-buttons button img {
+  width: 40px;
+  border-radius: 10%;
+}
+
+/* ================================================== */
+/* 4. Slideshow                                       */
+/* ================================================== */
+#slideshow {
+  width: 100%;
+  height: 600px; /* Altura fixa para desktop */
+  aspect-ratio: 16 / 9; /* ajuda proporção em browsers modernos */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  background-color: #000; /* Fundo preto para evitar espaços vazios */
+  margin-top: 0;
+  padding-top: 0;
+}
+.slideshow-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide.active {
+  opacity: 1;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cobre todo o espaço disponível */
+  object-position: center center; /* Centraliza vertical e horizontalmente */
+  transform: scale(1.2) translate(0, 0); /* Zoom sem deslocar */
+  transform-origin: center center; /* Ponto de origem do zoom */
+  animation: pan 10s ease-in-out infinite alternate; /* Movimento leve */
+}
+@keyframes pan {
+  from { transform: scale(1.2) translate(0, 0); }
+  to   { transform: scale(1.2) translate(-4%, 0); }
+}
+
+/* Acessibilidade: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+  .slide img {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* ================================================== */
+/* 5. Seção Hero                                      */
+/* ================================================== */
+.hero {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 100px 0; /* Altura fixa da seção hero */
+  text-align: center;
+}
+
+.hero .container {
+  max-width: 960px;               /* limita a largura do texto */
+  margin-inline: auto;            /* centra horizontalmente */
+  padding-inline: clamp(16px, 5vw, 24px); /* espaço interno responsivo */
+}
+
+.hero h2 {
+  font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Só em mobile, garantir ainda mais espaço lateral */
+@media (max-width: 480px) {
+  .hero .container {
+    padding-inline: clamp(18px, 6vw, 28px);
+  }
+}
+
+/* ================================================== */
+/* 6. Seção de Pacotes                                */
+/* ================================================== */
+#pacotes {
+  text-align: center;
+  padding: 50px 0;
+}
+#pacotes h2 {
+  width: 100%; /* Título ocupa a largura total */
+  font-size: 2rem;
+  margin-bottom: 30px; /* Espaçamento abaixo do título */
+  color: var(--cor-primaria);
+  grid-column: span 3; /* Ocupa toda a largura da grid */
+}
+.pacotes .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  gap: 20px;
+  justify-content: center;
+}
+/* Alternativa mais fluida (opcional):
+.pacotes .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+*/
+.pacote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pacote:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.imagem-principal img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.conteudo-pacote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  padding: 15px;
+}
+.info-pacote h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--cor-primaria);
+  margin-bottom: 5px;
+}
+.info-pacote p {
+  font-size: 1.1rem;
+  color: #444444;
+  margin-bottom: 10px;
+}
+
+/* ================================================== */
+/* 7. Seção Sobre Nós                                 */
+/* ================================================== */
+.sobre {
+  background-color: var(--cor-fundo);
+  padding: 40px 0;
+  text-align: center;
+}
+.sobre h2 {
+  margin-bottom: 20px;
+}
+
+/* ================================================== */
+/* 8. Seção de Contactos                              */
+/* ================================================== */
+.contactos {
+  background-color: white;
+  padding: 40px 0;
+}
+.contactos h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.contactos form {
+  display: flex;
+  flex-direction: column;
+}
+.contactos label {
+  margin-bottom: 5px;
+}
+.contactos input, .contactos textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid var(--cor-cinza-borda);
+  border-radius: 5px;
+}
+.contactos button {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.contactos button:hover {
+  background-color: #e6b800;
+}
+
+/* Fade-in para mensagem de sucesso/erro */
+#lead-result {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+#lead-result.show {
+  opacity: 1;
+}
+
+/* Campos com erro: borda vermelha + shake */
+.contactos input.input-error,
+.contactos textarea.input-error {
+  border: 2px solid #ff4d4d !important;
+  animation: shake 0.2s linear 2;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+/* Reduzir movimento para quem preferir menos animação */
+@media (prefers-reduced-motion: reduce) {
+  .contactos input.input-error,
+  .contactos textarea.input-error {
+    animation: none !important;
+  }
+}
+
+/* Botão loading */
+.contactos button.loading {
+  pointer-events: none;
+  opacity: 0.7;
+  position: relative;
+}
+.contactos button.loading::after {
+  content: " ...";
+  animation: dots 1s infinite;
+}
+@keyframes dots {
+  0% { content: " ."; }
+  33% { content: " .."; }
+  66% { content: " ..."; }
+  100% { content: " ."; }
+}
+
+/* Modal de sucesso */
+.success-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+.success-modal.show {
+  opacity: 1; pointer-events: auto;
+}
+.success-box {
+  background: white;
+  padding: 25px 35px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--cor-primaria);
+  font-weight: bold;
+  animation: popup 0.4s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+@keyframes popup {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+#prefixo {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ================================================== */
+/* 9. Rodapé                                          */
+/* ================================================== */
+footer {
+  background-color: var(--cor-primaria);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+.redes-sociais {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.redes-sociais a img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.redes-sociais a:hover img {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+/* ================================================== */
+/* 10. Media Queries                                  */
+/* ================================================== */
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px; /* Aplica o padding-top apenas em mobile */
+  }
+  section {
+    padding: 20px 0;
+  }
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .hamburger { display: flex; }           /* Exibe ícone em mobile */
+  nav { display: none; }                  /* Oculta nav principal em mobile */
+  nav.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: var(--cor-primaria);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+
+  .pacotes .container {
+    grid-template-columns: 1fr; /* 1 coluna em mobile */
+  }
+  #pacotes h2 {
+    grid-column: span 1; /* Título ocupa toda a largura em mobile */
+  }
+
+  #slideshow {
+    height: 230px; /* Altura menor em mobile */
+    aspect-ratio: 4 / 3;
+  }
+  .slide img {
+    transform: scale(1.3) translate(0, 0); /* Zoom maior em mobile */
+  }
+  @keyframes pan {
+    from { transform: scale(1.3) translate(0, 0); }
+    to   { transform: scale(1.3) translate(-4%, 0); }
+  }
+
+  .language-buttons.desktop { display: none; }
+  .language-buttons.mobile  { display: flex; }
+
+  .fixed-header { height: 60px; } /* Reduz a altura no mobile */
+  .fixed-header .container {
+    display: flex;
+    justify-content: space-between; /* Distribui espaço */
+    align-items: center; /* Centraliza verticalmente */
+    flex-wrap: nowrap; /* Evita quebra de linha */
+  }
+  .fixed-header .cta-button { display: none; }       /* Oculta o botão de reserva no banner */
+  .fixed-header .language-buttons { display: none; } /* Oculta botões de idioma no banner */
+
+  .logo {
+    flex: 1;
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hero {
+    padding: 80px 0; /* Reduz altura da hero em mobile */
+  }
+}
+@media (min-width: 769px) {
+  nav { display: flex; }
+  .hamburger { display: none; }
+  body { padding-top: 80px; } /* Aplica o padding-top em desktop */
+}

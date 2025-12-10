@@ -1,0 +1,279 @@
+/* ================================================== */
+/* Estilos Específicos para as Páginas de Detalhes dos Pacotes */
+/* ================================================== */
+
+/* Container Principal */
+.pacote-detalhes .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do Pacote */
+.pacote-detalhes h1 {
+    font-size: 2.5rem;
+    color: #003366;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Galeria de Imagens */
+.galeria {
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Espaço entre as setas e a imagem */
+}
+
+.imagem-principal {
+    width: 80%; /* Largura da imagem principal */
+    height: 500px; /* Altura fixa para a imagem principal */
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.imagem-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Miniaturas */
+.miniaturas {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.miniaturas img {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.miniaturas img:hover {
+    transform: scale(1.1); /* Efeito de zoom nas miniaturas */
+    border: 2px solid #FFD700;
+}
+
+/* Modo de Tela Cheia */
+.imagem-principal.tela-cheia {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+}
+
+.imagem-principal.tela-cheia img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    object-fit: contain; /* Evita zoom na imagem */
+}
+
+.imagem-principal.tela-cheia .fechar {
+    display: block; /* Exibe o botão de fechar no modo de tela cheia */
+}
+
+/* Descrição do Pacote */
+.pacote-detalhes .descricao-pacote {
+    margin-bottom: 30px;
+}
+
+.pacote-detalhes .descricao-pacote p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444444;
+    margin-bottom: 15px;
+}
+
+/* Detalhes do Pacote */
+.pacote-detalhes .detalhes-pacote {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.pacote-detalhes .detalhes-pacote h2 {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.pacote-detalhes .detalhes-pacote ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pacote-detalhes .detalhes-pacote ul li {
+    font-size: 1.1rem;
+    color: #555555;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.pacote-detalhes .detalhes-pacote ul li::before {
+    content: "•";
+    color: #FFD700;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -3px;
+}
+
+/* Botão de Reserva */
+.pacote-detalhes .cta-button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #FFD700;
+    color: #003366;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.pacote-detalhes .cta-button:hover {
+    background-color: #e6b800;
+}
+
+/* Botão para Voltar aos Pacotes */
+.voltar-pacotes {
+    position: absolute; /* Não acompanha o scroll */
+    top: 20px; /* Distância do topo */
+    left: 20px; /* Distância da esquerda */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+.voltar-pacotes .cta-button {
+    background-color: #003366;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.voltar-pacotes .cta-button:hover {
+    background-color: #002855;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+	
+	.galeria {
+        flex-direction: column; /* Coloca as setas acima e abaixo da imagem */
+        gap: 10px;
+    }
+
+    .pacote-detalhes h1 {
+        font-size: 2rem;
+    }
+
+    .imagem-principal {
+        width: 100%; /* Ocupa toda a largura */
+        height: 300px; /* Altura menor para mobile */
+    }
+
+    .miniaturas img {
+        width: 80px;
+        height: 60px;
+    }
+
+    .pacote-detalhes .descricao-pacote p {
+        font-size: 1rem;
+    }
+
+    .pacote-detalhes .detalhes-pacote h2 {
+        font-size: 1.5rem;
+    }
+
+    .pacote-detalhes .detalhes-pacote ul li {
+        font-size: 1rem;
+    }
+
+    .pacote-detalhes .cta-button {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+	
+	.seta {
+        font-size: 24px; /* Setas menores em mobile */
+    }
+	
+	.voltar-pacotes {
+        top: 10px;
+        left: 10px;
+    }
+
+    .voltar-pacotes .cta-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Setas de Navegação */
+.seta {
+    background-color: transparent; /* Fundo transparente */
+    color: #003366; /* Cor do ícone */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 36px; /* Tamanho maior */
+    transition: color 0.3s ease;
+}
+
+.seta:hover {
+    color: #FFD700; /* Cor dourada ao passar o mouse */
+}
+
+/* Botão de Fechar (X) */
+.fechar {
+    display: none; /* Oculta o botão de fechar inicialmente */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent; /* Fundo transparente */
+    color: #ffffff; /* Cor branca */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 36px; /* Tamanho maior */
+    transition: color 0.3s ease;
+    z-index: 1001; /* Garante que fique acima da imagem */
+}
+
+.fechar:hover {
+    color: #FFD700; /* Cor dourada ao passar o mouse */
+}
