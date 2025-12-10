@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <!-- Meta tags básicas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title" data-key="title">Tours Privados em Lisboa - Motorista Multilingue</title>
+    <!-- Importação do arquivo de estilos CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ================================================== -->
+    <!-- 1. Cabeçalho Fixo -->
+    <!-- ================================================== -->
+    <header class="fixed-header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="#home-anchor">
+                    <h1 id="logo" data-key="logo">Tours Lisboa</h1>
+                </a>
+            </div>
+
+            <!-- Navegação Principal -->
+            <nav>
+                <a href="#home-anchor" id="banner-home" data-key="home">Home</a>
+                <a href="#pacotes" id="banner-pacotes" data-key="pacotes">Pacotes</a>
+                <a href="#sobre" id="banner-sobre" data-key="sobre">Sobre Nós</a>
+            </nav>
+
+            <!-- Botão de Agendamento -->
+            <a href="#contactos" class="cta-button" id="reservar" data-key="reservar">Reservar Agora</a>
+
+            <!-- Botões de Idioma -->
+            <div class="language-buttons">
+                <button onclick="changeLanguage('pt')"><img src="images/portugal-flag.png" alt="Português"></button>
+                <button onclick="changeLanguage('ru')"><img src="images/russia-flag.png" alt="Russo"></button>
+                <button onclick="changeLanguage('ro')"><img src="images/romania-flag.png" alt="Romeno"></button>
+            </div>
+
+            <!-- Menu Hamburger para Mobile -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================================================== -->
+    <!-- 2. Menu Mobile -->
+    <!-- ================================================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <span class="close-menu" onclick="closeMenu()">&times;</span>
+        <nav>
+            <a href="#home-anchor" id="banner-home" data-key="home" onclick="closeMenu()">Home</a>
+            <a href="#pacotes" id="mobile-pacotes" data-key="pacotes" onclick="closeMenu()">Pacotes</a>
+            <a href="#sobre" id="mobile-sobre" data-key="sobre" onclick="closeMenu()">Sobre Nós</a>
+            <a href="#contactos" class="cta-button" id="reservar" data-key="reservar" onclick="closeMenu()">Agendar Tour</a>
+        </nav>
+        <div class="language-buttons mobile">
+            <button onclick="changeLanguage('pt'); closeMenu()"><img src="images/portugal-flag.png" alt="PT"></button>
+            <button onclick="changeLanguage('ru'); closeMenu()"><img src="images/russia-flag.png" alt="RU"></button>
+            <button onclick="changeLanguage('ro'); closeMenu()"><img src="images/romania-flag.png" alt="RO"></button>
+        </div>
+    </div>
+
+    <!-- Âncora Invisível para Navegação -->
+    <div id="home-anchor"></div>
+
+    <!-- ================================================== -->
+    <!-- 3. Slideshow -->
+    <!-- ================================================== -->
+    <section id="slideshow">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="images/s1.jpg" alt="Paisagem 1">
+            </div>
+            <div class="slide fade">
+                <img src="images/o1.jpg" alt="Paisagem 2">
+            </div>
+            <div class="slide fade">
+                <img src="images/t4.jpg" alt="Paisagem 3">
+            </div>
+            <!-- Adicione mais slides conforme necessário -->
+        </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 4. Seção Hero -->
+    <!-- ================================================== -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2 id="descubra" data-key="descubra">Descubra Lisboa com um Motorista Profissional</h2>
+            <p id="oferta" data-key="oferta">Oferecemos tours personalizados em português, russo e romeno.</p>
+            <a href="#pacotes" class="cta-button" id="ver_pacotes" data-key="ver_pacotes">Ver Pacotes</a>
+        </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 5. Seção de Pacotes -->
+    <!-- ================================================== -->
+    <section id="pacotes" class="pacotes">
+        <div class="container">
+            <h2 id="pacotes_titulo" data-key="pacotes_titulo">Pacotes Disponíveis</h2>
+
+            <!-- Pacote 1: Lisboa Clássica -->
+            <div class="pacote">
+                <a href="pacotes/lisboa.html">
+                    <div class="imagem-principal">
+                        <img src="images/t2.jpg" alt="Lisboa Clássica">
+                    </div>
+                </a>
+                <div class="conteudo-pacote">
+                    <h3 id="pacote1_titulo" data-key="pacote1_titulo">Lisboa Clássica</h3>
+                    <p id="pacote1_descricao" data-key="pacote1_descricao">4-5 horas | €160</p>
+                    <a href="pacotes/lisboa.html" class="cta-button" id="pacote1_botao" data-key="pacote1_botao">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Pacote 2: Sintra Encantada -->
+            <div class="pacote">
+                <a href="pacotes/sintra.html">
+                    <div class="imagem-principal">
+                        <img src="images/s1.jpg" alt="Sintra Encantada">
+                    </div>
+                </a>
+                <div class="conteudo-pacote">
+                    <h3 id="pacote2_titulo" data-key="pacote2_titulo">Sintra Encantada</h3>
+                    <p id="pacote2_descricao" data-key="pacote2_descricao">6 horas | €180</p>
+                    <a href="pacotes/sintra.html" class="cta-button" id="pacote2_botao" data-key="pacote2_botao">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Pacote 3: Fátima Espiritual -->
+            <div class="pacote">
+                <a href="pacotes/fatima.html">
+                    <div class="imagem-principal">
+                        <img src="images/t1.jpg" alt="Fátima Espiritual">
+                    </div>
+                </a>
+                <div class="conteudo-pacote">
+                    <h3 id="pacote3_titulo" data-key="pacote3_titulo">Fátima Espiritual</h3>
+                    <p id="pacote3_descricao" data-key="pacote3_descricao">8 horas | €200</p>
+                    <a href="pacotes/fatima.html" class="cta-button" id="pacote3_botao" data-key="pacote3_botao">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Pacote 4: Évora Histórica -->
+            <div class="pacote">
+                <a href="pacotes/evora.html">
+                    <div class="imagem-principal">
+                        <img src="images/o1.jpg" alt="Évora Histórica">
+                    </div>
+                </a>
+                <div class="conteudo-pacote">
+                    <h3 id="pacote4_titulo" data-key="pacote4_titulo">Évora Histórica</h3>
+                    <p id="pacote4_descricao" data-key="pacote4_descricao">8 horas | €220</p>
+                    <a href="pacotes/evora.html" class="cta-button" id="pacote4_botao" data-key="pacote4_botao">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Pacote 5: Porto e Douro -->
+            <div class="pacote">
+                <a href="pacotes/porto.html">
+                    <div class="imagem-principal">
+                        <img src="images/j1.jpg" alt="Porto e Douro">
+                    </div>
+                </a>
+                <div class="conteudo-pacote">
+                    <h3 id="pacote5_titulo" data-key="pacote5_titulo">Porto e Douro</h3>
+                    <p id="pacote5_descricao" data-key="pacote5_descricao">12 horas | €350</p>
+                    <a href="pacotes/porto.html" class="cta-button" id="pacote5_botao" data-key="pacote5_botao">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Pacote 6: Algarve Paradisíaco -->
+            <div class="pacote">
+                <a href="pacotes/algarve.html">
+                    <div class="imagem-principal">
+                        <img src="images/t2.jpg" alt="Algarve Paradisíaco">
+                    </div>
+                </a>
+                <div class="conteudo-pacote">
+                    <h3 id="pacote6_titulo" data-key="pacote6_titulo">Algarve Paradisíaco</h3>
+                    <p id="pacote6_descricao" data-key="pacote6_descricao">10 horas | €300</p>
+                    <a href="pacotes/algarve.html" class="cta-button" id="pacote6_botao" data-key="pacote6_botao">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 6. Seção Sobre Nós -->
+    <!-- ================================================== -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 id="sobre_titulo" data-key="sobre_titulo">Sobre Nós</h2>
+            <p id="sobre_texto" data-key="sobre_texto">Oferecemos tours personalizados na zona de Lisboa e arredores, com um motorista profissional que fala português, russo e romeno. O nosso Toyota Corolla Sedan Hybrid garante conforto e sustentabilidade, com lugar para até 4 passageiros.</p>
+        </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 7. Seção de Contactos -->
+    <!-- ================================================== -->
+    
+
+<section id="contactos" class="contactos">
+  <div class="container">
+    <h2 id="contactos_titulo" data-key="contactos_titulo">Contactos</h2>
+
+    <!-- Formulário ligado ao Formspree -->
+    <form id="contactForm" action="https://formspree.io/f/mqaryzel" method="POST">
+      <label for="nome" id="label_nome" data-key="label_nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email" id="label_email" data-key="label_email">Email:</label>
+      <input type="email" id="email" name="email" required>
+	  
+	  <label for="pais" id="label_pais" data-key="label_pais">País:</label>
+      <select id="pais" name="pais" required>
+        <option value="" data-key="pais_selecionar">Selecionar país…</option>
+
+        <!-- 🇵🇹 Público principal -->
+        <option value="+351" data-key="pais_pt">🇵🇹 Portugal (+351)</option>
+
+        <!-- 🇷🇴 Países romeno-falantes -->
+        <option value="+373" data-key="pais_md">🇲🇩 Moldávia (+373)</option>
+        <option value="+40"  data-key="pais_ro">🇷🇴 Roménia (+40)</option>
+
+        <!-- 🇷🇺 RUSSO + zona pós-soviética -->
+        <option value="+7"    data-key="pais_ru">🇷🇺 Rússia (+7)</option>
+        <option value="+7"    data-key="pais_kz">🇰🇿 Cazaquistão (+7)</option>
+        <option value="+375"  data-key="pais_by">🇧🇾 Bielorrússia (+375)</option>
+        <option value="+380"  data-key="pais_ua">🇺🇦 Ucrânia (+380)</option>
+        <option value="+992"  data-key="pais_tj">🇹🇯 Tajiquistão (+992)</option>
+        <option value="+993"  data-key="pais_tm">🇹🇲 Turquemenistão (+993)</option>
+        <option value="+996"  data-key="pais_kg">🇰🇬 Quirguistão (+996)</option>
+        <option value="+998"  data-key="pais_uz">🇺🇿 Uzbequistão (+998)</option>
+        <option value="+995"  data-key="pais_ge">🇬🇪 Geórgia (+995)</option>
+        <option value="+374"  data-key="pais_am">🇦🇲 Arménia (+374)</option>
+        <option value="+994"  data-key="pais_az">🇦🇿 Azerbaijão (+994)</option>
+
+        <!-- 🇪🇺 e mercados relevantes -->
+        <option value="+34" data-key="pais_es">🇪🇸 Espanha (+34)</option>
+        <option value="+33" data-key="pais_fr">🇫🇷 França (+33)</option>
+        <option value="+49" data-key="pais_de">🇩🇪 Alemanha (+49)</option>
+        <option value="+39" data-key="pais_it">🇮🇹 Itália (+39)</option>
+        <option value="+44" data-key="pais_gb">🇬🇧 Reino Unido (+44)</option>
+
+        <!-- 🌍 Internacionais -->
+        <option value="+1"  data-key="pais_us">🇺🇸 EUA / Canadá (+1)</option>
+        <option value="+55" data-key="pais_br">🇧🇷 Brasil (+55)</option>
+        <option value="+61" data-key="pais_au">🇦🇺 Austrália (+61)</option>
+        <option value="+81" data-key="pais_jp">🇯🇵 Japão (+81)</option>
+
+        <!-- fallback -->
+        <option value="other" data-key="pais_other">Outro país…</option>
+      </select>
+
+      <label for="telemovel" id="label_telemovel" data-key="label_telemovel">Telemóvel:</label>
+
+      <div class="campo-telemovel" style="display: flex; gap: 10px;">
+        <input type="text" id="prefixo" name="prefixo" style="width: 90px;" readonly
+               placeholder="+XXX" data-key="prefixo_placeholder">
+        <input type="text" id="telemovel" name="telemovel" required
+               data-key="telemovel_placeholder" placeholder="Número">
+      </div>
+
+      <label for="mensagem" id="label_mensagem" data-key="label_mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="4" required
+                data-key="mensagem_placeholder" placeholder="Escreva a sua mensagem"></textarea>
+
+      <!-- Personalização do email + honeypot anti‑spam -->
+      <input type="hidden" name="_subject" value="Pedido de Reserva" id="hidden_subject">
+      <input type="text" name="_gotcha" style="display:none" id="honeypot">
+
+      <button type="submit" class="cta-button" id="enviar_mensagem" data-key="enviar_mensagem">
+        Enviar Mensagem
+      </button>
+
+      <!-- Mensagens de resultado -->
+      <p id="lead-result" role="status" aria-live="polite" style="margin-top:8px;"></p>
+    </form>
+  </div>
+
+  <div id="success-modal" class="success-modal">
+    <div class="success-box">
+      <p id="enviado" data-key="enviado">Mensagem enviada com sucesso!</p>
+    </div>
+  </div>
+</section>
+
+    <!-- ================================================== -->
+    <!-- 8. Rodapé -->
+    <!-- ================================================== -->
+    <footer>
+        <div class="container">
+            <div class="redes-sociais">
+                <a href="https://facebook.com/seu-perfil" target="_blank">
+                    <img src="images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://instagram.com/seu-perfil" target="_blank">
+                    <img src="images/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://wa.me/+351912688078" target="_blank">
+                    <img src="images/whatsapp.png" alt="WhatsApp">
+                </a>
+            </div>
+            <p>&copy; 2025 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
+        </div>
+    </footer>
+
+    <!-- Importação do arquivo de scripts JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
