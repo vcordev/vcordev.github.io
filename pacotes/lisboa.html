@@ -4,25 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title" data-key="lisboa_titulo">Lisboa Clássica - Tours Lisboa</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.min.css">
     <link rel="stylesheet" href="./pacote-detalhes.css">
-	<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '219798650101295');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <!-- Meta Pixel — init/track condicional em scripts.min.js (RGPD) -->
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');</script>
 </head>
 <body>
     <!-- Cabeçalho Fixo -->
@@ -58,10 +44,10 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
     <div class="mobile-menu" id="mobileMenu">
         <span class="close-menu" onclick="closeMenu()">&times;</span>
         <nav>
-            <a href="../index.html#home-anchor" id="banner-home" data-key="home" onclick="closeMenu()">Home</a>
-            <a href="../index.html#pacotes</a>#pacotes" id="mobile-pacotes" data-key="pacotes" onclick="closeMenu()">Pacotes</a>
-            <a href="../index.html#sobre</a>#sobre" id="mobile-sobre" data-key="sobre" onclick="closeMenu()">Sobre Nós</a>
-            <a href="../index.html#contactos</a>#contactos" class="cta-button" id="reservar" data-key="reservar" onclick="closeMenu()">Agendar Tour</a>
+            <a href="../index.html" data-key="home" onclick="closeMenu()">Home</a>
+            <a href="../index.html#pacotes" data-key="pacotes" onclick="closeMenu()">Pacotes</a>
+            <a href="../index.html#sobre" data-key="sobre" onclick="closeMenu()">Sobre Nós</a>
+            <a href="../index.html#contactos" class="cta-button" data-key="reservar" onclick="closeMenu()">Reservar Agora</a>
         </nav>
         <div class="language-buttons mobile">
             <button onclick="changeLanguage('pt'); closeMenu()"><img src="../images/portugal-flag.png" alt="PT"></button>
@@ -119,7 +105,7 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
                 <h2 id="detalhes_titulo" data-key="lisboa_detalhes_titulo">Detalhes do Pacote</h2>
                 <ul>
                     <li><strong id="duracao_label" data-key="lisboa_duracao">Duração:</strong> <span id="duracao_valor" data-key="lisboa_duracao_valor">4-5 horas</span></li>
-                    <li><strong id="preco_label" data-key="lisboa_preco">Preço:</strong> <span id="preco_valor" data-key="lisboa_preco_valor">€160</span></li>
+                    <li><strong id="preco_label" data-key="lisboa_preco">Preço:</strong> <span id="preco_valor" data-key="lisboa_preco_valor">€120</span></li>
                     <li><strong id="idiomas_label" data-key="lisboa_idiomas">Idiomas:</strong> <span id="idiomas_valor" data-key="lisboa_idiomas_valor">Português, Russo, Romeno</span></li>
                     <li><strong id="transporte_label" data-key="lisboa_transporte">Transporte:</strong> <span id="transporte_valor" data-key="lisboa_transporte_valor">Toyota Corolla Sedan Hybrid (até 4 passageiros)</span></li>
                     <li><strong id="pontos_interesse_label" data-key="lisboa_pontos_interesse">Pontos de Interesse:</strong> <span id="pontos_interesse_valor" data-key="lisboa_pontos_interesse_valor">Mosteiro dos Jerónimos, Torre de Belém, Monumento aos Descobrimentos, Alfama</span></li>
@@ -144,12 +130,13 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
                     <img src="../images/whatsapp.png" alt="WhatsApp">
                 </a>
             </div>
-            <p>&copy; 2025 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
+            <p>&copy; 2026 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
+            <p class="footer-legal"><a href="../privacidade.html" data-key="privacidade_link">Política de Privacidade</a></p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="../scripts.js"></script>
+    <script src="../scripts.min.js"></script>
 </body>
 
 </html>

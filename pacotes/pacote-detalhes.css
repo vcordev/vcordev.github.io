@@ -50,9 +50,10 @@
 .imagem-principal img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* desktop: preencher */
+  object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.3s ease, opacity 0.32s ease;
+  /* opacity usada no crossfade via JS; transform para hover futuro */
+  transition: opacity 0.22s ease, transform 0.3s ease;
 }
 
 /* Miniaturas */

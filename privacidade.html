@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title" data-key="privacidade_titulo">Política de Privacidade — Tours Lisboa</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.min.css">
+</head>
+<body>
+    <!-- Cabeçalho completo com seletor de idioma -->
+    <header class="fixed-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1 id="logo" data-key="logo">Tours Lisboa</h1>
+                </a>
+            </div>
+            <nav>
+                <a href="index.html" data-key="home">Home</a>
+                <a href="index.html#pacotes" data-key="pacotes">Pacotes</a>
+                <a href="index.html#sobre" data-key="sobre">Sobre Nós</a>
+            </nav>
+            <a href="index.html#contactos" class="cta-button" data-key="reservar">Reservar Agora</a>
+            <!-- Botões de idioma — o seletor funciona em todas as páginas -->
+            <div class="language-buttons">
+                <button onclick="changeLanguage('pt')"><img src="images/portugal-flag.png" alt="Português"></button>
+                <button onclick="changeLanguage('ru')"><img src="images/russia-flag.png" alt="Russo"></button>
+                <button onclick="changeLanguage('ro')"><img src="images/romania-flag.png" alt="Romeno"></button>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+        <span class="close-menu" onclick="closeMenu()">&times;</span>
+        <nav>
+            <a href="index.html" data-key="home" onclick="closeMenu()">Home</a>
+            <a href="index.html#pacotes" data-key="pacotes" onclick="closeMenu()">Pacotes</a>
+            <a href="index.html#sobre" data-key="sobre" onclick="closeMenu()">Sobre Nós</a>
+            <a href="index.html#contactos" class="cta-button" data-key="reservar" onclick="closeMenu()">Reservar Agora</a>
+        </nav>
+        <div class="language-buttons mobile">
+            <button onclick="changeLanguage('pt'); closeMenu()"><img src="images/portugal-flag.png" alt="PT"></button>
+            <button onclick="changeLanguage('ru'); closeMenu()"><img src="images/russia-flag.png" alt="RU"></button>
+            <button onclick="changeLanguage('ro'); closeMenu()"><img src="images/romania-flag.png" alt="RO"></button>
+        </div>
+    </div>
+
+    <main class="privacidade-page">
+        <div class="container">
+            <!-- Aviso de idioma — traduzido nas 3 línguas -->
+            <div class="privacidade-aviso-idioma">
+                <p data-key="privacidade_aviso">Este documento legal está disponível em português, língua oficial do negócio.</p>
+            </div>
+
+            <h1>Política de Privacidade</h1>
+            <p class="privacidade-data"><em>Última actualização: Junho de 2026</em></p>
+
+            <h2>1. Responsável pelo Tratamento</h2>
+            <p>Tours Lisboa, operado em nome individual, com actividade de transporte turístico privado na região de Lisboa. Contacto: disponível através do formulário em <a href="index.html#contactos">duetoextra.pt</a> ou pelo WhatsApp (+351 912 688 078).</p>
+
+            <h2>2. Dados Pessoais Recolhidos</h2>
+            <p>Recolhemos os seguintes dados através do formulário de contacto:</p>
+            <ul>
+                <li>Nome completo</li>
+                <li>Endereço de email</li>
+                <li>Número de telemóvel (com indicativo internacional)</li>
+                <li>País de origem</li>
+                <li>Conteúdo da mensagem</li>
+            </ul>
+            <p>Adicionalmente, com o seu consentimento expresso, o Meta Pixel (Facebook) pode recolher dados de comportamento de navegação para fins analíticos e publicitários.</p>
+
+            <h2>3. Finalidade do Tratamento</h2>
+            <p>Os dados do formulário são utilizados exclusivamente para responder ao pedido de contacto ou reserva de tour. Não utilizamos os dados para qualquer outra finalidade comercial.</p>
+
+            <h2>4. Cookies e Rastreio Analítico</h2>
+            <p>Este site utiliza o <strong>Meta Pixel (Facebook)</strong> para análise de tráfego e optimização de publicidade digital. Este cookie <strong>só é activado após o seu consentimento expresso</strong>, através do banner que aparece na primeira visita. Pode revogar o consentimento a qualquer momento limpando os dados do browser (localStorage) ou contactando-nos.</p>
+            <p>Utilizamos também <strong>localStorage</strong> para guardar as suas preferências de idioma e de consentimento de cookies — estes dados não são enviados para servidores externos.</p>
+
+            <h2>5. Partilha de Dados com Terceiros</h2>
+            <p>Os dados do formulário são processados pelo serviço <strong>Formspree</strong> (formspree.io), que os encaminha por email para o responsável do serviço. Consulte a <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">política de privacidade do Formspree</a>.</p>
+            <p>Com o seu consentimento, dados de navegação são partilhados com a <strong>Meta Platforms, Inc.</strong> (Facebook/Instagram) através do Meta Pixel. Consulte a <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">política de privacidade da Meta</a>.</p>
+            <p>Não vendemos nem cedemos dados pessoais a terceiros para fins comerciais.</p>
+
+            <h2>6. Os Seus Direitos (RGPD)</h2>
+            <p>Nos termos do Regulamento Geral de Protecção de Dados (RGPD — Regulamento UE 2016/679), tem direito a:</p>
+            <ul>
+                <li><strong>Acesso</strong> — saber que dados temos sobre si</li>
+                <li><strong>Rectificação</strong> — corrigir dados incorrectos</li>
+                <li><strong>Eliminação</strong> — solicitar a remoção dos seus dados</li>
+                <li><strong>Oposição</strong> — opor-se ao tratamento para fins de marketing</li>
+                <li><strong>Portabilidade</strong> — receber os seus dados num formato legível por máquina</li>
+            </ul>
+            <p>Para exercer estes direitos, contacte-nos através do formulário em <a href="index.html#contactos">duetoextra.pt</a> ou pelo WhatsApp (+351 912 688 078).</p>
+
+            <h2>7. Retenção de Dados</h2>
+            <p>Os dados de contacto são retidos apenas pelo tempo necessário para responder ao pedido (geralmente até 12 meses). Pode solicitar a eliminação antecipada a qualquer momento.</p>
+
+            <h2>8. Segurança</h2>
+            <p>Este site utiliza HTTPS (TLS) para encriptar todas as comunicações. O formulário é processado por serviços externos com as suas próprias medidas de segurança.</p>
+
+            <h2>9. Alterações a esta Política</h2>
+            <p>Podemos actualizar esta política ocasionalmente. A data da última actualização está indicada no topo desta página.</p>
+
+            <p class="privacidade-voltar">
+                <a href="index.html" class="cta-button" data-key="voltar_inicio">Voltar ao Início</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <span data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
+            <p class="footer-legal"><a href="privacidade.html" data-key="privacidade_link">Política de Privacidade</a></p>
+        </div>
+    </footer>
+
+    <script src="scripts.min.js"></script>
+</body>
+</html>

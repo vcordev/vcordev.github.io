@@ -5,25 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title" data-key="title">Tours Privados em Lisboa - Motorista Multilingue</title>
-    <!-- Importação do arquivo de estilos CSS -->
-    <link rel="stylesheet" href="styles.css">
-	<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '219798650101295');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <meta name="description" content="Tours privados em Lisboa e arredores com motorista profissional multilingue. Sintra, Cascais, Arrábida, Mafra, Óbidos. Português, Russo e Romeno. Reserve o seu tour.">
+    <meta property="og:title" content="Tours Privados em Lisboa - Motorista Multilingue">
+    <meta property="og:description" content="Tours personalizados em Lisboa, Sintra, Cascais, Arrábida, Mafra e Óbidos. Motorista profissional com mais de 15 anos de experiência, fluente em português, russo e romeno.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_PT">
+    <meta property="og:url" content="https://duetoextra.pt/">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <!-- Pré-carregamento da primeira imagem do slideshow -->
+    <link rel="preload" href="images/l2.webp" as="image">
+    <!-- Schema.org — identifica o negócio para os motores de busca -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Tours Lisboa",
+      "description": "Tours privados e personalizados em Lisboa e arredores com motorista multilingue.",
+      "url": "https://duetoextra.pt",
+      "telephone": "+351912688078",
+      "address": { "@type": "PostalAddress", "addressLocality": "Lisboa", "addressCountry": "PT" },
+      "priceRange": "€€",
+      "availableLanguage": [
+        {"@type": "Language", "name": "Portuguese"},
+        {"@type": "Language", "name": "Russian"},
+        {"@type": "Language", "name": "Romanian"}
+      ],
+      "areaServed": ["Lisboa","Sintra","Cascais","Setúbal","Mafra","Óbidos","Peniche"]
+    }
+    </script>
+    <!-- Estilos (versão minificada) -->
+    <link rel="stylesheet" href="styles.min.css">
+    <!-- Meta Pixel — fbevents.js carregado aqui; init/track condicional em scripts.min.js (RGPD) -->
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');</script>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -71,10 +86,10 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
     <div class="mobile-menu" id="mobileMenu">
         <span class="close-menu" onclick="closeMenu()">&times;</span>
         <nav>
-            <a href="#home-anchor" id="banner-home" data-key="home" onclick="closeMenu()">Home</a>
+            <a href="#home-anchor" id="mobile-home" data-key="home" onclick="closeMenu()">Home</a>
             <a href="#pacotes" id="mobile-pacotes" data-key="pacotes" onclick="closeMenu()">Pacotes</a>
             <a href="#sobre" id="mobile-sobre" data-key="sobre" onclick="closeMenu()">Sobre Nós</a>
-            <a href="#contactos" class="cta-button" id="reservar" data-key="reservar" onclick="closeMenu()">Agendar Tour</a>
+            <a href="#contactos" class="cta-button" id="mobile-reservar" data-key="reservar" onclick="closeMenu()">Reservar Agora</a>
         </nav>
         <div class="language-buttons mobile">
             <button onclick="changeLanguage('pt'); closeMenu()"><img src="images/portugal-flag.png" alt="PT"></button>
@@ -87,55 +102,46 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
     <div id="home-anchor"></div>
 
     <!-- ================================================== -->
-    <!-- 3. Slideshow -->
+    <!-- 3. Slideshow — Ken Burns com crossfade               -->
     <!-- ================================================== -->
-    <section id="slideshow">
+    <!-- kb-left / kb-right / kb-zoom: variante de animação por slide -->
+    <section id="slideshow" aria-label="Galeria de imagens de Lisboa e arredores" aria-live="off">
         <div class="slideshow-container">
-            <div class="slide fade">
-                <img src="images/l2.webp" alt="Paisagem 1" loading="lazy">
+            <div class="slide kb-left">
+                <img src="images/l2.webp" alt="Vista de Lisboa" loading="eager">
             </div>
-            <div class="slide fade">
-                <img src="images/l3.webp" alt="Paisagem 2" loading="lazy">
+            <div class="slide kb-right">
+                <img src="images/l3.webp" alt="Bairro histórico de Lisboa" loading="lazy">
             </div>
-            <div class="slide fade">
-                <img src="images/l7.webp" alt="Paisagem 3" loading="lazy">
+            <div class="slide kb-zoom">
+                <img src="images/l7.webp" alt="Panorama da cidade de Lisboa" loading="lazy">
             </div>
-			<div class="slide fade">
-                <img src="images/l8.webp" alt="Paisagem 4" loading="lazy">
+            <div class="slide kb-left">
+                <img src="images/l8.webp" alt="Monumentos históricos de Lisboa" loading="lazy">
             </div>
-			<div class="slide fade">
-                <img src="images/s1.webp" alt="Paisagem 5" loading="lazy">
+            <div class="slide kb-right">
+                <img src="images/s1.webp" alt="Palácio de Sintra" loading="lazy">
             </div>
-			<div class="slide fade">
-                <img src="images/s3.webp" alt="Paisagem 6" loading="lazy">
+            <div class="slide kb-zoom">
+                <img src="images/s3.webp" alt="Serra de Sintra" loading="lazy">
             </div>
-            <!-- Adicione mais slides conforme necessário -->
         </div>
+        <!-- Os pontos de navegação são gerados em scripts.js -->
     </section>
 
     <!-- ================================================== -->
-    <!-- 4. Seção Hero -->
+    <!-- 4. Seção Hero — Título e chamada à acção principal -->
     <!-- ================================================== -->
     <section id="home" class="hero">
         <div class="container">
-            <h2 id="descubra" data-key="descubra">Descubra Lisboa com um Motorista Profissional</h2>
-            <p id="oferta" data-key="oferta">Oferecemos tours personalizados em português, russo e romeno.</p>
+            <h2 id="descubra" data-key="descubra">Uma Experiência Privada Inesquecível pela Região de Lisboa</h2>
+            <p id="oferta" data-key="oferta">Tours privados em português, russo e romeno — com um motorista que conhece cada rua, cada história e cada segredo de Lisboa.</p>
             <a href="#pacotes" class="cta-button" id="ver_pacotes" data-key="ver_pacotes">Ver Pacotes</a>
         </div>
     </section>
 
-	<!-- ================================================== -->
-    <!-- 5. Seção Sobre Nós -->
     <!-- ================================================== -->
-    <section id="sobre" class="sobre">
-        <div class="container">
-            <h2 id="sobre_titulo" data-key="sobre_titulo">Sobre Nós</h2>
-            <p id="sobre_texto" data-key="sobre_texto">Oferecemos tours personalizados na zona de Lisboa e arredores, com um motorista profissional que fala português, russo e romeno. O nosso Toyota Corolla Sedan Hybrid garante conforto e sustentabilidade, com lugar para até 4 passageiros.</p>
-        </div>
-    </section>
-
-    <!-- ================================================== -->
-    <!-- 6. Seção de Pacotes -->
+    <!-- 5. Seção de Pacotes -->
     <!-- ================================================== -->
     <section id="pacotes" class="pacotes">
         <div class="container">
@@ -150,78 +156,118 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
                 </a>
                 <div class="conteudo-pacote">
                     <h3 id="pacote1_titulo" data-key="pacote1_titulo">Lisboa Clássica</h3>
-                    <p id="pacote1_descricao" data-key="pacote1_descricao">4-5 horas | €160</p>
+                    <p id="pacote1_descricao" data-key="pacote1_descricao">4-5 horas | €120</p>
                     <a href="pacotes/lisboa.html" class="cta-button" id="pacote1_botao" data-key="pacote1_botao">Ver Detalhes</a>
                 </div>
             </div>
 
-            <!-- Pacote 2: Sintra Encantada -->
+            <!-- Pacote 2: Sintra & Palácio da Pena -->
             <div class="pacote">
                 <a href="pacotes/sintra.html">
                     <div class="imagem-principal">
-                        <img src="images/s1.webp" alt="Sintra Encantada" loading="lazy">
+                        <img src="images/s1.webp" alt="Sintra & Palácio da Pena" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
-                    <h3 id="pacote2_titulo" data-key="pacote2_titulo">Sintra Encantada</h3>
-                    <p id="pacote2_descricao" data-key="pacote2_descricao">6 horas | €180</p>
-                    <a href="pacotes/lisboa.html" class="cta-button" id="pacote2_botao" data-key="pacote2_botao">Ver Detalhes</a>
+                    <h3 id="pacote2_titulo" data-key="pacote2_titulo">Sintra & Palácio da Pena</h3>
+                    <p id="pacote2_descricao" data-key="pacote2_descricao">5-6 horas | €140</p>
+                    <a href="pacotes/sintra.html" class="cta-button" id="pacote2_botao" data-key="pacote2_botao">Ver Detalhes</a>
                 </div>
             </div>
 
-            <!-- Pacote 3: Fátima Espiritual -->
+            <!-- Pacote 3: Cascais & Estoril -->
             <div class="pacote">
-                <a href="pacotes/fatima.html">
+                <a href="pacotes/cascais.html">
                     <div class="imagem-principal">
-                        <img src="images/l8.webp" alt="Fátima Espiritual" loading="lazy">
+                        <img src="images/l4.webp" alt="Cascais & Estoril" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
-                    <h3 id="pacote3_titulo" data-key="pacote3_titulo">Fátima Espiritual</h3>
-                    <p id="pacote3_descricao" data-key="pacote3_descricao">8 horas | €200</p>
-                    <a href="pacotes/lisboa.html" class="cta-button" id="pacote3_botao" data-key="pacote3_botao">Ver Detalhes</a>
+                    <h3 id="pacote3_titulo" data-key="pacote3_titulo">Cascais & Estoril</h3>
+                    <p id="pacote3_descricao" data-key="pacote3_descricao">4-5 horas | €130</p>
+                    <a href="pacotes/cascais.html" class="cta-button" id="pacote3_botao" data-key="pacote3_botao">Ver Detalhes</a>
                 </div>
             </div>
 
-            <!-- Pacote 4: Évora Histórica -->
+            <!-- Pacote 4: Arrábida & Setúbal -->
             <div class="pacote">
-                <a href="pacotes/evora.html">
+                <a href="pacotes/arrabida.html">
                     <div class="imagem-principal">
-                        <img src="images/l6.webp" alt="Évora Histórica" loading="lazy">
+                        <img src="images/s2.webp" alt="Arrábida & Setúbal" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
-                    <h3 id="pacote4_titulo" data-key="pacote4_titulo">Évora Histórica</h3>
-                    <p id="pacote4_descricao" data-key="pacote4_descricao">8 horas | €220</p>
-                    <a href="pacotes/lisboa.html" class="cta-button" id="pacote4_botao" data-key="pacote4_botao">Ver Detalhes</a>
+                    <h3 id="pacote4_titulo" data-key="pacote4_titulo">Arrábida & Setúbal</h3>
+                    <p id="pacote4_descricao" data-key="pacote4_descricao">6-7 horas | €150</p>
+                    <a href="pacotes/arrabida.html" class="cta-button" id="pacote4_botao" data-key="pacote4_botao">Ver Detalhes</a>
                 </div>
             </div>
 
-            <!-- Pacote 5: Porto e Douro -->
+            <!-- Pacote 5: Mafra & Ericeira -->
             <div class="pacote">
-                <a href="pacotes/porto.html">
+                <a href="pacotes/mafra.html">
                     <div class="imagem-principal">
-                        <img src="images/p2.webp" alt="Porto e Douro" loading="lazy">
+                        <img src="images/l3.webp" alt="Mafra & Ericeira" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
-                    <h3 id="pacote5_titulo" data-key="pacote5_titulo">Porto e Douro</h3>
-                    <p id="pacote5_descricao" data-key="pacote5_descricao">12 horas | €350</p>
-                    <a href="pacotes/lisboa.html" class="cta-button" id="pacote5_botao" data-key="pacote5_botao">Ver Detalhes</a>
+                    <h3 id="pacote5_titulo" data-key="pacote5_titulo">Mafra & Ericeira</h3>
+                    <p id="pacote5_descricao" data-key="pacote5_descricao">5-6 horas | €135</p>
+                    <a href="pacotes/mafra.html" class="cta-button" id="pacote5_botao" data-key="pacote5_botao">Ver Detalhes</a>
                 </div>
             </div>
 
-            <!-- Pacote 6: Algarve Paradisíaco -->
+            <!-- Pacote 6: Óbidos & Peniche -->
             <div class="pacote">
-                <a href="pacotes/algarve.html">
+                <a href="pacotes/obidos.html">
                     <div class="imagem-principal">
-                        <img src="images/c1.webp" alt="Algarve Paradisíaco" loading="lazy">
+                        <img src="images/l7.webp" alt="Óbidos & Peniche" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
-                    <h3 id="pacote6_titulo" data-key="pacote6_titulo">Algarve Paradisíaco</h3>
-                    <p id="pacote6_descricao" data-key="pacote6_descricao">10 horas | €300</p>
-                    <a href="pacotes/lisboa.html" class="cta-button" id="pacote6_botao" data-key="pacote6_botao">Ver Detalhes</a>
+                    <h3 id="pacote6_titulo" data-key="pacote6_titulo">Óbidos & Peniche</h3>
+                    <p id="pacote6_descricao" data-key="pacote6_descricao">6-7 horas | €145</p>
+                    <a href="pacotes/obidos.html" class="cta-button" id="pacote6_botao" data-key="pacote6_botao">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 6. Seção Sobre Nós -->
+    <!-- ================================================== -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 id="sobre_titulo" data-key="sobre_titulo">Sobre Nós</h2>
+            <div class="sobre-conteudo">
+                <!-- Foto do motorista — substituir o div.foto-placeholder por <img src="..." alt="..."> quando disponível -->
+                <div class="sobre-foto">
+                    <div class="foto-placeholder" role="img" aria-label="Fotografia do motorista — em breve">
+                        <svg class="placeholder-svg" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <circle cx="60" cy="44" r="30" fill="#9baab8"/>
+                            <path d="M8 150 Q8 90 60 82 Q112 90 112 150 Z" fill="#7a8fa0"/>
+                        </svg>
+                        <span class="placeholder-label">Foto do Motorista</span>
+                        <span class="placeholder-sublabel">Em breve</span>
+                    </div>
+                </div>
+                <!-- Texto e destaques -->
+                <div class="sobre-texto-bloco">
+                    <p id="sobre_texto" data-key="sobre_texto">Mais do que um simples transporte, o nosso serviço é uma experiência memorável. O nosso motorista conhece Lisboa e a sua região como a palma da mão, e tem o dom natural de contar histórias e curiosidades que tornam cada passeio verdadeiramente único. Profissional, alegre e atento a cada pormenor, fala fluentemente português, russo e romeno — para que se sinta sempre em casa, seja qual for a sua língua.</p>
+                    <ul class="sobre-destaques">
+                        <li>
+                            <strong data-key="destaque_linguas_label">Idiomas:</strong>
+                            <span data-key="destaque_linguas">Português, Russo e Romeno</span>
+                        </li>
+                        <li>
+                            <strong data-key="destaque_perfil_label">Perfil:</strong>
+                            <span data-key="destaque_perfil">Animado, simpático e cheio de histórias sobre cada destino</span>
+                        </li>
+                        <li>
+                            <strong data-key="destaque_veiculo_label">Viatura:</strong>
+                            <span data-key="destaque_veiculo">Toyota Corolla Hybrid Sedan · até 4 passageiros</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -236,7 +282,10 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
   <div class="container">
     <h2 id="contactos_titulo" data-key="contactos_titulo">Contactos</h2>
 
-    <!-- Formulário ligado ao Formspree -->
+    <!-- Subtítulo informativo — traduzido nas 3 línguas -->
+    <p id="contactos_subtitulo" class="contactos-subtitulo" data-key="contactos_subtitulo">Envie-nos uma mensagem e responderemos o mais breve possível. Pode também contactar-nos directamente pelo WhatsApp.</p>
+
+    <!-- Formulário ligado ao Formspree — os dados chegam por email -->
     <form id="contactForm" action="https://formspree.io/f/mqaryzel" method="POST">
       <label for="nome" id="label_nome" data-key="label_nome">Nome:</label>
       <input type="text" id="nome" name="nome" required>
@@ -245,43 +294,40 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
       <input type="email" id="email" name="email" required>
 	  
 	  <label for="pais" id="label_pais" data-key="label_pais">País:</label>
-      <select id="pais" name="pais" required>
+      <!-- Selector de país sem emoji — compatível com Windows, Mac e mobile -->
+      <select id="pais" name="pais" required aria-label="País de origem">
         <option value="" data-key="pais_selecionar">Selecionar país…</option>
 
-        <!-- 🇵🇹 Público principal -->
-        <option value="+351" data-key="pais_pt">🇵🇹 Portugal (+351)</option>
+        <!-- Público principal -->
+        <option value="+351" data-key="pais_pt">Portugal (+351)</option>
+        <option value="+373" data-key="pais_md">Moldávia (+373)</option>
+        <option value="+40"  data-key="pais_ro">Roménia (+40)</option>
 
-        <!-- 🇷🇴 Países romeno-falantes -->
-        <option value="+373" data-key="pais_md">🇲🇩 Moldávia (+373)</option>
-        <option value="+40"  data-key="pais_ro">🇷🇴 Roménia (+40)</option>
+        <!-- Espaço pós-soviético -->
+        <option value="+7"   data-key="pais_ru">Rússia (+7)</option>
+        <option value="+7"   data-key="pais_kz">Cazaquistão (+7)</option>
+        <option value="+375" data-key="pais_by">Bielorrússia (+375)</option>
+        <option value="+380" data-key="pais_ua">Ucrânia (+380)</option>
+        <option value="+992" data-key="pais_tj">Tajiquistão (+992)</option>
+        <option value="+993" data-key="pais_tm">Turquemenistão (+993)</option>
+        <option value="+996" data-key="pais_kg">Quirguistão (+996)</option>
+        <option value="+998" data-key="pais_uz">Uzbequistão (+998)</option>
+        <option value="+995" data-key="pais_ge">Geórgia (+995)</option>
+        <option value="+374" data-key="pais_am">Arménia (+374)</option>
+        <option value="+994" data-key="pais_az">Azerbaijão (+994)</option>
 
-        <!-- 🇷🇺 RUSSO + zona pós-soviética -->
-        <option value="+7"    data-key="pais_ru">🇷🇺 Rússia (+7)</option>
-        <option value="+7"    data-key="pais_kz">🇰🇿 Cazaquistão (+7)</option>
-        <option value="+375"  data-key="pais_by">🇧🇾 Bielorrússia (+375)</option>
-        <option value="+380"  data-key="pais_ua">🇺🇦 Ucrânia (+380)</option>
-        <option value="+992"  data-key="pais_tj">🇹🇯 Tajiquistão (+992)</option>
-        <option value="+993"  data-key="pais_tm">🇹🇲 Turquemenistão (+993)</option>
-        <option value="+996"  data-key="pais_kg">🇰🇬 Quirguistão (+996)</option>
-        <option value="+998"  data-key="pais_uz">🇺🇿 Uzbequistão (+998)</option>
-        <option value="+995"  data-key="pais_ge">🇬🇪 Geórgia (+995)</option>
-        <option value="+374"  data-key="pais_am">🇦🇲 Arménia (+374)</option>
-        <option value="+994"  data-key="pais_az">🇦🇿 Azerbaijão (+994)</option>
+        <!-- Europa e mercados relevantes -->
+        <option value="+34"  data-key="pais_es">Espanha (+34)</option>
+        <option value="+33"  data-key="pais_fr">França (+33)</option>
+        <option value="+49"  data-key="pais_de">Alemanha (+49)</option>
+        <option value="+39"  data-key="pais_it">Itália (+39)</option>
+        <option value="+44"  data-key="pais_gb">Reino Unido (+44)</option>
 
-        <!-- 🇪🇺 e mercados relevantes -->
-        <option value="+34" data-key="pais_es">🇪🇸 Espanha (+34)</option>
-        <option value="+33" data-key="pais_fr">🇫🇷 França (+33)</option>
-        <option value="+49" data-key="pais_de">🇩🇪 Alemanha (+49)</option>
-        <option value="+39" data-key="pais_it">🇮🇹 Itália (+39)</option>
-        <option value="+44" data-key="pais_gb">🇬🇧 Reino Unido (+44)</option>
-
-        <!-- 🌍 Internacionais -->
-        <option value="+1"  data-key="pais_us">🇺🇸 EUA / Canadá (+1)</option>
-        <option value="+55" data-key="pais_br">🇧🇷 Brasil (+55)</option>
-        <option value="+61" data-key="pais_au">🇦🇺 Austrália (+61)</option>
-        <option value="+81" data-key="pais_jp">🇯🇵 Japão (+81)</option>
-
-        <!-- fallback -->
+        <!-- Internacionais -->
+        <option value="+1"   data-key="pais_us">EUA / Canadá (+1)</option>
+        <option value="+55"  data-key="pais_br">Brasil (+55)</option>
+        <option value="+61"  data-key="pais_au">Austrália (+61)</option>
+        <option value="+81"  data-key="pais_jp">Japão (+81)</option>
         <option value="other" data-key="pais_other">Outro país…</option>
       </select>
 
@@ -334,12 +380,13 @@ src="https://www.facebook.com/tr?id=219798650101295&ev=PageView&noscript=1"
                     <img src="images/whatsapp.png" alt="WhatsApp">
                 </a>
             </div>
-            <p>&copy; 2025 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
+            <p>&copy; 2026 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
+            <p class="footer-legal"><a href="privacidade.html" data-key="privacidade_link">Política de Privacidade</a></p>
         </div>
     </footer>
 
-    <!-- Importação do arquivo de scripts JavaScript -->
-    <script src="scripts.js"></script>
+    <!-- Scripts (versão minificada) -->
+    <script src="scripts.min.js"></script>
 </body>
 
 </html>
