@@ -4,6 +4,7 @@
 // ==================================================
 
 const META_PIXEL_ID = '219798650101295';
+const GA4_ID        = 'G-RB6QPB1VVW';
 
 /** Inicializa o Meta Pixel — apenas após consentimento. */
 function initMetaPixel() {
@@ -11,6 +12,24 @@ function initMetaPixel() {
   fbq('init', META_PIXEL_ID);
   fbq('track', 'PageView');
   window.fbqInitialized = true;
+}
+
+/** Inicializa o GA4 — apenas após consentimento. */
+function initGA4() {
+  if (window.ga4Initialized || typeof gtag !== 'function') return;
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  gtag('config', GA4_ID, { send_page_view: true });
+  window.ga4Initialized = true;
+  if (window.__pendingPackageView) {
+    gtagEvent('package_view', { package_name: window.__pendingPackageView });
+    window.__pendingPackageView = null;
+  }
+}
+
+/** Envia um evento GA4 — só após consentimento. */
+function gtagEvent(name, params) {
+  if (!window.ga4Initialized || typeof gtag !== 'function') return;
+  gtag('event', name, Object.assign({ language: window.__i18n && window.__i18n.lang }, params || {}));
 }
 
 /** Cria e injeta o banner de consentimento de cookies. */
@@ -40,6 +59,7 @@ function aceitarCookies() {
   const b = document.getElementById('cookie-banner');
   if (b) b.remove();
   initMetaPixel();
+  initGA4();
 }
 
 function rejeitarCookies() {
@@ -52,7 +72,7 @@ function rejeitarCookies() {
 (function () {
   const consent = localStorage.getItem('cookieConsent');
   if (consent === 'accepted') {
-    window.addEventListener('load', initMetaPixel);
+    window.addEventListener('load', function() { initMetaPixel(); initGA4(); });
   } else if (!consent) {
     document.addEventListener('DOMContentLoaded', mostrarBannerCookies);
   }
@@ -77,6 +97,7 @@ function t(key, fallback) {
 }
 
 async function changeLanguage(lang) {
+  const previousLang = window.__i18n.lang;
   try {
     const isNested = location.pathname.split('/').filter(Boolean).length > 1;
     const primaryUrl  = (isNested ? '../' : '') + 'translations/' + lang + '.json';
@@ -112,6 +133,9 @@ async function changeLanguage(lang) {
 
     localStorage.setItem('language', lang);
     document.documentElement.lang = lang;
+    if (previousLang !== lang) {
+      gtagEvent('language_change', { from_language: previousLang, to_language: lang });
+    }
   } catch (error) {
     console.error('Erro ao carregar traduções:', error);
   }
@@ -235,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof fbq === 'function' && window.fbqInitialized) {
           fbq('track', 'Lead', { value: 0, currency: 'EUR' });
         }
+        gtagEvent('contact_form_submit', { page_location: window.location.href });
         mostrarSucesso(t('sucesso_envio', 'Mensagem enviada com sucesso!'));
         form.reset();
         prefixo.value = pais.value || '';
@@ -599,3 +624,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+
+// ==================================================
+// 10. Google Analytics 4 — Eventos de Negócio
+// ==================================================
+
+// Cliques em WhatsApp e telefone via event delegation
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href]');
+  if (!link) return;
+  var href = link.getAttribute('href') || '';
+  if (href.includes('wa.me')) {
+    var h1 = document.querySelector('h1[id]');
+    gtagEvent('whatsapp_click', {
+      page_location: window.location.href,
+      package_name: h1 ? h1.textContent.trim() : undefined
+    });
+  } else if (href.startsWith('tel:')) {
+    gtagEvent('phone_click', { page_location: window.location.href });
+  }
+});
+
+// Visualização de pacote — detectado por URL, enviado após consentimento
+(function() {
+  var match = window.location.pathname.match(/\/pacotes\/([^/.]+)\.html/);
+  if (match) window.__pendingPackageView = match[1];
+})();
