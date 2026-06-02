@@ -32,7 +32,7 @@ function gtagEvent(name, params) {
   gtag('event', name, Object.assign({ language: window.__i18n && window.__i18n.lang }, params || {}));
 }
 
-/** Cria e injeta o banner de consentimento de cookies. */
+/** Cria e injeta o banner de consentimento de cookies (texto traduzido via t()). */
 function mostrarBannerCookies() {
   if (document.getElementById('cookie-banner')) return;
   const nested = location.pathname.split('/').filter(Boolean).length > 1;
@@ -44,12 +44,11 @@ function mostrarBannerCookies() {
   banner.setAttribute('aria-label', 'Consentimento de cookies');
   banner.innerHTML =
     '<div class="cookie-banner-content">' +
-    '<p>Utilizamos cookies analíticos para melhorar a sua experiência. ' +
-    'Ao aceitar, consente o uso do Meta Pixel (Facebook). ' +
-    '<a href="' + privUrl + '">Política de Privacidade</a></p>' +
+    '<p>' + t('cookie_texto', 'Utilizamos cookies analíticos para melhorar a sua experiência. Ao aceitar, consente o uso do Meta Pixel (Facebook) e do Google Analytics.') +
+    ' <a href="' + privUrl + '">' + t('cookie_privacidade', 'Política de Privacidade') + '</a></p>' +
     '<div class="cookie-banner-buttons">' +
-    '<button class="btn-aceitar-cookies" onclick="aceitarCookies()">Aceitar</button>' +
-    '<button class="btn-rejeitar-cookies" onclick="rejeitarCookies()">Rejeitar</button>' +
+    '<button class="btn-aceitar-cookies" onclick="aceitarCookies()">' + t('cookie_aceitar', 'Aceitar') + '</button>' +
+    '<button class="btn-rejeitar-cookies" onclick="rejeitarCookies()">' + t('cookie_rejeitar', 'Rejeitar') + '</button>' +
     '</div></div>';
   document.body.appendChild(banner);
 }
@@ -73,9 +72,8 @@ function rejeitarCookies() {
   const consent = localStorage.getItem('cookieConsent');
   if (consent === 'accepted') {
     window.addEventListener('load', function() { initMetaPixel(); initGA4(); });
-  } else if (!consent) {
-    document.addEventListener('DOMContentLoaded', mostrarBannerCookies);
   }
+  // Banner mostrado após changeLanguage() para garantir texto traduzido
   // Se 'rejected' — pixel não é inicializado
 })();
 
@@ -135,6 +133,9 @@ async function changeLanguage(lang) {
     document.documentElement.lang = lang;
     if (previousLang !== lang) {
       gtagEvent('language_change', { from_language: previousLang, to_language: lang });
+    }
+    if (!localStorage.getItem('cookieConsent')) {
+      mostrarBannerCookies();
     }
   } catch (error) {
     console.error('Erro ao carregar traduções:', error);
@@ -482,6 +483,19 @@ function closeMenu() {
   var hamburger = document.querySelector('.hamburger');
   if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
 }
+
+// Fechar menu ao clicar fora ou pressionar ESC
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('mobileMenu');
+  var hamburger = document.querySelector('.hamburger');
+  if (!menu || !menu.classList.contains('show')) return;
+  if (!menu.contains(e.target) && (!hamburger || !hamburger.contains(e.target))) {
+    closeMenu();
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMenu();
+});
 
 
 // ==================================================

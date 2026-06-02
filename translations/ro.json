@@ -200,5 +200,10 @@
   "cascais_idiomas_valor": "Portugheză, Engleză, Rusă, Română",
   "arrabida_idiomas_valor": "Portugheză, Engleză, Rusă, Română",
   "mafra_idiomas_valor": "Portugheză, Engleză, Rusă, Română",
-  "obidos_idiomas_valor": "Portugheză, Engleză, Rusă, Română"
+  "obidos_idiomas_valor": "Portugheză, Engleză, Rusă, Română",
+
+  "cookie_texto": "Folosim cookie-uri analitice pentru a îmbunătăți experiența dvs. Prin acceptare, consimțiți utilizarea Meta Pixel (Facebook) și Google Analytics.",
+  "cookie_aceitar": "Accept",
+  "cookie_rejeitar": "Refuz",
+  "cookie_privacidade": "Politica de Confidențialitate"
 }

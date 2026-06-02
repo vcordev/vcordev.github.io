@@ -201,5 +201,10 @@
   "cascais_idiomas_valor": "Português, Inglês, Russo, Romeno",
   "arrabida_idiomas_valor": "Português, Inglês, Russo, Romeno",
   "mafra_idiomas_valor": "Português, Inglês, Russo, Romeno",
-  "obidos_idiomas_valor": "Português, Inglês, Russo, Romeno"
+  "obidos_idiomas_valor": "Português, Inglês, Russo, Romeno",
+
+  "cookie_texto": "Utilizamos cookies analíticos para melhorar a sua experiência. Ao aceitar, consente o uso do Meta Pixel (Facebook) e do Google Analytics.",
+  "cookie_aceitar": "Aceitar",
+  "cookie_rejeitar": "Rejeitar",
+  "cookie_privacidade": "Política de Privacidade"
 }
