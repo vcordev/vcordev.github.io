@@ -1,39 +1,75 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="title" data-key="arrabida_titulo">Arrábida & Setúbal - Tours Lisboa</title>
+    <title id="title" data-key="titulo_pagina_arrabida">Tour Arrábida & Setúbal — Tours Privados em Lisboa</title>
+    <meta name="description" id="meta-desc" data-key="meta_description_arrabida"
+          content="Tour privado Parque Natural da Arrábida: praias turquesa, Setúbal e Fortaleza de São Filipe. 6-7 horas, €150. Uma das mais belas paisagens de Portugal.">
+    <link rel="canonical" href="https://duetoextra.pt/pacotes/arrabida.html">
+    <link rel="alternate" hreflang="pt"        href="https://duetoextra.pt/pacotes/arrabida.html">
+    <link rel="alternate" hreflang="en"        href="https://duetoextra.pt/pacotes/arrabida.html">
+    <link rel="alternate" hreflang="ru"        href="https://duetoextra.pt/pacotes/arrabida.html">
+    <link rel="alternate" hreflang="ro"        href="https://duetoextra.pt/pacotes/arrabida.html">
+    <link rel="alternate" hreflang="x-default" href="https://duetoextra.pt/pacotes/arrabida.html">
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://duetoextra.pt/pacotes/arrabida.html">
+    <meta property="og:title"       content="Tour Arrábida & Setúbal | Tours Privados em Lisboa">
+    <meta property="og:description" content="Tour privado Arrábida: praias turquesa e Setúbal. 6-7h, €150. Uma das mais belas paisagens de Portugal.">
+    <meta property="og:image"       content="https://duetoextra.pt/images/s2.jpg">
+    <meta property="og:site_name"   content="Tours Lisboa — Dueto Extra">
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Arrábida Natural Park Tour from Lisbon | Lisbon Tours">
+    <meta name="twitter:description" content="Private Arrábida tour from Lisbon: turquoise beaches, limestone cliffs & Setúbal fortress. 6-7h, €150.">
+    <meta name="twitter:image"       content="https://duetoextra.pt/images/s2.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "name": "Arrábida & Setúbal — Private Nature Tour from Lisbon",
+      "description": "Tour privado ao Parque Natural da Arrábida: praias turquesa, penhascos calcários e Setúbal.",
+      "url": "https://duetoextra.pt/pacotes/arrabida.html",
+      "image": "https://duetoextra.pt/images/s2.jpg",
+      "offers": {"@type": "Offer", "price": "150", "priceCurrency": "EUR", "availability": "https://schema.org/InStock"},
+      "itinerary": {"@type": "ItemList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Parque Natural da Arrábida"},
+        {"@type": "ListItem", "position": 2, "name": "Portinho da Arrábida"},
+        {"@type": "ListItem", "position": 3, "name": "Convento da Arrábida"},
+        {"@type": "ListItem", "position": 4, "name": "Fortaleza de São Filipe, Setúbal"}
+      ]},
+      "provider": {"@type": "TravelAgency", "name": "Dueto Extra", "url": "https://duetoextra.pt"}
+    }
+    </script>
     <link rel="stylesheet" href="../styles.min.css">
     <link rel="stylesheet" href="./pacote-detalhes.css">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <!-- Meta Pixel — init/track condicional em scripts.min.js (RGPD) -->
+    <link rel="icon" href="../images/favicon-logo.png" type="image/png" sizes="64x64">
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');</script>
 </head>
 <body>
     <header class="fixed-header">
         <div class="container">
             <div class="logo">
-                <a href="../index.html">
-                    <h1 id="logo" data-key="logo">Tours Lisboa</h1>
+                <a href="../index.html" class="logo-link" aria-label="Dueto Extra — Private Tours Portugal">
+                    <img src="../images/logo-dueto-trans.png" alt="Dueto Extra — Private Tours Portugal" class="logo-img">
                 </a>
             </div>
             <nav>
-                <a href="../index.html" data-key="home">Home</a>
-                <a href="../index.html#pacotes" data-key="pacotes">Pacotes</a>
-                <a href="../index.html#sobre" data-key="sobre">Sobre Nós</a>
+                <a href="../index.html" id="banner-home" data-key="home">Home</a>
+                <a href="../index.html#pacotes" id="banner-pacotes" data-key="pacotes">Pacotes</a>
+                <a href="../index.html#sobre" id="banner-sobre" data-key="sobre">Sobre Nós</a>
             </nav>
-            <a href="../index.html#contactos" class="cta-button" data-key="reservar">Reservar Agora</a>
+            <a href="../index.html#contactos" class="cta-button" id="reservar" data-key="reservar">Reservar Agora</a>
             <div class="language-buttons">
                 <button onclick="changeLanguage('pt')"><img src="../images/portugal-flag.png" alt="Português"></button>
-                <button onclick="changeLanguage('ru')"><img src="../images/russia-flag.png" alt="Russo"></button>
-                <button onclick="changeLanguage('ro')"><img src="../images/romania-flag.png" alt="Romeno"></button>
+                <button onclick="changeLanguage('en')"><img src="../images/uk-flag.svg" alt="English"></button>
+                <button onclick="changeLanguage('ru')"><img src="../images/russia-flag.png" alt="Русский"></button>
+                <button onclick="changeLanguage('ro')"><img src="../images/romania-flag.png" alt="Română"></button>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
                 <div></div>
                 <div></div>
                 <div></div>
-            </div>
+            </button>
         </div>
     </header>
 
@@ -47,13 +83,10 @@
         </nav>
         <div class="language-buttons mobile">
             <button onclick="changeLanguage('pt'); closeMenu()"><img src="../images/portugal-flag.png" alt="PT"></button>
+            <button onclick="changeLanguage('en'); closeMenu()"><img src="../images/uk-flag.svg" alt="EN"></button>
             <button onclick="changeLanguage('ru'); closeMenu()"><img src="../images/russia-flag.png" alt="RU"></button>
             <button onclick="changeLanguage('ro'); closeMenu()"><img src="../images/romania-flag.png" alt="RO"></button>
         </div>
-    </div>
-
-    <div class="voltar-pacotes">
-        <a href="../index.html#pacotes" class="cta-button" data-key="voltar_pacotes">❮ Ver Pacotes</a>
     </div>
 
     <section class="pacote-detalhes">
@@ -62,37 +95,37 @@
 
             <div class="galeria">
                 <div class="imagem-principal" id="galeriaPrincipal">
-                    <img src="../images/s2.webp" alt="Arrábida & Setúbal" id="imagemPrincipal" loading="lazy">
+                    <img src="../images/s2.webp" alt="Praias turquesa do Parque Natural da Arrábida" id="imagemPrincipal" loading="lazy">
                     <button class="fechar" onclick="fecharImagem()">&times;</button>
                     <button class="seta seta-esquerda" onclick="mudarImagem(-1)">&#10094;</button>
                     <button class="seta seta-direita" onclick="mudarImagem(1)">&#10095;</button>
                 </div>
                 <div class="miniaturas">
-                    <img src="../images/s2.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/s1.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/s3.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l7.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l8.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/c1.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l1.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l2.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l3.webp" alt="Arrábida" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/s2.webp" alt="Praias turquesa da Arrábida" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/s1.webp" alt="Serra da Arrábida — vista para o mar" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/s3.webp" alt="Parque Natural da Arrábida" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l7.webp" alt="Vista sobre Lisboa e o Tejo" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l8.webp" alt="Monumentos históricos de Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/c1.webp" alt="Costa atlântica de Cascais" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l1.webp" alt="Torre de Belém, Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l2.webp" alt="Mosteiro dos Jerónimos, Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l3.webp" alt="Alfama, bairro histórico de Lisboa" onclick="abrirImagem(this)" loading="lazy">
                 </div>
             </div>
 
             <div class="descricao-pacote">
-                <p id="descricao1" data-key="arrabida_descricao1">Explore o deslumbrante Parque Natural da Arrábida, com as suas águas cristalinas de cor turquesa e praias virgens consideradas entre as mais belas de Portugal. Visite o Portinho da Arrábida, o Convento da Arrábida e a Fortaleza de São Filipe em Setúbal.</p>
-                <p id="descricao2" data-key="arrabida_descricao2">Um tour ideal para os amantes da natureza, do mar e das paisagens únicas do litoral sul de Lisboa. Transporte confortável em Toyota Corolla Sedan Hybrid, com lugar para até 4 passageiros.</p>
+                <p id="descricao1" data-key="arrabida_descricao1">A Arrábida é um segredo que Lisboa guarda mesmo ao lado — e que poucos turistas chegam a conhecer. No Parque Natural da Arrábida, as montanhas mergulham directamente no mar, criando baías de uma beleza difícil de descrever: águas de azul-turquesa impossível, areias brancas e pedra calcária que brilha ao sol. Uma natureza intocada que parece outro mundo, a menos de 50 quilómetros da capital.</p>
+                <p id="descricao2" data-key="arrabida_descricao2">Este tour de 6 a 7 horas é uma viagem ao que há de mais selvagem e bonito na região de Lisboa. Para além da Arrábida, inclui uma paragem em Setúbal, onde a Fortaleza de São Filipe oferece vistas memoráveis sobre o estuário do Sado. Transporte em Toyota Corolla Sedan Hybrid para até 4 passageiros.</p>
             </div>
 
             <div class="detalhes-pacote">
                 <h2 id="detalhes_titulo" data-key="arrabida_detalhes_titulo">Detalhes do Pacote</h2>
                 <ul>
-                    <li><strong id="duracao_label" data-key="arrabida_duracao">Duração:</strong> <span id="duracao_valor" data-key="arrabida_duracao_valor">6-7 horas</span></li>
-                    <li><strong id="preco_label" data-key="arrabida_preco">Preço:</strong> <span id="preco_valor" data-key="arrabida_preco_valor">€150</span></li>
-                    <li><strong id="idiomas_label" data-key="arrabida_idiomas">Idiomas:</strong> <span id="idiomas_valor" data-key="arrabida_idiomas_valor">Português, Russo, Romeno</span></li>
-                    <li><strong id="transporte_label" data-key="arrabida_transporte">Transporte:</strong> <span id="transporte_valor" data-key="arrabida_transporte_valor">Toyota Corolla Sedan Hybrid (até 4 passageiros)</span></li>
-                    <li><strong id="pontos_interesse_label" data-key="arrabida_pontos_interesse">Pontos de Interesse:</strong> <span id="pontos_interesse_valor" data-key="arrabida_pontos_interesse_valor">Parque Natural da Arrábida, Portinho da Arrábida, Convento da Arrábida, Fortaleza de São Filipe, Setúbal</span></li>
+                    <li><strong data-key="arrabida_duracao">Duração:</strong> <span data-key="arrabida_duracao_valor">6-7 horas</span></li>
+                    <li><strong data-key="arrabida_preco">Preço:</strong> <span data-key="arrabida_preco_valor">€150</span></li>
+                    <li><strong data-key="arrabida_idiomas">Idiomas:</strong> <span data-key="arrabida_idiomas_valor">Português, Inglês, Russo, Romeno</span></li>
+                    <li><strong data-key="arrabida_transporte">Transporte:</strong> <span data-key="arrabida_transporte_valor">Toyota Corolla Sedan Hybrid (até 4 passageiros)</span></li>
+                    <li><strong data-key="arrabida_pontos_interesse">Pontos de Interesse:</strong> <span data-key="arrabida_pontos_interesse_valor">Parque Natural da Arrábida, Portinho da Arrábida, Convento da Arrábida, Fortaleza de São Filipe, Setúbal</span></li>
                 </ul>
             </div>
 
@@ -103,15 +136,9 @@
     <footer>
         <div class="container">
             <div class="redes-sociais">
-                <a href="https://facebook.com/seu-perfil" target="_blank">
-                    <img src="../images/facebook.png" alt="Facebook">
-                </a>
-                <a href="https://instagram.com/seu-perfil" target="_blank">
-                    <img src="../images/instagram.png" alt="Instagram">
-                </a>
-                <a href="https://wa.me/+351912688078" target="_blank">
-                    <img src="../images/whatsapp.png" alt="WhatsApp">
-                </a>
+                <a href="https://facebook.com/seu-perfil" target="_blank" rel="noopener noreferrer"><img src="../images/facebook.png" alt="Facebook"></a>
+                <a href="https://instagram.com/seu-perfil" target="_blank" rel="noopener noreferrer"><img src="../images/instagram.png" alt="Instagram"></a>
+                <a href="https://wa.me/+351912688078" target="_blank" rel="noopener noreferrer"><img src="../images/whatsapp.png" alt="WhatsApp"></a>
             </div>
             <p>&copy; 2026 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
             <p class="footer-legal"><a href="../privacidade.html" data-key="privacidade_link">Política de Privacidade</a></p>

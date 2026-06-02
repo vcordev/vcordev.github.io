@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" shape-rendering="crispEdges">
+  <!-- Fundo azul -->
+  <rect width="60" height="40" fill="#012169"/>
+  <!-- Cruz de Santo André (X branca) -->
+  <polygon points="0,0 8,0 60,36 60,40 52,40 0,4" fill="white"/>
+  <polygon points="60,0 52,0 0,36 0,40 8,40 60,4" fill="white"/>
+  <!-- Cruz de São Patrício (X vermelha — offset para sudoeste/nordeste) -->
+  <polygon points="0,0 3.5,0 60,38 60,40 56.5,40 0,2" fill="#C8102E"/>
+  <polygon points="60,0 56.5,0 0,38 0,40 3.5,40 60,2" fill="#C8102E"/>
+  <!-- Cruz de São Jorge (+ branca) -->
+  <rect x="22" y="0" width="16" height="40" fill="white"/>
+  <rect x="0" y="14" width="60" height="12" fill="white"/>
+  <!-- Cruz de São Jorge (+ vermelha) -->
+  <rect x="25" y="0" width="10" height="40" fill="#C8102E"/>
+  <rect x="0" y="17" width="60" height="6" fill="#C8102E"/>
+</svg>

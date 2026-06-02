@@ -1,6 +1,6 @@
 
 /* ================================================== */
-/* 0. Variáveis Globais (novas)                       */
+/* 0. Variáveis Globais                               */
 /* ================================================== */
 :root {
   --cor-primaria: #003366;
@@ -10,11 +10,10 @@
   --cor-branco: #ffffff;
   --cor-cinza-borda: #ccc;
 
-  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 6px 15px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
-
 
 
 /* ================================================== */
@@ -24,6 +23,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
 }
 html, body {
   width: 100%;
@@ -38,8 +40,7 @@ body {
   background-color: var(--cor-fundo);
   color: var(--cor-primaria);
   margin: 0;
-  padding: 0; /* padding-top definido nos media queries (60px mobile / 80px desktop) */
-  overflow-x: visible;
+  padding: 0; /* padding-top definido nos media queries */
 }
 
 input, textarea, select, button {
@@ -53,22 +54,38 @@ input, textarea, select, button {
   padding: 20px;
 }
 section {
-  /* Padding vertical responsivo e consistente em todas as secções */
-  padding: clamp(24px, 5vw, 64px) 0;
+  padding: clamp(32px, 5vw, 72px) 0;
   box-sizing: border-box;
 }
 img {
-  max-width: 100%; /* Garante que as imagens não ultrapassem a largura do container */
-  height: auto; /* Mantém a proporção da imagem */
+  max-width: 100%;
+  height: auto;
 }
 
 /* Acessibilidade: foco visível */
 a:focus-visible,
 button:focus-visible,
-.cta-button:focus-visible {
+.cta-button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 3px solid var(--cor-secundaria);
   outline-offset: 3px;
 }
+
+/* Headings de secção com accent dourado */
+section h2::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: var(--cor-secundaria);
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+/* Excepção: hero tem fundo azul, sem decoração */
+.hero h2::after { display: none; }
+
 
 /* ================================================== */
 /* 2. Cabeçalho Fixo                                  */
@@ -84,8 +101,9 @@ button:focus-visible,
   z-index: 1000;
   box-shadow: var(--shadow-sm);
   display: flex;
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* permite que o logo transborde na parte inferior */
 }
 .fixed-header .container {
   width: 90%;
@@ -95,94 +113,153 @@ button:focus-visible,
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow: visible;
 }
 .fixed-header nav a {
   color: white;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 12px;
   font-weight: bold;
-  padding: 10px;
-  border: 2px solid transparent;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding: 8px 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 .fixed-header nav a:hover,
 .fixed-header nav a:focus-visible {
   color: var(--cor-secundaria);
-  border-bottom: 2px solid var(--cor-secundaria);
+  border-bottom-color: var(--cor-secundaria);
   outline: none;
 }
 .fixed-header.scrolled {
-  background-color: var(--cor-primaria);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  background: var(--cor-primaria);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
+/* Logo — transborda apenas na parte inferior do header para efeito visual */
+.logo {
+  align-self: flex-start; /* ancora ao topo do header */
+  overflow: visible;      /* permite transbordamento inferior */
+}
+.logo-link {
+  display: inline-flex;
+  align-items: flex-start;
+  background: none;
+  padding-top: 4px; /* espaço mínimo do topo */
+  text-decoration: none;
+  transition: filter 0.25s ease;
+}
+.logo-link:focus-visible {
+  outline: 3px solid var(--cor-secundaria);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.logo-img {
+  /* 150-200% do tamanho anterior: transborda ~50-80px abaixo do header */
+  height: clamp(100px, 12vw, 160px);
+  width: auto;
+  display: block;
+  /* Contorno branco ao redor da forma real do logo (funciona em PNG transparente) */
+  filter:
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.65))
+    drop-shadow(0 0 4px rgba(255, 255, 255, 0.45));
+  transition: filter 0.25s ease;
+}
+.logo-link:hover .logo-img {
+  filter:
+    drop-shadow(0 0 12px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.6))
+    brightness(1.08);
+}
+/* Fallback texto */
 .logo h1 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin: 0;
   color: white;
+  letter-spacing: 0.02em;
 }
-.logo a {
-  text-decoration: none; /* Remove o sublinhado */
-  color: inherit; /* Mantém a cor do texto do logo */
+.logo a:not(.logo-link) {
+  text-decoration: none;
+  color: inherit;
 }
 .language-buttons {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 4px;
 }
 .language-buttons button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  margin: 0 5px;
-  transition: transform 0.3s ease;
+  padding: 4px;
+  border-radius: 4px;
+  transition: transform 0.25s ease, background-color 0.2s ease;
 }
 .language-buttons button img {
-  width: 38px;
+  width: 34px;
   height: auto;
-  border: 2px solid white;
-  border-radius: 15%;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 4px;
+  display: block;
 }
 .language-buttons button:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
+  background-color: rgba(255,255,255,0.1);
 }
 .cta-button {
+  display: inline-block;
   background-color: var(--cor-secundaria);
   color: var(--cor-primaria);
-  padding: 10px 20px;
+  padding: 11px 22px;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  white-space: nowrap;
 }
 .cta-button:hover {
   background-color: #e6b800;
   transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
 }
+
 
 /* ================================================== */
 /* 3. Menu Mobile                                     */
 /* ================================================== */
 .hamburger {
-  display: none; /* Oculta o ícone por padrão */
+  display: none;
   flex-direction: column;
   cursor: pointer;
-  margin-left: 10px; /* Pequeno espaço entre o logo e o ícone */
+  margin-left: 10px;
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.hamburger:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .hamburger div {
-  width: 25px;
-  height: 3px;
+  width: 24px;
+  height: 2px;
   background-color: white;
   margin: 4px 0;
-  transition: 0.4s;
+  transition: 0.3s ease;
+  border-radius: 2px;
 }
 
-/* Overlay full-screen e scroll interno seguro */
+/* Overlay full-screen */
 .mobile-menu {
   position: fixed;
-  inset: 0;              /* top/right/bottom/left: 0 */
+  inset: 0;
   width: 100%;
-  height: 100dvh;        /* viewport dinâmica (iOS/Android) */
-  background-color: rgba(0, 40, 85, 0.95);
+  height: 100dvh;
+  background-color: rgba(0, 40, 85, 0.97);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -194,27 +271,30 @@ button:focus-visible,
   z-index: 3000;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto;      /* permite scroll dentro do menu */
+  overflow-y: auto;
 }
 .mobile-menu.show {
-  transform: translateX(0); /* Exibe o menu quando a classe "show" é adicionada */
+  transform: translateX(0);
 }
 .close-menu {
   position: absolute;
   top: 12px;
-  right: 12px;
-  font-size: 2rem;
+  right: 16px;
+  font-size: 2.2rem;
   color: white;
   cursor: pointer;
   z-index: 1;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
 }
+.close-menu:hover { color: var(--cor-secundaria); }
 
-/* Bloqueio de scroll de fundo (ativar via JS: body.menu-open) */
 body.menu-open {
   overflow: hidden;
   overscroll-behavior: contain;
 }
-
 body.menu-open.fixed-lock {
   position: fixed;
   width: 100%;
@@ -223,52 +303,48 @@ body.menu-open.fixed-lock {
 .mobile-menu nav {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  gap: 16px;
 }
 .mobile-menu a {
   color: white;
   font-size: 1.5rem;
   text-decoration: none;
   font-weight: bold;
+  padding: 4px 0;
+  transition: color 0.2s ease;
 }
+.mobile-menu a:hover { color: var(--cor-secundaria); }
 .mobile-menu .cta-button {
-  width: 100%; /* botão ocupa largura total */
-  max-width: 200px; /* limite máximo */
+  width: 100%;
+  max-width: 220px;
   text-align: center;
   margin-top: 20px;
-  padding: 12px 20px;
-  font-size: 1.3rem;
-  background-color: var(--cor-secundaria);
-  color: var(--cor-primaria);
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-.mobile-menu .cta-button:hover {
-  background-color: #e6b800;
+  padding: 13px 24px;
+  font-size: 1.2rem;
 }
 .mobile-menu .language-buttons {
-  margin-top: 20px;
+  margin-top: 24px;
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 .mobile-menu .language-buttons button img {
   width: 40px;
-  border-radius: 10%;
+  border-radius: 4px;
 }
+
 
 /* ================================================== */
 /* 4. Slideshow — Ken Burns com crossfade             */
 /* ================================================== */
 #slideshow {
   width: 100%;
-  /* Responsivo: mínimo 300px, preferindo 65% do viewport, máximo 700px */
-  height: clamp(300px, 65vh, 700px);
+  /* Altura suave — reduzida ~15% em desktop, mínimo inalterado em mobile */
+  height: clamp(220px, 44vw, 595px);
   position: relative;
   overflow: hidden;
   background-color: #000;
-  padding: 0; /* neutraliza a padding do selector genérico "section" que causava barras pretas */
+  padding: 0;
 }
 .slideshow-container {
   width: 100%;
@@ -286,37 +362,38 @@ body.menu-open.fixed-lock {
 }
 .slide.active {
   opacity: 1;
-  z-index: 1; /* slide activo por cima dos outros */
+  z-index: 1;
 }
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  /* Ponto de partida neutro (coincide com início das animações kb-*) */
   transform: scale(1.08);
   transform-origin: center center;
-  will-change: transform; /* avisa o browser para optimizar */
+  will-change: transform;
 }
 
-/* Ken Burns: 3 variantes, só correm quando o slide está activo */
-.slide.active.kb-left  img { animation: kb-left  8s ease-in-out forwards; }
-.slide.active.kb-right img { animation: kb-right 8s ease-in-out forwards; }
-.slide.active.kb-zoom  img { animation: kb-zoom  8s ease-in-out forwards; }
+/* Ken Burns: apenas quando o slide está activo */
+.slide.active.kb-left  img { animation: kb-left  8s ease-in-out both; }
+.slide.active.kb-right img { animation: kb-right 8s ease-in-out both; }
+.slide.active.kb-zoom  img { animation: kb-zoom  8s ease-in-out both; }
 
 @keyframes kb-left {
-  from { transform: scale(1.12) translate(2%, 1%); }
-  to   { transform: scale(1.06) translate(-2%, -1%); }
+  from { transform: scale(1.08) translate(2%, 1%); }
+  to   { transform: scale(1.04) translate(-2%, -1%); }
 }
 @keyframes kb-right {
-  from { transform: scale(1.06) translate(-2%, 0); }
+  from { transform: scale(1.08) translate(-2%, 0); }
   to   { transform: scale(1.12) translate(2%, 1%); }
 }
 @keyframes kb-zoom {
-  from { transform: scale(1.04) translate(0, 1%); }
+  from { transform: scale(1.08) translate(0, 1%); }
   to   { transform: scale(1.14) translate(0, -1%); }
 }
 
-/* Pontos de navegação (gerados em JS) */
+/* Pontos de navegação */
 .slideshow-dots {
   position: absolute;
   bottom: 18px;
@@ -331,24 +408,23 @@ body.menu-open.fixed-lock {
   height: 10px;
   padding: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 .slideshow-dot.active {
   background: white;
-  transform: scale(1.4);
+  transform: scale(1.45);
 }
 .slideshow-dot:hover:not(.active) {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.7);
 }
 .slideshow-dot:focus-visible {
   outline: 2px solid var(--cor-secundaria);
   outline-offset: 3px;
 }
 
-/* Acessibilidade: respeita preferência de movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
   .slide img {
     animation: none !important;
@@ -357,124 +433,145 @@ body.menu-open.fixed-lock {
   .slide { transition: opacity 0.3s; }
 }
 
+
 /* ================================================== */
 /* 5. Seção Hero                                      */
 /* ================================================== */
 .hero {
-  background-color: var(--cor-primaria);
+  background: linear-gradient(150deg, var(--cor-primaria-escura) 0%, var(--cor-primaria) 55%, #004488 100%);
   color: white;
-  /* Padding responsivo: ~40px mobile → ~110px desktop */
-  padding: clamp(40px, 9vw, 110px) 0;
+  padding: clamp(48px, 9vw, 110px) 0;
   text-align: center;
 }
 
 .hero .container {
-  max-width: 960px;               /* limita a largura do texto */
-  margin-inline: auto;            /* centra horizontalmente */
-  padding-inline: clamp(16px, 5vw, 24px); /* espaço interno responsivo */
+  max-width: 960px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 5vw, 24px);
 }
 
 .hero h2 {
-  font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
   line-height: 1.2;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
 }
 .hero p {
   font-size: clamp(1rem, 3.5vw, 1.2rem);
-  line-height: 1.5;
-  margin-bottom: 20px;
+  line-height: 1.65;
+  margin-bottom: 28px;
+  opacity: 0.9;
   overflow-wrap: anywhere;
   word-break: break-word;
   hyphens: auto;
 }
 
-/* Só em mobile, garantir ainda mais espaço lateral */
 @media (max-width: 480px) {
   .hero .container {
     padding-inline: clamp(18px, 6vw, 28px);
   }
 }
 
+
 /* ================================================== */
 /* 6. Seção de Pacotes                                */
 /* ================================================== */
 #pacotes {
   text-align: center;
-  padding: clamp(24px, 5vw, 64px) 0;
+  padding: clamp(32px, 5vw, 72px) 0;
 }
 #pacotes h2 {
   width: 100%;
-  font-size: clamp(1.5rem, 3.5vw, 2rem); /* escala com o viewport */
-  margin-bottom: clamp(20px, 3vw, 30px);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: clamp(28px, 4vw, 48px);
   color: var(--cor-primaria);
   grid-column: span 3;
 }
 .pacotes .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  gap: 20px;
-  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
-/* Alternativa mais fluida (opcional):
-.pacotes .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-*/
+
+/* Card do pacote */
 .pacote {
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: white;
-  padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: var(--shadow-md);
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .pacote:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
 }
-.imagem-principal img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+/* Link da imagem */
+.pacote > a:first-child {
+  display: block;
+  overflow: hidden;
 }
+
+/* Imagem do card (aspect-ratio estável) */
+.pacote .imagem-principal {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.pacote .imagem-principal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.pacote:hover .imagem-principal img {
+  transform: scale(1.06);
+}
+
+/* Conteúdo do card */
 .conteudo-pacote {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 15px;
-  padding: 15px;
+  gap: 10px;
+  padding: 20px 18px 22px;
+  flex: 1;
 }
-.info-pacote h3 {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: var(--cor-primaria);
-  margin-bottom: 5px;
-}
-.info-pacote p {
+.conteudo-pacote h3 {
   font-size: 1.1rem;
-  color: #444444;
-  margin-bottom: 10px;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
 }
+.conteudo-pacote > p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  flex: 1;
+}
+.conteudo-pacote .cta-button {
+  margin-top: auto;
+  font-size: 0.88rem;
+  padding: 9px 20px;
+}
+
 
 /* ================================================== */
 /* 7. Seção Sobre Nós                                 */
 /* ================================================== */
 .sobre {
   background-color: var(--cor-fundo);
-  padding: clamp(24px, 5vw, 64px) 0;
+  padding: clamp(32px, 5vw, 72px) 0;
   text-align: center;
 }
 .sobre h2 {
   font-size: clamp(1.5rem, 3.5vw, 2rem);
-  margin-bottom: clamp(20px, 3vw, 30px);
+  margin-bottom: clamp(28px, 4vw, 44px);
 }
 .sobre-conteudo {
   display: flex;
@@ -485,7 +582,7 @@ body.menu-open.fixed-lock {
 .sobre-foto {
   flex: 0 0 200px;
 }
-/* Placeholder da foto do motorista — remover quando a foto real estiver disponível */
+/* Placeholder da foto do motorista */
 .foto-placeholder {
   width: 200px;
   height: 270px;
@@ -553,17 +650,16 @@ body.menu-open.fixed-lock {
   }
   .sobre-destaques li {
     text-align: left;
-    border-left: 4px solid var(--cor-primaria);
-    border-radius: 0 8px 8px 0;
   }
 }
+
 
 /* ================================================== */
 /* 8. Seção de Contactos                              */
 /* ================================================== */
 .contactos {
   background-color: white;
-  padding: clamp(24px, 5vw, 64px) 0;
+  padding: clamp(32px, 5vw, 72px) 0;
 }
 .contactos h2 {
   font-size: clamp(1.5rem, 3.5vw, 2rem);
@@ -573,7 +669,7 @@ body.menu-open.fixed-lock {
 .contactos-subtitulo {
   text-align: center;
   color: #666;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -583,59 +679,91 @@ body.menu-open.fixed-lock {
 }
 .contactos label {
   margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--cor-primaria);
 }
-/* Todos os campos do formulário têm estilo uniforme */
-.contactos input, .contactos select, .contactos textarea {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid var(--cor-cinza-borda);
-  border-radius: 5px;
+.contactos input,
+.contactos select,
+.contactos textarea {
+  margin-bottom: 14px;
+  padding: 11px 12px;
+  border: 1.5px solid var(--cor-cinza-borda);
+  border-radius: 6px;
   width: 100%;
   font-size: 0.95rem;
   background-color: white;
   color: #333;
+  transition: border-color 0.2s ease;
+}
+.contactos input:focus,
+.contactos select:focus,
+.contactos textarea:focus {
+  border-color: var(--cor-primaria);
+  outline: none;
 }
 .contactos select {
   cursor: pointer;
-  appearance: auto; /* garante seta nativa do browser */
+  appearance: auto;
 }
-.contactos button {
+/* Campo de telemóvel (prefixo + número) */
+.campo-telemovel {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0;
+}
+.campo-telemovel input {
+  margin-bottom: 14px;
+}
+.campo-telemovel #prefixo {
+  width: 90px;
+  flex-shrink: 0;
+  text-align: center;
+  font-weight: bold;
+}
+.contactos button[type="submit"] {
   background-color: var(--cor-secundaria);
   color: var(--cor-primaria);
-  padding: 10px;
+  padding: 13px 24px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  margin-top: 4px;
 }
-.contactos button:hover {
+.contactos button[type="submit"]:hover {
   background-color: #e6b800;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* Fade-in para mensagem de sucesso/erro */
+/* Mensagem de resultado */
 #lead-result {
   opacity: 0;
   transition: opacity 0.4s ease;
+  margin-top: 8px;
+  font-size: 0.9rem;
 }
 #lead-result.show {
   opacity: 1;
 }
 
-/* Campos com erro: borda vermelha + shake */
+/* Campos com erro */
 .contactos input.input-error,
 .contactos textarea.input-error {
-  border: 2px solid #ff4d4d !important;
+  border: 2px solid #e03030 !important;
   animation: shake 0.2s linear 2;
 }
 @keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  50% { transform: translateX(4px); }
-  75% { transform: translateX(-4px); }
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-4px); }
+  50%  { transform: translateX(4px); }
+  75%  { transform: translateX(-4px); }
   100% { transform: translateX(0); }
 }
-
-/* Reduzir movimento para quem preferir menos animação */
 @media (prefers-reduced-motion: reduce) {
   .contactos input.input-error,
   .contactos textarea.input-error {
@@ -647,16 +775,15 @@ body.menu-open.fixed-lock {
 .contactos button.loading {
   pointer-events: none;
   opacity: 0.7;
-  position: relative;
 }
 .contactos button.loading::after {
   content: " ...";
   animation: dots 1s infinite;
 }
 @keyframes dots {
-  0% { content: " ."; }
-  33% { content: " .."; }
-  66% { content: " ..."; }
+  0%   { content: " ."; }
+  33%  { content: " .."; }
+  66%  { content: " ..."; }
   100% { content: " ."; }
 }
 
@@ -676,23 +803,20 @@ body.menu-open.fixed-lock {
 }
 .success-box {
   background: white;
-  padding: 25px 35px;
-  border-radius: 10px;
+  padding: 28px 40px;
+  border-radius: 12px;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--cor-primaria);
   font-weight: bold;
-  animation: popup 0.4s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  animation: popup 0.35s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 @keyframes popup {
-  0% { transform: scale(0.7); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  from { transform: scale(0.75); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
 }
-#prefixo {
-  text-align: center;
-  font-weight: bold;
-}
+
 
 /* ================================================== */
 /* 9. Rodapé                                          */
@@ -701,35 +825,35 @@ footer {
   background-color: var(--cor-primaria);
   color: white;
   text-align: center;
-  padding: 20px 0;
+  padding: 28px 0;
 }
 .redes-sociais {
-  margin-top: 15px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
 }
 .redes-sociais a img {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 .redes-sociais a:hover img {
   transform: scale(1.2);
-  opacity: 0.8;
+  opacity: 0.85;
 }
-/* Link para a Política de Privacidade no rodapé */
 .footer-legal {
   margin-top: 8px;
   font-size: 0.78rem;
 }
 .footer-legal a {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.55);
   text-decoration: underline;
 }
 .footer-legal a:hover {
   color: var(--cor-secundaria);
 }
+
 
 /* ================================================== */
 /* 10. Banner de Consentimento de Cookies (RGPD)      */
@@ -800,6 +924,7 @@ footer {
   .cookie-banner-buttons { justify-content: center; }
 }
 
+
 /* ================================================== */
 /* 11. Página de Privacidade                          */
 /* ================================================== */
@@ -823,6 +948,8 @@ footer {
   border-bottom: 2px solid var(--cor-secundaria);
   padding-bottom: 4px;
 }
+/* Privacidade: sem accent genérico */
+.privacidade-page h2::after { display: none; }
 .privacidade-page p,
 .privacidade-page li {
   font-size: 0.97rem;
@@ -839,7 +966,6 @@ footer {
 .privacidade-voltar {
   margin-top: 40px;
 }
-/* Aviso de idioma no topo da página de privacidade */
 .privacidade-aviso-idioma {
   background: #fff8e1;
   border-left: 4px solid var(--cor-secundaria);
@@ -850,12 +976,12 @@ footer {
   color: #555;
 }
 
+
 /* ================================================== */
-/* 10. Media Queries                                  */
+/* 12. Media Queries                                  */
 /* ================================================== */
-/* ================================================== */
-/* Tablet — 2 colunas para os pacotes                 */
-/* ================================================== */
+
+/* Tablet — 2 colunas para pacotes */
 @media (min-width: 769px) and (max-width: 1100px) {
   .pacotes .container {
     grid-template-columns: repeat(2, 1fr);
@@ -865,41 +991,30 @@ footer {
   }
 }
 
-/* ================================================== */
-/* Mobile — ≤ 768px                                   */
-/* ================================================== */
+/* Mobile — ≤ 768px */
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
   }
   .container {
     width: 100%;
-    padding: 0 15px;
+    padding: 0 16px;
   }
 
   .hamburger { display: flex; }
   nav { display: none; }
-  nav.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: var(--cor-primaria);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-  }
 
   .pacotes .container {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   #pacotes h2 {
     grid-column: span 1;
   }
 
-  #slideshow {
-    height: clamp(180px, 35vh, 300px);
+  /* Em mobile, os cards ficam mais compactos mas usam aspect-ratio */
+  .pacote .imagem-principal {
+    aspect-ratio: 16 / 9;
   }
 
   .language-buttons.desktop { display: none; }
@@ -918,19 +1033,13 @@ footer {
   .logo {
     flex: 1;
     max-width: 70%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* permite que o logo transborde na parte inferior */
   }
 }
 
-/* ================================================== */
-/* Desktop — ≥ 769px                                  */
-/* ================================================== */
+/* Desktop — ≥ 769px */
 @media (min-width: 769px) {
   nav { display: flex; }
   .hamburger { display: none; }
   body { padding-top: 80px; }
 }
-
-

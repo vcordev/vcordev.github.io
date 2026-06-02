@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title" data-key="privacidade_titulo">Política de Privacidade — Tours Lisboa</title>
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/images/favicon-logo.png" type="image/png" sizes="64x64">
     <link rel="stylesheet" href="styles.min.css">
 </head>
 <body>
@@ -13,8 +13,8 @@
     <header class="fixed-header">
         <div class="container">
             <div class="logo">
-                <a href="index.html">
-                    <h1 id="logo" data-key="logo">Tours Lisboa</h1>
+                <a href="index.html" class="logo-link" aria-label="Dueto Extra — Private Tours Portugal">
+                    <img src="images/logo-dueto-trans.png" alt="Dueto Extra — Private Tours Portugal" class="logo-img">
                 </a>
             </div>
             <nav>
@@ -26,14 +26,15 @@
             <!-- Botões de idioma — o seletor funciona em todas as páginas -->
             <div class="language-buttons">
                 <button onclick="changeLanguage('pt')"><img src="images/portugal-flag.png" alt="Português"></button>
-                <button onclick="changeLanguage('ru')"><img src="images/russia-flag.png" alt="Russo"></button>
-                <button onclick="changeLanguage('ro')"><img src="images/romania-flag.png" alt="Romeno"></button>
+                <button onclick="changeLanguage('en')"><img src="images/uk-flag.svg" alt="English"></button>
+                <button onclick="changeLanguage('ru')"><img src="images/russia-flag.png" alt="Русский"></button>
+                <button onclick="changeLanguage('ro')"><img src="images/romania-flag.png" alt="Română"></button>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
                 <div></div>
                 <div></div>
                 <div></div>
-            </div>
+            </button>
         </div>
     </header>
 

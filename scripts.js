@@ -101,7 +101,9 @@ async function changeLanguage(lang) {
       const val = translations[key];
       if (val === undefined || val === null) return;
       const tag = element.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA') {
+      if (tag === 'META') {
+        element.setAttribute('content', String(val));
+      } else if (tag === 'INPUT' || tag === 'TEXTAREA') {
         element.setAttribute('placeholder', String(val));
       } else {
         element.textContent = String(val);
@@ -352,20 +354,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- Mostra um slide e reinicia a animação Ken Burns ---
   function showSlide(index) {
-    slides.forEach(function(slide, i) {
-      var isActive = (i === index);
-      slide.classList.toggle('active', isActive);
-
-      if (isActive) {
-        // Reinicia a animação CSS forçando um reflow
-        var img = slide.querySelector('img');
-        if (img) {
-          img.style.animation = 'none';
-          void img.offsetWidth; // trigger reflow — necessário para o browser resetar a animação
-          img.style.animation = '';
-        }
-      }
+    // 1. Desativa todos os slides
+    slides.forEach(function(slide) {
+      slide.classList.remove('active');
     });
+
+    // 2. Prepara a animação no slide alvo (enquanto ainda está invisível)
+    var newSlide = slides[index];
+    var img = newSlide.querySelector('img');
+    if (img) {
+      img.style.animation = 'none';
+      void img.offsetWidth; // trigger reflow — reseta a animação enquanto opacity=0
+      img.style.animation = '';
+    }
+
+    // 3. Ativa o slide (inicia fade-in + animação KB desde o frame 0)
+    newSlide.classList.add('active');
 
     // Actualiza pontos
     dots.forEach(function(dot, i) {
@@ -436,10 +440,20 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
 // ==================================================
 
 function toggleMenu() {
-  document.getElementById('mobileMenu') && document.getElementById('mobileMenu').classList.toggle('show');
+  var menu = document.getElementById('mobileMenu');
+  if (!menu) return;
+  var isOpen = menu.classList.toggle('show');
+  document.body.classList.toggle('menu-open', isOpen);
+  var hamburger = document.querySelector('.hamburger');
+  if (hamburger) hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
 function closeMenu() {
-  document.getElementById('mobileMenu') && document.getElementById('mobileMenu').classList.remove('show');
+  var menu = document.getElementById('mobileMenu');
+  if (!menu) return;
+  menu.classList.remove('show');
+  document.body.classList.remove('menu-open');
+  var hamburger = document.querySelector('.hamburger');
+  if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
 }
 
 
@@ -451,6 +465,12 @@ var imagens = [];
 var indiceAtual = 0;
 
 (function () {
+  function atualizarMiniaturasAtivas(srcAtiva) {
+    document.querySelectorAll('.miniaturas img').forEach(function(thumb) {
+      thumb.classList.toggle('ativa', thumb.src === srcAtiva);
+    });
+  }
+
   function syncImagensFromThumbs() {
     var thumbs = document.querySelectorAll('.miniaturas img');
     if (thumbs.length) {
@@ -458,6 +478,7 @@ var indiceAtual = 0;
       var principal = document.getElementById('imagemPrincipal');
       var idx = principal ? imagens.indexOf(principal.src) : -1;
       indiceAtual = idx >= 0 ? idx : 0;
+      atualizarMiniaturasAtivas(imagens[indiceAtual]);
     }
   }
 
@@ -465,7 +486,10 @@ var indiceAtual = 0;
     if (!imagens.length) syncImagensFromThumbs();
     indiceAtual = (indiceAtual + direcao + imagens.length) % imagens.length;
     var img = document.getElementById('imagemPrincipal');
-    if (img) img.src = imagens[indiceAtual];
+    if (img) {
+      img.src = imagens[indiceAtual];
+      atualizarMiniaturasAtivas(imagens[indiceAtual]);
+    }
   }
 
   function openFullscreen(wrapper) {
@@ -518,6 +542,9 @@ var indiceAtual = 0;
     var wrapper = img && img.parentElement;
     if (!img || !wrapper) return;
     img.src = miniatura.src;
+    indiceAtual = imagens.indexOf(miniatura.src);
+    if (indiceAtual < 0) indiceAtual = 0;
+    atualizarMiniaturasAtivas(miniatura.src);
     openFullscreen(wrapper);
   };
   window.fecharImagem = function() {
@@ -529,7 +556,31 @@ var indiceAtual = 0;
 
 
 // ==================================================
-// 8. Tracking de Reservas (Meta Pixel — condicional)
+// 8. Navegação por Teclado na Galeria (Desktop)
+// Activa apenas nas páginas de pacotes (presença de .galeria)
+// Apenas em desktop (≥ 769px) e sem foco em campos de texto
+// ==================================================
+
+(function () {
+  if (!document.querySelector('.galeria')) return;
+
+  document.addEventListener('keydown', function (e) {
+    if (window.innerWidth < 769) return;
+    var tag = document.activeElement ? document.activeElement.tagName : '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (typeof window.mudarImagem === 'function') window.mudarImagem(-1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (typeof window.mudarImagem === 'function') window.mudarImagem(1);
+    }
+  });
+})();
+
+
+// ==================================================
+// 9. Tracking de Reservas (Meta Pixel — condicional)
 // ==================================================
 
 document.addEventListener('DOMContentLoaded', function() {

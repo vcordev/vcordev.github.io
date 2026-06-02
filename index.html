@@ -1,88 +1,144 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
-    <!-- Meta tags básicas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título — atualizado por JS consoante idioma -->
     <title id="title" data-key="title">Tours Privados em Lisboa - Motorista Multilingue</title>
-    <meta name="description" content="Tours privados em Lisboa e arredores com motorista profissional multilingue. Sintra, Cascais, Arrábida, Mafra, Óbidos. Português, Russo e Romeno. Reserve o seu tour.">
-    <meta property="og:title" content="Tours Privados em Lisboa - Motorista Multilingue">
-    <meta property="og:description" content="Tours personalizados em Lisboa, Sintra, Cascais, Arrábida, Mafra e Óbidos. Motorista profissional com mais de 15 anos de experiência, fluente em português, russo e romeno.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="pt_PT">
-    <meta property="og:url" content="https://duetoextra.pt/">
+
+    <!-- Meta descrição — atualizada por JS consoante idioma -->
+    <meta name="description" id="meta-desc" data-key="meta_description"
+          content="Tours privados em Lisboa, Sintra, Cascais, Arrábida, Mafra e Óbidos com motorista multilingue. Inglês, Português, Russo e Romeno. Reserve a sua experiência inesquecível.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://duetoextra.pt/">
+
+    <!-- hreflang — mesmo URL para todos os idiomas (SPA com i18n via JS) -->
+    <link rel="alternate" hreflang="pt"       href="https://duetoextra.pt/">
+    <link rel="alternate" hreflang="en"       href="https://duetoextra.pt/">
+    <link rel="alternate" hreflang="ru"       href="https://duetoextra.pt/">
+    <link rel="alternate" hreflang="ro"       href="https://duetoextra.pt/">
+    <link rel="alternate" hreflang="x-default" href="https://duetoextra.pt/">
+
+    <!-- Open Graph -->
+    <meta property="og:site_name"  content="Tours Lisboa — Dueto Extra">
+    <meta property="og:type"       content="website">
+    <meta property="og:url"        content="https://duetoextra.pt/">
+    <meta property="og:title"      id="og-title" data-key="title"
+          content="Tours Privados em Lisboa - Motorista Multilingue">
+    <meta property="og:description" id="og-desc" data-key="meta_description"
+          content="Tours privados em Lisboa, Sintra, Cascais, Arrábida, Mafra e Óbidos com motorista multilingue.">
+    <meta property="og:image"      content="https://duetoextra.pt/images/l2.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale"     content="pt_PT">
+    <meta property="og:locale:alternate" content="en_GB">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="ro_RO">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Tours Privados em Lisboa - Motorista Multilingue">
+    <meta name="twitter:description" content="Tours privados em Lisboa e arredores. Inglês, Português, Russo e Romeno. Reserve agora.">
+    <meta name="twitter:image"       content="https://duetoextra.pt/images/l2.jpg">
+
     <!-- Favicon -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/images/favicon-logo.png" type="image/png" sizes="64x64">
+
     <!-- Pré-carregamento da primeira imagem do slideshow -->
     <link rel="preload" href="images/l2.webp" as="image">
-    <!-- Schema.org — identifica o negócio para os motores de busca -->
+
+    <!-- Schema.org — TravelAgency + Service Area -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Tours Lisboa",
-      "description": "Tours privados e personalizados em Lisboa e arredores com motorista multilingue.",
+      "@type": "TravelAgency",
+      "name": "Dueto Extra — Tours Lisboa",
+      "logo": {"@type": "ImageObject", "url": "https://duetoextra.pt/images/logo-dueto-trans.png"},
+      "description": "Tours privados e personalizados em Lisboa e arredores com motorista multilingue em português, inglês, russo e romeno.",
       "url": "https://duetoextra.pt",
       "telephone": "+351912688078",
-      "address": { "@type": "PostalAddress", "addressLocality": "Lisboa", "addressCountry": "PT" },
       "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Bank Transfer",
       "availableLanguage": [
         {"@type": "Language", "name": "Portuguese"},
+        {"@type": "Language", "name": "English"},
         {"@type": "Language", "name": "Russian"},
         {"@type": "Language", "name": "Romanian"}
       ],
-      "areaServed": ["Lisboa","Sintra","Cascais","Setúbal","Mafra","Óbidos","Peniche"]
+      "areaServed": [
+        {"@type": "City", "name": "Lisboa"},
+        {"@type": "City", "name": "Sintra"},
+        {"@type": "City", "name": "Cascais"},
+        {"@type": "City", "name": "Estoril"},
+        {"@type": "City", "name": "Setúbal"},
+        {"@type": "City", "name": "Mafra"},
+        {"@type": "City", "name": "Ericeira"},
+        {"@type": "City", "name": "Óbidos"},
+        {"@type": "City", "name": "Peniche"}
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pacotes de Tours Privados em Lisboa",
+        "itemListElement": [
+          {"@type": "Offer", "name": "Lisboa Clássica", "price": "120", "priceCurrency": "EUR", "url": "https://duetoextra.pt/pacotes/lisboa.html"},
+          {"@type": "Offer", "name": "Sintra & Palácio da Pena", "price": "140", "priceCurrency": "EUR", "url": "https://duetoextra.pt/pacotes/sintra.html"},
+          {"@type": "Offer", "name": "Cascais & Estoril", "price": "130", "priceCurrency": "EUR", "url": "https://duetoextra.pt/pacotes/cascais.html"},
+          {"@type": "Offer", "name": "Arrábida & Setúbal", "price": "150", "priceCurrency": "EUR", "url": "https://duetoextra.pt/pacotes/arrabida.html"},
+          {"@type": "Offer", "name": "Mafra & Ericeira", "price": "135", "priceCurrency": "EUR", "url": "https://duetoextra.pt/pacotes/mafra.html"},
+          {"@type": "Offer", "name": "Óbidos & Peniche", "price": "145", "priceCurrency": "EUR", "url": "https://duetoextra.pt/pacotes/obidos.html"}
+        ]
+      },
+      "sameAs": [
+        "https://facebook.com/seu-perfil",
+        "https://instagram.com/seu-perfil"
+      ]
     }
     </script>
+
     <!-- Estilos (versão minificada) -->
     <link rel="stylesheet" href="styles.min.css">
-    <!-- Meta Pixel — fbevents.js carregado aqui; init/track condicional em scripts.min.js (RGPD) -->
+
+    <!-- Meta Pixel — init/track condicional em scripts.min.js (RGPD) -->
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');</script>
-    <!-- End Meta Pixel Code -->
 </head>
 <body>
 
-    <!-- ================================================== -->
     <!-- 1. Cabeçalho Fixo -->
-    <!-- ================================================== -->
     <header class="fixed-header">
         <div class="container">
-            <!-- Logo -->
             <div class="logo">
-                <a href="#home-anchor">
-                    <h1 id="logo" data-key="logo">Tours Lisboa</h1>
+                <a href="#home-anchor" class="logo-link" aria-label="Dueto Extra — Private Tours Portugal">
+                    <img src="images/logo-dueto-trans.png" alt="Dueto Extra — Private Tours Portugal" class="logo-img">
                 </a>
             </div>
 
-            <!-- Navegação Principal -->
             <nav>
                 <a href="#home-anchor" id="banner-home" data-key="home">Home</a>
                 <a href="#pacotes" id="banner-pacotes" data-key="pacotes">Pacotes</a>
                 <a href="#sobre" id="banner-sobre" data-key="sobre">Sobre Nós</a>
             </nav>
 
-            <!-- Botão de Agendamento -->
             <a href="#contactos" class="cta-button" id="reservar" data-key="reservar">Reservar Agora</a>
 
-            <!-- Botões de Idioma -->
             <div class="language-buttons">
                 <button onclick="changeLanguage('pt')"><img src="images/portugal-flag.png" alt="Português"></button>
-                <button onclick="changeLanguage('ru')"><img src="images/russia-flag.png" alt="Russo"></button>
-                <button onclick="changeLanguage('ro')"><img src="images/romania-flag.png" alt="Romeno"></button>
+                <button onclick="changeLanguage('en')"><img src="images/uk-flag.svg" alt="English"></button>
+                <button onclick="changeLanguage('ru')"><img src="images/russia-flag.png" alt="Русский"></button>
+                <button onclick="changeLanguage('ro')"><img src="images/romania-flag.png" alt="Română"></button>
             </div>
 
-            <!-- Menu Hamburger para Mobile -->
-            <div class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
                 <div></div>
                 <div></div>
                 <div></div>
-            </div>
+            </button>
         </div>
     </header>
 
-    <!-- ================================================== -->
     <!-- 2. Menu Mobile -->
-    <!-- ================================================== -->
     <div class="mobile-menu" id="mobileMenu">
         <span class="close-menu" onclick="closeMenu()">&times;</span>
         <nav>
@@ -93,45 +149,40 @@
         </nav>
         <div class="language-buttons mobile">
             <button onclick="changeLanguage('pt'); closeMenu()"><img src="images/portugal-flag.png" alt="PT"></button>
+            <button onclick="changeLanguage('en'); closeMenu()"><img src="images/uk-flag.svg" alt="EN"></button>
             <button onclick="changeLanguage('ru'); closeMenu()"><img src="images/russia-flag.png" alt="RU"></button>
             <button onclick="changeLanguage('ro'); closeMenu()"><img src="images/romania-flag.png" alt="RO"></button>
         </div>
     </div>
 
-    <!-- Âncora Invisível para Navegação -->
+    <!-- Âncora de topo -->
     <div id="home-anchor"></div>
 
-    <!-- ================================================== -->
-    <!-- 3. Slideshow — Ken Burns com crossfade               -->
-    <!-- ================================================== -->
-    <!-- kb-left / kb-right / kb-zoom: variante de animação por slide -->
+    <!-- 3. Slideshow -->
     <section id="slideshow" aria-label="Galeria de imagens de Lisboa e arredores" aria-live="off">
         <div class="slideshow-container">
             <div class="slide kb-left">
-                <img src="images/l2.webp" alt="Vista de Lisboa" loading="eager">
+                <img src="images/l2.webp" alt="Vista panorâmica de Lisboa ao entardecer" loading="eager">
             </div>
             <div class="slide kb-right">
-                <img src="images/l3.webp" alt="Bairro histórico de Lisboa" loading="lazy">
+                <img src="images/l3.webp" alt="Bairro histórico de Alfama em Lisboa" loading="lazy">
             </div>
             <div class="slide kb-zoom">
-                <img src="images/l7.webp" alt="Panorama da cidade de Lisboa" loading="lazy">
+                <img src="images/l7.webp" alt="Castelo e panorama de Lisboa" loading="lazy">
             </div>
             <div class="slide kb-left">
                 <img src="images/l8.webp" alt="Monumentos históricos de Lisboa" loading="lazy">
             </div>
             <div class="slide kb-right">
-                <img src="images/s1.webp" alt="Palácio de Sintra" loading="lazy">
+                <img src="images/s1.webp" alt="Palácio da Pena em Sintra com cores vibrantes" loading="lazy">
             </div>
             <div class="slide kb-zoom">
-                <img src="images/s3.webp" alt="Serra de Sintra" loading="lazy">
+                <img src="images/s3.webp" alt="Serra de Sintra com paisagem deslumbrante" loading="lazy">
             </div>
         </div>
-        <!-- Os pontos de navegação são gerados em scripts.js -->
     </section>
 
-    <!-- ================================================== -->
-    <!-- 4. Seção Hero — Título e chamada à acção principal -->
-    <!-- ================================================== -->
+    <!-- 4. Seção Hero -->
     <section id="home" class="hero">
         <div class="container">
             <h2 id="descubra" data-key="descubra">Uma Experiência Privada Inesquecível pela Região de Lisboa</h2>
@@ -140,18 +191,15 @@
         </div>
     </section>
 
-    <!-- ================================================== -->
     <!-- 5. Seção de Pacotes -->
-    <!-- ================================================== -->
     <section id="pacotes" class="pacotes">
         <div class="container">
             <h2 id="pacotes_titulo" data-key="pacotes_titulo">Pacotes Disponíveis</h2>
 
-            <!-- Pacote 1: Lisboa Clássica -->
             <div class="pacote">
                 <a href="pacotes/lisboa.html">
                     <div class="imagem-principal">
-                        <img src="images/l2.webp" alt="Lisboa Clássica" loading="lazy">
+                        <img src="images/l2.webp" alt="Lisboa Clássica — Torre de Belém e Mosteiro dos Jerónimos" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -161,11 +209,10 @@
                 </div>
             </div>
 
-            <!-- Pacote 2: Sintra & Palácio da Pena -->
             <div class="pacote">
                 <a href="pacotes/sintra.html">
                     <div class="imagem-principal">
-                        <img src="images/s1.webp" alt="Sintra & Palácio da Pena" loading="lazy">
+                        <img src="images/s1.webp" alt="Sintra — Palácio da Pena com cores vibrantes" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -175,11 +222,10 @@
                 </div>
             </div>
 
-            <!-- Pacote 3: Cascais & Estoril -->
             <div class="pacote">
                 <a href="pacotes/cascais.html">
                     <div class="imagem-principal">
-                        <img src="images/l4.webp" alt="Cascais & Estoril" loading="lazy">
+                        <img src="images/l4.webp" alt="Cascais & Estoril — Costa atlântica portuguesa" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -189,11 +235,10 @@
                 </div>
             </div>
 
-            <!-- Pacote 4: Arrábida & Setúbal -->
             <div class="pacote">
                 <a href="pacotes/arrabida.html">
                     <div class="imagem-principal">
-                        <img src="images/s2.webp" alt="Arrábida & Setúbal" loading="lazy">
+                        <img src="images/s2.webp" alt="Arrábida — Praias turquesa do Parque Natural" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -203,11 +248,10 @@
                 </div>
             </div>
 
-            <!-- Pacote 5: Mafra & Ericeira -->
             <div class="pacote">
                 <a href="pacotes/mafra.html">
                     <div class="imagem-principal">
-                        <img src="images/l3.webp" alt="Mafra & Ericeira" loading="lazy">
+                        <img src="images/l3.webp" alt="Mafra — Palácio Nacional barroco" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -217,11 +261,10 @@
                 </div>
             </div>
 
-            <!-- Pacote 6: Óbidos & Peniche -->
             <div class="pacote">
                 <a href="pacotes/obidos.html">
                     <div class="imagem-principal">
-                        <img src="images/l7.webp" alt="Óbidos & Peniche" loading="lazy">
+                        <img src="images/l7.webp" alt="Óbidos — Vila medieval com muralhas históricas" loading="lazy">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -233,14 +276,11 @@
         </div>
     </section>
 
-    <!-- ================================================== -->
     <!-- 6. Seção Sobre Nós -->
-    <!-- ================================================== -->
     <section id="sobre" class="sobre">
         <div class="container">
             <h2 id="sobre_titulo" data-key="sobre_titulo">Sobre Nós</h2>
             <div class="sobre-conteudo">
-                <!-- Foto do motorista — substituir o div.foto-placeholder por <img src="..." alt="..."> quando disponível -->
                 <div class="sobre-foto">
                     <div class="foto-placeholder" role="img" aria-label="Fotografia do motorista — em breve">
                         <svg class="placeholder-svg" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -251,13 +291,12 @@
                         <span class="placeholder-sublabel">Em breve</span>
                     </div>
                 </div>
-                <!-- Texto e destaques -->
                 <div class="sobre-texto-bloco">
-                    <p id="sobre_texto" data-key="sobre_texto">Mais do que um simples transporte, o nosso serviço é uma experiência memorável. O nosso motorista conhece Lisboa e a sua região como a palma da mão, e tem o dom natural de contar histórias e curiosidades que tornam cada passeio verdadeiramente único. Profissional, alegre e atento a cada pormenor, fala fluentemente português, russo e romeno — para que se sinta sempre em casa, seja qual for a sua língua.</p>
+                    <p id="sobre_texto" data-key="sobre_texto">Mais do que um simples transporte, o nosso serviço é uma experiência memorável. O nosso motorista conhece Lisboa e a sua região como a palma da mão, e tem o dom natural de contar histórias e curiosidades que tornam cada passeio verdadeiramente único. Profissional, alegre e atento a cada pormenor, fala fluentemente português, inglês, russo e romeno — para que se sinta sempre em casa, seja qual for a sua língua.</p>
                     <ul class="sobre-destaques">
                         <li>
                             <strong data-key="destaque_linguas_label">Idiomas:</strong>
-                            <span data-key="destaque_linguas">Português, Russo e Romeno</span>
+                            <span data-key="destaque_linguas">Português, Inglês, Russo e Romeno</span>
                         </li>
                         <li>
                             <strong data-key="destaque_perfil_label">Perfil:</strong>
@@ -273,110 +312,88 @@
         </div>
     </section>
 
-    <!-- ================================================== -->
     <!-- 7. Seção de Contactos -->
-    <!-- ================================================== -->
-    
+    <section id="contactos" class="contactos">
+      <div class="container">
+        <h2 id="contactos_titulo" data-key="contactos_titulo">Contactos</h2>
+        <p id="contactos_subtitulo" class="contactos-subtitulo" data-key="contactos_subtitulo">Envie-nos uma mensagem e responderemos o mais breve possível. Pode também contactar-nos directamente pelo WhatsApp.</p>
 
-<section id="contactos" class="contactos">
-  <div class="container">
-    <h2 id="contactos_titulo" data-key="contactos_titulo">Contactos</h2>
+        <form id="contactForm" action="https://formspree.io/f/mqaryzel" method="POST">
+          <label for="nome" id="label_nome" data-key="label_nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
 
-    <!-- Subtítulo informativo — traduzido nas 3 línguas -->
-    <p id="contactos_subtitulo" class="contactos-subtitulo" data-key="contactos_subtitulo">Envie-nos uma mensagem e responderemos o mais breve possível. Pode também contactar-nos directamente pelo WhatsApp.</p>
+          <label for="email" id="label_email" data-key="label_email">Email:</label>
+          <input type="email" id="email" name="email" required>
 
-    <!-- Formulário ligado ao Formspree — os dados chegam por email -->
-    <form id="contactForm" action="https://formspree.io/f/mqaryzel" method="POST">
-      <label for="nome" id="label_nome" data-key="label_nome">Nome:</label>
-      <input type="text" id="nome" name="nome" required>
+          <label for="pais" id="label_pais" data-key="label_pais">País:</label>
+          <select id="pais" name="pais" required aria-label="País de origem">
+            <option value="" data-key="pais_selecionar">Selecionar país…</option>
+            <option value="+351" data-key="pais_pt">Portugal (+351)</option>
+            <option value="+373" data-key="pais_md">Moldávia (+373)</option>
+            <option value="+40"  data-key="pais_ro">Roménia (+40)</option>
+            <option value="+7"   data-key="pais_ru">Rússia (+7)</option>
+            <option value="+7"   data-key="pais_kz">Cazaquistão (+7)</option>
+            <option value="+375" data-key="pais_by">Bielorrússia (+375)</option>
+            <option value="+380" data-key="pais_ua">Ucrânia (+380)</option>
+            <option value="+992" data-key="pais_tj">Tajiquistão (+992)</option>
+            <option value="+993" data-key="pais_tm">Turquemenistão (+993)</option>
+            <option value="+996" data-key="pais_kg">Quirguistão (+996)</option>
+            <option value="+998" data-key="pais_uz">Uzbequistão (+998)</option>
+            <option value="+995" data-key="pais_ge">Geórgia (+995)</option>
+            <option value="+374" data-key="pais_am">Arménia (+374)</option>
+            <option value="+994" data-key="pais_az">Azerbaijão (+994)</option>
+            <option value="+34"  data-key="pais_es">Espanha (+34)</option>
+            <option value="+33"  data-key="pais_fr">França (+33)</option>
+            <option value="+49"  data-key="pais_de">Alemanha (+49)</option>
+            <option value="+39"  data-key="pais_it">Itália (+39)</option>
+            <option value="+44"  data-key="pais_gb">Reino Unido (+44)</option>
+            <option value="+1"   data-key="pais_us">EUA / Canadá (+1)</option>
+            <option value="+55"  data-key="pais_br">Brasil (+55)</option>
+            <option value="+61"  data-key="pais_au">Austrália (+61)</option>
+            <option value="+81"  data-key="pais_jp">Japão (+81)</option>
+            <option value="other" data-key="pais_other">Outro país…</option>
+          </select>
 
-      <label for="email" id="label_email" data-key="label_email">Email:</label>
-      <input type="email" id="email" name="email" required>
-	  
-	  <label for="pais" id="label_pais" data-key="label_pais">País:</label>
-      <!-- Selector de país sem emoji — compatível com Windows, Mac e mobile -->
-      <select id="pais" name="pais" required aria-label="País de origem">
-        <option value="" data-key="pais_selecionar">Selecionar país…</option>
+          <label for="telemovel" id="label_telemovel" data-key="label_telemovel">Telemóvel:</label>
+          <div class="campo-telemovel">
+            <input type="text" id="prefixo" name="prefixo" readonly
+                   placeholder="+XXX" data-key="prefixo_placeholder">
+            <input type="text" id="telemovel" name="telemovel" required
+                   data-key="telemovel_placeholder" placeholder="Número">
+          </div>
 
-        <!-- Público principal -->
-        <option value="+351" data-key="pais_pt">Portugal (+351)</option>
-        <option value="+373" data-key="pais_md">Moldávia (+373)</option>
-        <option value="+40"  data-key="pais_ro">Roménia (+40)</option>
+          <label for="mensagem" id="label_mensagem" data-key="label_mensagem">Mensagem:</label>
+          <textarea id="mensagem" name="mensagem" rows="4" required
+                    data-key="mensagem_placeholder" placeholder="Escreva a sua mensagem"></textarea>
 
-        <!-- Espaço pós-soviético -->
-        <option value="+7"   data-key="pais_ru">Rússia (+7)</option>
-        <option value="+7"   data-key="pais_kz">Cazaquistão (+7)</option>
-        <option value="+375" data-key="pais_by">Bielorrússia (+375)</option>
-        <option value="+380" data-key="pais_ua">Ucrânia (+380)</option>
-        <option value="+992" data-key="pais_tj">Tajiquistão (+992)</option>
-        <option value="+993" data-key="pais_tm">Turquemenistão (+993)</option>
-        <option value="+996" data-key="pais_kg">Quirguistão (+996)</option>
-        <option value="+998" data-key="pais_uz">Uzbequistão (+998)</option>
-        <option value="+995" data-key="pais_ge">Geórgia (+995)</option>
-        <option value="+374" data-key="pais_am">Arménia (+374)</option>
-        <option value="+994" data-key="pais_az">Azerbaijão (+994)</option>
+          <input type="hidden" name="_subject" value="Pedido de Reserva" id="hidden_subject">
+          <input type="text" name="_gotcha" style="display:none" id="honeypot">
 
-        <!-- Europa e mercados relevantes -->
-        <option value="+34"  data-key="pais_es">Espanha (+34)</option>
-        <option value="+33"  data-key="pais_fr">França (+33)</option>
-        <option value="+49"  data-key="pais_de">Alemanha (+49)</option>
-        <option value="+39"  data-key="pais_it">Itália (+39)</option>
-        <option value="+44"  data-key="pais_gb">Reino Unido (+44)</option>
-
-        <!-- Internacionais -->
-        <option value="+1"   data-key="pais_us">EUA / Canadá (+1)</option>
-        <option value="+55"  data-key="pais_br">Brasil (+55)</option>
-        <option value="+61"  data-key="pais_au">Austrália (+61)</option>
-        <option value="+81"  data-key="pais_jp">Japão (+81)</option>
-        <option value="other" data-key="pais_other">Outro país…</option>
-      </select>
-
-      <label for="telemovel" id="label_telemovel" data-key="label_telemovel">Telemóvel:</label>
-
-      <div class="campo-telemovel" style="display: flex; gap: 10px;">
-        <input type="text" id="prefixo" name="prefixo" style="width: 90px;" readonly
-               placeholder="+XXX" data-key="prefixo_placeholder">
-        <input type="text" id="telemovel" name="telemovel" required
-               data-key="telemovel_placeholder" placeholder="Número">
+          <button type="submit" class="cta-button" id="enviar_mensagem" data-key="enviar_mensagem">
+            Enviar Mensagem
+          </button>
+          <p id="lead-result" role="status" aria-live="polite" style="margin-top:8px;"></p>
+        </form>
       </div>
 
-      <label for="mensagem" id="label_mensagem" data-key="label_mensagem">Mensagem:</label>
-      <textarea id="mensagem" name="mensagem" rows="4" required
-                data-key="mensagem_placeholder" placeholder="Escreva a sua mensagem"></textarea>
+      <div id="success-modal" class="success-modal">
+        <div class="success-box">
+          <p id="enviado" data-key="enviado">Mensagem enviada com sucesso!</p>
+        </div>
+      </div>
+    </section>
 
-      <!-- Personalização do email + honeypot anti‑spam -->
-      <input type="hidden" name="_subject" value="Pedido de Reserva" id="hidden_subject">
-      <input type="text" name="_gotcha" style="display:none" id="honeypot">
-
-      <button type="submit" class="cta-button" id="enviar_mensagem" data-key="enviar_mensagem">
-        Enviar Mensagem
-      </button>
-
-      <!-- Mensagens de resultado -->
-      <p id="lead-result" role="status" aria-live="polite" style="margin-top:8px;"></p>
-    </form>
-  </div>
-
-  <div id="success-modal" class="success-modal">
-    <div class="success-box">
-      <p id="enviado" data-key="enviado">Mensagem enviada com sucesso!</p>
-    </div>
-  </div>
-</section>
-
-    <!-- ================================================== -->
     <!-- 8. Rodapé -->
-    <!-- ================================================== -->
     <footer>
         <div class="container">
             <div class="redes-sociais">
-                <a href="https://facebook.com/seu-perfil" target="_blank">
+                <a href="https://facebook.com/seu-perfil" target="_blank" rel="noopener noreferrer">
                     <img src="images/facebook.png" alt="Facebook">
                 </a>
-                <a href="https://instagram.com/seu-perfil" target="_blank">
+                <a href="https://instagram.com/seu-perfil" target="_blank" rel="noopener noreferrer">
                     <img src="images/instagram.png" alt="Instagram">
                 </a>
-                <a href="https://wa.me/+351912688078" target="_blank">
+                <a href="https://wa.me/+351912688078" target="_blank" rel="noopener noreferrer">
                     <img src="images/whatsapp.png" alt="WhatsApp">
                 </a>
             </div>
@@ -385,12 +402,6 @@
         </div>
     </footer>
 
-    <!-- Scripts (versão minificada) -->
     <script src="scripts.min.js"></script>
 </body>
-
 </html>
-
-
-
-

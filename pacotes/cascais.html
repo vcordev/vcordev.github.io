@@ -1,39 +1,75 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="title" data-key="cascais_titulo">Cascais & Estoril - Tours Lisboa</title>
+    <title id="title" data-key="titulo_pagina_cascais">Tour Cascais & Estoril — Tours Privados em Lisboa</title>
+    <meta name="description" id="meta-desc" data-key="meta_description_cascais"
+          content="Tour privado Cascais & Estoril desde Lisboa: Casino Estoril, Boca do Inferno, praias douradas. 4-5 horas, €130. Motorista multilingue.">
+    <link rel="canonical" href="https://duetoextra.pt/pacotes/cascais.html">
+    <link rel="alternate" hreflang="pt"        href="https://duetoextra.pt/pacotes/cascais.html">
+    <link rel="alternate" hreflang="en"        href="https://duetoextra.pt/pacotes/cascais.html">
+    <link rel="alternate" hreflang="ru"        href="https://duetoextra.pt/pacotes/cascais.html">
+    <link rel="alternate" hreflang="ro"        href="https://duetoextra.pt/pacotes/cascais.html">
+    <link rel="alternate" hreflang="x-default" href="https://duetoextra.pt/pacotes/cascais.html">
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://duetoextra.pt/pacotes/cascais.html">
+    <meta property="og:title"       content="Tour Cascais & Estoril | Tours Privados em Lisboa">
+    <meta property="og:description" content="Tour privado Cascais & Estoril: Casino Estoril, Boca do Inferno e praias. 4-5h, €130.">
+    <meta property="og:image"       content="https://duetoextra.pt/images/c1.jpg">
+    <meta property="og:site_name"   content="Tours Lisboa — Dueto Extra">
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Cascais & Estoril Coastal Tour from Lisbon | Lisbon Tours">
+    <meta name="twitter:description" content="Private coastal tour: Estoril Casino, Cascais & Boca do Inferno. 4-5h, €130.">
+    <meta name="twitter:image"       content="https://duetoextra.pt/images/c1.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "name": "Cascais & Estoril — Private Coastal Tour from Lisbon",
+      "description": "Tour privado ao longo da Costa do Estoril: Casino do Estoril, Cascais e Boca do Inferno.",
+      "url": "https://duetoextra.pt/pacotes/cascais.html",
+      "image": "https://duetoextra.pt/images/c1.jpg",
+      "offers": {"@type": "Offer", "price": "130", "priceCurrency": "EUR", "availability": "https://schema.org/InStock"},
+      "itinerary": {"@type": "ItemList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Casino do Estoril"},
+        {"@type": "ListItem", "position": 2, "name": "Cascais Centro Histórico"},
+        {"@type": "ListItem", "position": 3, "name": "Boca do Inferno"},
+        {"@type": "ListItem", "position": 4, "name": "Praia de Cascais"}
+      ]},
+      "provider": {"@type": "TravelAgency", "name": "Dueto Extra", "url": "https://duetoextra.pt"}
+    }
+    </script>
     <link rel="stylesheet" href="../styles.min.css">
     <link rel="stylesheet" href="./pacote-detalhes.css">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <!-- Meta Pixel — init/track condicional em scripts.min.js (RGPD) -->
+    <link rel="icon" href="../images/favicon-logo.png" type="image/png" sizes="64x64">
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');</script>
 </head>
 <body>
     <header class="fixed-header">
         <div class="container">
             <div class="logo">
-                <a href="../index.html">
-                    <h1 id="logo" data-key="logo">Tours Lisboa</h1>
+                <a href="../index.html" class="logo-link" aria-label="Dueto Extra — Private Tours Portugal">
+                    <img src="../images/logo-dueto-trans.png" alt="Dueto Extra — Private Tours Portugal" class="logo-img">
                 </a>
             </div>
             <nav>
-                <a href="../index.html" data-key="home">Home</a>
-                <a href="../index.html#pacotes" data-key="pacotes">Pacotes</a>
-                <a href="../index.html#sobre" data-key="sobre">Sobre Nós</a>
+                <a href="../index.html" id="banner-home" data-key="home">Home</a>
+                <a href="../index.html#pacotes" id="banner-pacotes" data-key="pacotes">Pacotes</a>
+                <a href="../index.html#sobre" id="banner-sobre" data-key="sobre">Sobre Nós</a>
             </nav>
-            <a href="../index.html#contactos" class="cta-button" data-key="reservar">Reservar Agora</a>
+            <a href="../index.html#contactos" class="cta-button" id="reservar" data-key="reservar">Reservar Agora</a>
             <div class="language-buttons">
                 <button onclick="changeLanguage('pt')"><img src="../images/portugal-flag.png" alt="Português"></button>
-                <button onclick="changeLanguage('ru')"><img src="../images/russia-flag.png" alt="Russo"></button>
-                <button onclick="changeLanguage('ro')"><img src="../images/romania-flag.png" alt="Romeno"></button>
+                <button onclick="changeLanguage('en')"><img src="../images/uk-flag.svg" alt="English"></button>
+                <button onclick="changeLanguage('ru')"><img src="../images/russia-flag.png" alt="Русский"></button>
+                <button onclick="changeLanguage('ro')"><img src="../images/romania-flag.png" alt="Română"></button>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
                 <div></div>
                 <div></div>
                 <div></div>
-            </div>
+            </button>
         </div>
     </header>
 
@@ -47,13 +83,10 @@
         </nav>
         <div class="language-buttons mobile">
             <button onclick="changeLanguage('pt'); closeMenu()"><img src="../images/portugal-flag.png" alt="PT"></button>
+            <button onclick="changeLanguage('en'); closeMenu()"><img src="../images/uk-flag.svg" alt="EN"></button>
             <button onclick="changeLanguage('ru'); closeMenu()"><img src="../images/russia-flag.png" alt="RU"></button>
             <button onclick="changeLanguage('ro'); closeMenu()"><img src="../images/romania-flag.png" alt="RO"></button>
         </div>
-    </div>
-
-    <div class="voltar-pacotes">
-        <a href="../index.html#pacotes" class="cta-button" data-key="voltar_pacotes">❮ Ver Pacotes</a>
     </div>
 
     <section class="pacote-detalhes">
@@ -62,37 +95,37 @@
 
             <div class="galeria">
                 <div class="imagem-principal" id="galeriaPrincipal">
-                    <img src="../images/l4.webp" alt="Cascais & Estoril" id="imagemPrincipal" loading="lazy">
+                    <img src="../images/l4.webp" alt="Costa de Cascais e Estoril" id="imagemPrincipal" loading="lazy">
                     <button class="fechar" onclick="fecharImagem()">&times;</button>
                     <button class="seta seta-esquerda" onclick="mudarImagem(-1)">&#10094;</button>
                     <button class="seta seta-direita" onclick="mudarImagem(1)">&#10095;</button>
                 </div>
                 <div class="miniaturas">
-                    <img src="../images/l4.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l5.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l6.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l7.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l8.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/c1.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/p2.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/s1.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/s2.webp" alt="Cascais" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l4.webp" alt="Costa de Cascais e Estoril" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l5.webp" alt="Vista panorâmica de Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l6.webp" alt="Telhados e miradouros de Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l7.webp" alt="Monumentos históricos de Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l8.webp" alt="Bairros históricos de Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/c1.webp" alt="Cascais — vila costeira atlântica" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/p2.webp" alt="Fortaleza de Peniche e costa atlântica" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/s1.webp" alt="Palácio da Pena em Sintra" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/s2.webp" alt="Serra de Sintra" onclick="abrirImagem(this)" loading="lazy">
                 </div>
             </div>
 
             <div class="descricao-pacote">
-                <p id="descricao1" data-key="cascais_descricao1">Uma viagem ao longo da deslumbrante Costa do Estoril, passando pelo glamoroso Casino do Estoril e pela charmosa vila piscatória de Cascais. Visite a Boca do Inferno, explore o centro histórico de Cascais com os seus museus e galerias, e aprecie as mais belas praias da região.</p>
-                <p id="descricao2" data-key="cascais_descricao2">Um tour perfeito para quem aprecia paisagens costeiras, história e gastronomia local. Transporte confortável em Toyota Corolla Sedan Hybrid, com lugar para até 4 passageiros.</p>
+                <p id="descricao1" data-key="cascais_descricao1">Ao longo da famosa Costa do Estoril, cada paragem revela um Portugal diferente. O glamour atemporal do Casino do Estoril contrasta com a autenticidade de Cascais — uma antiga aldeia de pescadores transformada num dos destinos mais refinados do país. No caminho, a Boca do Inferno impressiona com a força crua do Atlântico, e as praias douradas convidam a parar e simplesmente contemplar.</p>
+                <p id="descricao2" data-key="cascais_descricao2">Um tour que combina o melhor do litoral português: mar, história, arquitectura e a alma autêntica de uma vila que soube reinventar-se sem perder o charme. Com transporte em Toyota Corolla Sedan Hybrid para até 4 passageiros e comunicação em português, inglês, russo ou romeno.</p>
             </div>
 
             <div class="detalhes-pacote">
                 <h2 id="detalhes_titulo" data-key="cascais_detalhes_titulo">Detalhes do Pacote</h2>
                 <ul>
-                    <li><strong id="duracao_label" data-key="cascais_duracao">Duração:</strong> <span id="duracao_valor" data-key="cascais_duracao_valor">4-5 horas</span></li>
-                    <li><strong id="preco_label" data-key="cascais_preco">Preço:</strong> <span id="preco_valor" data-key="cascais_preco_valor">€130</span></li>
-                    <li><strong id="idiomas_label" data-key="cascais_idiomas">Idiomas:</strong> <span id="idiomas_valor" data-key="cascais_idiomas_valor">Português, Russo, Romeno</span></li>
-                    <li><strong id="transporte_label" data-key="cascais_transporte">Transporte:</strong> <span id="transporte_valor" data-key="cascais_transporte_valor">Toyota Corolla Sedan Hybrid (até 4 passageiros)</span></li>
-                    <li><strong id="pontos_interesse_label" data-key="cascais_pontos_interesse">Pontos de Interesse:</strong> <span id="pontos_interesse_valor" data-key="cascais_pontos_interesse_valor">Casino do Estoril, Cascais Centro Histórico, Boca do Inferno, Praia de Cascais, Cidadela de Cascais</span></li>
+                    <li><strong data-key="cascais_duracao">Duração:</strong> <span data-key="cascais_duracao_valor">4-5 horas</span></li>
+                    <li><strong data-key="cascais_preco">Preço:</strong> <span data-key="cascais_preco_valor">€130</span></li>
+                    <li><strong data-key="cascais_idiomas">Idiomas:</strong> <span data-key="cascais_idiomas_valor">Português, Inglês, Russo, Romeno</span></li>
+                    <li><strong data-key="cascais_transporte">Transporte:</strong> <span data-key="cascais_transporte_valor">Toyota Corolla Sedan Hybrid (até 4 passageiros)</span></li>
+                    <li><strong data-key="cascais_pontos_interesse">Pontos de Interesse:</strong> <span data-key="cascais_pontos_interesse_valor">Casino do Estoril, Cascais Centro Histórico, Boca do Inferno, Praia de Cascais, Cidadela de Cascais</span></li>
                 </ul>
             </div>
 
@@ -103,15 +136,9 @@
     <footer>
         <div class="container">
             <div class="redes-sociais">
-                <a href="https://facebook.com/seu-perfil" target="_blank">
-                    <img src="../images/facebook.png" alt="Facebook">
-                </a>
-                <a href="https://instagram.com/seu-perfil" target="_blank">
-                    <img src="../images/instagram.png" alt="Instagram">
-                </a>
-                <a href="https://wa.me/+351912688078" target="_blank">
-                    <img src="../images/whatsapp.png" alt="WhatsApp">
-                </a>
+                <a href="https://facebook.com/seu-perfil" target="_blank" rel="noopener noreferrer"><img src="../images/facebook.png" alt="Facebook"></a>
+                <a href="https://instagram.com/seu-perfil" target="_blank" rel="noopener noreferrer"><img src="../images/instagram.png" alt="Instagram"></a>
+                <a href="https://wa.me/+351912688078" target="_blank" rel="noopener noreferrer"><img src="../images/whatsapp.png" alt="WhatsApp"></a>
             </div>
             <p>&copy; 2026 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
             <p class="footer-legal"><a href="../privacidade.html" data-key="privacidade_link">Política de Privacidade</a></p>

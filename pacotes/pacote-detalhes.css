@@ -79,6 +79,13 @@
   border-color: #FFD700;
   outline: none;
 }
+/* Miniatura activa (imagem principal seleccionada) */
+.miniaturas img.ativa {
+  border-color: #FFD700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.55), 0 4px 10px rgba(0,0,0,0.2);
+  transform: scale(1.07);
+  opacity: 1;
+}
 
 /* -------------------- Tela Cheia (Fullscreen) -------------------- */
 .imagem-principal.tela-cheia {

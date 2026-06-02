@@ -1,39 +1,75 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="title" data-key="mafra_titulo">Mafra & Ericeira - Tours Lisboa</title>
+    <title id="title" data-key="titulo_pagina_mafra">Tour Mafra & Ericeira — Tours Privados em Lisboa</title>
+    <meta name="description" id="meta-desc" data-key="meta_description_mafra"
+          content="Tour privado Palácio de Mafra & Ericeira desde Lisboa: grandiosidade barroca e vila surf. 5-6 horas, €135. Motorista multilingue.">
+    <link rel="canonical" href="https://duetoextra.pt/pacotes/mafra.html">
+    <link rel="alternate" hreflang="pt"        href="https://duetoextra.pt/pacotes/mafra.html">
+    <link rel="alternate" hreflang="en"        href="https://duetoextra.pt/pacotes/mafra.html">
+    <link rel="alternate" hreflang="ru"        href="https://duetoextra.pt/pacotes/mafra.html">
+    <link rel="alternate" hreflang="ro"        href="https://duetoextra.pt/pacotes/mafra.html">
+    <link rel="alternate" hreflang="x-default" href="https://duetoextra.pt/pacotes/mafra.html">
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://duetoextra.pt/pacotes/mafra.html">
+    <meta property="og:title"       content="Tour Mafra & Ericeira | Tours Privados em Lisboa">
+    <meta property="og:description" content="Tour privado Palácio de Mafra & Ericeira: barroco e surf. 5-6h, €135.">
+    <meta property="og:image"       content="https://duetoextra.pt/images/l3.jpg">
+    <meta property="og:site_name"   content="Tours Lisboa — Dueto Extra">
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Mafra Palace & Ericeira Tour from Lisbon | Lisbon Tours">
+    <meta name="twitter:description" content="Private tour: Mafra baroque palace & Ericeira surf village. 5-6h, €135.">
+    <meta name="twitter:image"       content="https://duetoextra.pt/images/l3.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "name": "Mafra & Ericeira — Private Tour from Lisbon",
+      "description": "Tour privado ao Palácio Nacional de Mafra e à vila surfista de Ericeira.",
+      "url": "https://duetoextra.pt/pacotes/mafra.html",
+      "image": "https://duetoextra.pt/images/l3.jpg",
+      "offers": {"@type": "Offer", "price": "135", "priceCurrency": "EUR", "availability": "https://schema.org/InStock"},
+      "itinerary": {"@type": "ItemList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Palácio Nacional de Mafra"},
+        {"@type": "ListItem", "position": 2, "name": "Basílica de Mafra"},
+        {"@type": "ListItem", "position": 3, "name": "Ericeira — Reserva Mundial de Surf"},
+        {"@type": "ListItem", "position": 4, "name": "Vila piscatória de Ericeira"}
+      ]},
+      "provider": {"@type": "TravelAgency", "name": "Dueto Extra", "url": "https://duetoextra.pt"}
+    }
+    </script>
     <link rel="stylesheet" href="../styles.min.css">
     <link rel="stylesheet" href="./pacote-detalhes.css">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <!-- Meta Pixel — init/track condicional em scripts.min.js (RGPD) -->
+    <link rel="icon" href="../images/favicon-logo.png" type="image/png" sizes="64x64">
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');</script>
 </head>
 <body>
     <header class="fixed-header">
         <div class="container">
             <div class="logo">
-                <a href="../index.html">
-                    <h1 id="logo" data-key="logo">Tours Lisboa</h1>
+                <a href="../index.html" class="logo-link" aria-label="Dueto Extra — Private Tours Portugal">
+                    <img src="../images/logo-dueto-trans.png" alt="Dueto Extra — Private Tours Portugal" class="logo-img">
                 </a>
             </div>
             <nav>
-                <a href="../index.html" data-key="home">Home</a>
-                <a href="../index.html#pacotes" data-key="pacotes">Pacotes</a>
-                <a href="../index.html#sobre" data-key="sobre">Sobre Nós</a>
+                <a href="../index.html" id="banner-home" data-key="home">Home</a>
+                <a href="../index.html#pacotes" id="banner-pacotes" data-key="pacotes">Pacotes</a>
+                <a href="../index.html#sobre" id="banner-sobre" data-key="sobre">Sobre Nós</a>
             </nav>
-            <a href="../index.html#contactos" class="cta-button" data-key="reservar">Reservar Agora</a>
+            <a href="../index.html#contactos" class="cta-button" id="reservar" data-key="reservar">Reservar Agora</a>
             <div class="language-buttons">
                 <button onclick="changeLanguage('pt')"><img src="../images/portugal-flag.png" alt="Português"></button>
-                <button onclick="changeLanguage('ru')"><img src="../images/russia-flag.png" alt="Russo"></button>
-                <button onclick="changeLanguage('ro')"><img src="../images/romania-flag.png" alt="Romeno"></button>
+                <button onclick="changeLanguage('en')"><img src="../images/uk-flag.svg" alt="English"></button>
+                <button onclick="changeLanguage('ru')"><img src="../images/russia-flag.png" alt="Русский"></button>
+                <button onclick="changeLanguage('ro')"><img src="../images/romania-flag.png" alt="Română"></button>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
                 <div></div>
                 <div></div>
                 <div></div>
-            </div>
+            </button>
         </div>
     </header>
 
@@ -47,13 +83,10 @@
         </nav>
         <div class="language-buttons mobile">
             <button onclick="changeLanguage('pt'); closeMenu()"><img src="../images/portugal-flag.png" alt="PT"></button>
+            <button onclick="changeLanguage('en'); closeMenu()"><img src="../images/uk-flag.svg" alt="EN"></button>
             <button onclick="changeLanguage('ru'); closeMenu()"><img src="../images/russia-flag.png" alt="RU"></button>
             <button onclick="changeLanguage('ro'); closeMenu()"><img src="../images/romania-flag.png" alt="RO"></button>
         </div>
-    </div>
-
-    <div class="voltar-pacotes">
-        <a href="../index.html#pacotes" class="cta-button" data-key="voltar_pacotes">❮ Ver Pacotes</a>
     </div>
 
     <section class="pacote-detalhes">
@@ -62,37 +95,37 @@
 
             <div class="galeria">
                 <div class="imagem-principal" id="galeriaPrincipal">
-                    <img src="../images/l3.webp" alt="Mafra & Ericeira" id="imagemPrincipal" loading="lazy">
+                    <img src="../images/l3.webp" alt="Palácio Nacional de Mafra — fachada barroca" id="imagemPrincipal" loading="lazy">
                     <button class="fechar" onclick="fecharImagem()">&times;</button>
                     <button class="seta seta-esquerda" onclick="mudarImagem(-1)">&#10094;</button>
                     <button class="seta seta-direita" onclick="mudarImagem(1)">&#10095;</button>
                 </div>
                 <div class="miniaturas">
-                    <img src="../images/l3.webp" alt="Mafra" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l1.webp" alt="Mafra" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l2.webp" alt="Mafra" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l4.webp" alt="Mafra" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l5.webp" alt="Mafra" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/s1.webp" alt="Ericeira" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/p2.webp" alt="Ericeira" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l6.webp" alt="Ericeira" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l7.webp" alt="Ericeira" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l3.webp" alt="Palácio Nacional de Mafra" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l1.webp" alt="Torre de Belém, Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l2.webp" alt="Mosteiro dos Jerónimos, Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l4.webp" alt="Costa de Lisboa e Estoril" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l5.webp" alt="Panorama sobre Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/s1.webp" alt="Palácio da Pena, Sintra" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/p2.webp" alt="Costa atlântica de Peniche" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l6.webp" alt="Miradouro de Lisboa" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l7.webp" alt="Castelo e monumentos de Lisboa" onclick="abrirImagem(this)" loading="lazy">
                 </div>
             </div>
 
             <div class="descricao-pacote">
-                <p id="descricao1" data-key="mafra_descricao1">Visite o grandioso Palácio Nacional de Mafra, uma das maiores e mais imponentes obras do barroco português, mandada construir pelo Rei D. João V. Depois, explore a pitoresca vila piscatória de Ericeira, reconhecida como Reserva Mundial de Surf e famosa pelas suas ondas perfeitas e atmosfera autêntica.</p>
-                <p id="descricao2" data-key="mafra_descricao2">Uma combinação única de cultura, história monumental e natureza costeira, a menos de uma hora de Lisboa. Transporte confortável em Toyota Corolla Sedan Hybrid, com lugar para até 4 passageiros.</p>
+                <p id="descricao1" data-key="mafra_descricao1">O Palácio Nacional de Mafra é uma das construções mais extraordinárias da Europa: encomendado pelo Rei D. João V no século XVIII para cumprir uma promessa, tornou-se num colosso barroco com mais de 1200 divisões, dois campanários e uma das mais impressionantes bibliotecas que alguma vez verá. A escala e o detalhe desta obra impressionam qualquer visitante. Depois, Ericeira aguarda com o espírito descontraído de vila piscatória e o estatuto de Reserva Mundial de Surf.</p>
+                <p id="descricao2" data-key="mafra_descricao2">Um contraste único num único dia: a monumentalidade barroca de Mafra e a autenticidade atlântica de Ericeira, a menos de uma hora de Lisboa. Transporte em Toyota Corolla Sedan Hybrid para até 4 passageiros, com guia em português, inglês, russo ou romeno.</p>
             </div>
 
             <div class="detalhes-pacote">
                 <h2 id="detalhes_titulo" data-key="mafra_detalhes_titulo">Detalhes do Pacote</h2>
                 <ul>
-                    <li><strong id="duracao_label" data-key="mafra_duracao">Duração:</strong> <span id="duracao_valor" data-key="mafra_duracao_valor">5-6 horas</span></li>
-                    <li><strong id="preco_label" data-key="mafra_preco">Preço:</strong> <span id="preco_valor" data-key="mafra_preco_valor">€135</span></li>
-                    <li><strong id="idiomas_label" data-key="mafra_idiomas">Idiomas:</strong> <span id="idiomas_valor" data-key="mafra_idiomas_valor">Português, Russo, Romeno</span></li>
-                    <li><strong id="transporte_label" data-key="mafra_transporte">Transporte:</strong> <span id="transporte_valor" data-key="mafra_transporte_valor">Toyota Corolla Sedan Hybrid (até 4 passageiros)</span></li>
-                    <li><strong id="pontos_interesse_label" data-key="mafra_pontos_interesse">Pontos de Interesse:</strong> <span id="pontos_interesse_valor" data-key="mafra_pontos_interesse_valor">Palácio Nacional de Mafra, Basílica de Mafra, Ericeira, Praias de Surf, Vila Piscatória</span></li>
+                    <li><strong data-key="mafra_duracao">Duração:</strong> <span data-key="mafra_duracao_valor">5-6 horas</span></li>
+                    <li><strong data-key="mafra_preco">Preço:</strong> <span data-key="mafra_preco_valor">€135</span></li>
+                    <li><strong data-key="mafra_idiomas">Idiomas:</strong> <span data-key="mafra_idiomas_valor">Português, Inglês, Russo, Romeno</span></li>
+                    <li><strong data-key="mafra_transporte">Transporte:</strong> <span data-key="mafra_transporte_valor">Toyota Corolla Sedan Hybrid (até 4 passageiros)</span></li>
+                    <li><strong data-key="mafra_pontos_interesse">Pontos de Interesse:</strong> <span data-key="mafra_pontos_interesse_valor">Palácio Nacional de Mafra, Basílica de Mafra, Ericeira, Praias de Surf, Vila Piscatória</span></li>
                 </ul>
             </div>
 
@@ -103,15 +136,9 @@
     <footer>
         <div class="container">
             <div class="redes-sociais">
-                <a href="https://facebook.com/seu-perfil" target="_blank">
-                    <img src="../images/facebook.png" alt="Facebook">
-                </a>
-                <a href="https://instagram.com/seu-perfil" target="_blank">
-                    <img src="../images/instagram.png" alt="Instagram">
-                </a>
-                <a href="https://wa.me/+351912688078" target="_blank">
-                    <img src="../images/whatsapp.png" alt="WhatsApp">
-                </a>
+                <a href="https://facebook.com/seu-perfil" target="_blank" rel="noopener noreferrer"><img src="../images/facebook.png" alt="Facebook"></a>
+                <a href="https://instagram.com/seu-perfil" target="_blank" rel="noopener noreferrer"><img src="../images/instagram.png" alt="Instagram"></a>
+                <a href="https://wa.me/+351912688078" target="_blank" rel="noopener noreferrer"><img src="../images/whatsapp.png" alt="WhatsApp"></a>
             </div>
             <p>&copy; 2026 <span id="footer_text" data-key="footer_text">Tours Privados em Lisboa. Todos os direitos reservados.</span></p>
             <p class="footer-legal"><a href="../privacidade.html" data-key="privacidade_link">Política de Privacidade</a></p>
