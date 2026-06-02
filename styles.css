@@ -95,15 +95,15 @@ section h2::after {
   top: 0;
   left: 0;
   width: 100%;
-  height: clamp(60px, 8vw, 80px);
+  height: clamp(80px, 10vw, 110px);
   background: linear-gradient(to bottom, var(--cor-primaria-escura), var(--cor-primaria));
   color: white;
   z-index: 1000;
   box-shadow: var(--shadow-sm);
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  overflow: visible; /* permite que o logo transborde na parte inferior */
+  overflow: visible;
 }
 .fixed-header .container {
   width: 90%;
@@ -111,7 +111,7 @@ section h2::after {
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  align-items: center;
+  align-items: center; /* nav, CTA e bandeiras ficam centradas verticalmente */
   justify-content: space-between;
   overflow: visible;
 }
@@ -134,16 +134,16 @@ section h2::after {
   background: var(--cor-primaria);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
-/* Logo — transborda apenas na parte inferior do header para efeito visual */
 .logo {
-  align-self: flex-start; /* ancora ao topo do header */
-  overflow: visible;      /* permite transbordamento inferior */
+  align-self: flex-start;
+  overflow: visible;
+  padding-top: 12px;
 }
 .logo-link {
   display: inline-flex;
   align-items: flex-start;
   background: none;
-  padding-top: 4px; /* espaço mínimo do topo */
+  padding: 0;
   text-decoration: none;
   transition: filter 0.25s ease;
 }
@@ -153,8 +153,7 @@ section h2::after {
   border-radius: 4px;
 }
 .logo-img {
-  /* 150-200% do tamanho anterior: transborda ~50-80px abaixo do header */
-  height: clamp(100px, 12vw, 160px);
+  height: clamp(65px, 7.8vw, 104px);
   width: auto;
   display: block;
   /* Contorno branco ao redor da forma real do logo (funciona em PNG transparente) */
@@ -994,7 +993,7 @@ footer {
 /* Mobile — ≤ 768px */
 @media (max-width: 768px) {
   body {
-    padding-top: 60px;
+    padding-top: 72px;
   }
   .container {
     width: 100%;
@@ -1020,7 +1019,7 @@ footer {
   .language-buttons.desktop { display: none; }
   .language-buttons.mobile  { display: flex; }
 
-  .fixed-header { height: 60px; }
+  .fixed-header { height: 72px; }
   .fixed-header .container {
     display: flex;
     justify-content: space-between;
@@ -1033,7 +1032,22 @@ footer {
   .logo {
     flex: 1;
     max-width: 70%;
-    overflow: visible; /* permite que o logo transborde na parte inferior */
+    overflow: visible;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+  }
+  .logo-link {
+    padding-top: 0;
+    align-items: center;
+  }
+  .logo-img {
+    height: auto;
+    max-height: 52px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 }
 
@@ -1041,5 +1055,5 @@ footer {
 @media (min-width: 769px) {
   nav { display: flex; }
   .hamburger { display: none; }
-  body { padding-top: 80px; }
+  body { padding-top: clamp(80px, 10vw, 110px); }
 }
