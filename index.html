@@ -44,10 +44,16 @@
     <meta name="twitter:image"       content="https://duetoextra.pt/images/l2.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" href="/images/favicon-logo.png" type="image/png" sizes="64x64">
+    <link rel="icon" href="/images/favicon-logo.png" type="image/png" sizes="192x192">
+
+    <!-- Preconnect para recursos externos críticos -->
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://ipapi.co">
+    <link rel="dns-prefetch" href="https://formspree.io">
 
     <!-- Pré-carregamento da primeira imagem do slideshow -->
-    <link rel="preload" href="images/l2.webp" as="image">
+    <link rel="preload" href="images/l2.webp" as="image" fetchpriority="high">
 
     <!-- Schema.org — TravelAgency + Service Area -->
     <script type="application/ld+json">
@@ -111,7 +117,7 @@
         <div class="container">
             <div class="logo">
                 <a href="#home-anchor" class="logo-link" aria-label="Dueto Extra — Private Tours Portugal">
-                    <img src="images/logo-dueto-trans.png" alt="Dueto Extra — Private Tours Portugal" class="logo-img">
+                    <img src="images/logo-dueto-trans.png" alt="Dueto Extra — Private Tours Portugal" class="logo-img" decoding="async">
                 </a>
             </div>
 
@@ -162,22 +168,22 @@
     <section id="slideshow" aria-label="Galeria de imagens de Lisboa e arredores" aria-live="off">
         <div class="slideshow-container">
             <div class="slide kb-left">
-                <img src="images/l2.webp" alt="Vista panorâmica de Lisboa ao entardecer" loading="eager">
+                <img src="images/l2.webp" alt="Vista panorâmica de Lisboa ao entardecer" loading="eager" fetchpriority="high" decoding="async">
             </div>
             <div class="slide kb-right">
-                <img src="images/l3.webp" alt="Bairro histórico de Alfama em Lisboa" loading="lazy">
+                <img src="images/l3.webp" alt="Bairro histórico de Alfama em Lisboa" loading="lazy" decoding="async">
             </div>
             <div class="slide kb-zoom">
-                <img src="images/l7.webp" alt="Castelo e panorama de Lisboa" loading="lazy">
+                <img src="images/l7.webp" alt="Castelo e panorama de Lisboa" loading="lazy" decoding="async">
             </div>
             <div class="slide kb-left">
-                <img src="images/l8.webp" alt="Monumentos históricos de Lisboa" loading="lazy">
+                <img src="images/l8.webp" alt="Monumentos históricos de Lisboa" loading="lazy" decoding="async">
             </div>
             <div class="slide kb-right">
-                <img src="images/s1.webp" alt="Palácio da Pena em Sintra com cores vibrantes" loading="lazy">
+                <img src="images/s1.webp" alt="Palácio da Pena em Sintra com cores vibrantes" loading="lazy" decoding="async">
             </div>
             <div class="slide kb-zoom">
-                <img src="images/s3.webp" alt="Serra de Sintra com paisagem deslumbrante" loading="lazy">
+                <img src="images/s3.webp" alt="Serra de Sintra com paisagem deslumbrante" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -199,7 +205,7 @@
             <div class="pacote">
                 <a href="pacotes/lisboa.html">
                     <div class="imagem-principal">
-                        <img src="images/l2.webp" alt="Lisboa Clássica — Torre de Belém e Mosteiro dos Jerónimos" loading="lazy">
+                        <img src="images/l2.webp" alt="Lisboa Clássica — Torre de Belém e Mosteiro dos Jerónimos" loading="lazy" decoding="async">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -212,7 +218,7 @@
             <div class="pacote">
                 <a href="pacotes/sintra.html">
                     <div class="imagem-principal">
-                        <img src="images/s1.webp" alt="Sintra — Palácio da Pena com cores vibrantes" loading="lazy">
+                        <img src="images/s1.webp" alt="Sintra — Palácio da Pena com cores vibrantes" loading="lazy" decoding="async">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -225,7 +231,7 @@
             <div class="pacote">
                 <a href="pacotes/cascais.html">
                     <div class="imagem-principal">
-                        <img src="images/l4.webp" alt="Cascais & Estoril — Costa atlântica portuguesa" loading="lazy">
+                        <img src="images/l4.webp" alt="Cascais & Estoril — Costa atlântica portuguesa" loading="lazy" decoding="async">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -238,7 +244,7 @@
             <div class="pacote">
                 <a href="pacotes/arrabida.html">
                     <div class="imagem-principal">
-                        <img src="images/s2.webp" alt="Arrábida — Praias turquesa do Parque Natural" loading="lazy">
+                        <img src="images/s2.webp" alt="Arrábida — Praias turquesa do Parque Natural" loading="lazy" decoding="async">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -251,7 +257,7 @@
             <div class="pacote">
                 <a href="pacotes/mafra.html">
                     <div class="imagem-principal">
-                        <img src="images/l3.webp" alt="Mafra — Palácio Nacional barroco" loading="lazy">
+                        <img src="images/l3.webp" alt="Mafra — Palácio Nacional barroco" loading="lazy" decoding="async">
                     </div>
                 </a>
                 <div class="conteudo-pacote">
@@ -264,7 +270,7 @@
             <div class="pacote">
                 <a href="pacotes/obidos.html">
                     <div class="imagem-principal">
-                        <img src="images/l7.webp" alt="Óbidos — Vila medieval com muralhas históricas" loading="lazy">
+                        <img src="images/l7.webp" alt="Óbidos — Vila medieval com muralhas históricas" loading="lazy" decoding="async">
                     </div>
                 </a>
                 <div class="conteudo-pacote">

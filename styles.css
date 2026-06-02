@@ -371,6 +371,8 @@ body.menu-open.fixed-lock {
   /* Ponto de partida neutro (coincide com início das animações kb-*) */
   transform: scale(1.08);
   transform-origin: center center;
+}
+.slide.active img {
   will-change: transform;
 }
 
@@ -993,7 +995,7 @@ footer {
 /* Mobile — ≤ 768px */
 @media (max-width: 768px) {
   body {
-    padding-top: 72px;
+    padding-top: 88px;
   }
   .container {
     width: 100%;
@@ -1019,7 +1021,7 @@ footer {
   .language-buttons.desktop { display: none; }
   .language-buttons.mobile  { display: flex; }
 
-  .fixed-header { height: 72px; }
+  .fixed-header { height: 88px; }
   .fixed-header .container {
     display: flex;
     justify-content: space-between;
@@ -1044,7 +1046,7 @@ footer {
   }
   .logo-img {
     height: auto;
-    max-height: 52px;
+    max-height: 68px;
     width: auto;
     max-width: 100%;
     object-fit: contain;

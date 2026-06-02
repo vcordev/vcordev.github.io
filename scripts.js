@@ -82,8 +82,8 @@ async function changeLanguage(lang) {
     const primaryUrl  = (isNested ? '../' : '') + 'translations/' + lang + '.json';
     const fallbackUrl = '/translations/' + lang + '.json';
 
-    let response = await fetch(primaryUrl, { cache: 'no-store' });
-    if (!response.ok) response = await fetch(fallbackUrl, { cache: 'no-store' });
+    let response = await fetch(primaryUrl, { cache: 'default' });
+    if (!response.ok) response = await fetch(fallbackUrl, { cache: 'default' });
     if (!response.ok) throw new Error('Erro ao carregar traduções: ' + response.status);
 
     const translations = await response.json();
@@ -91,8 +91,8 @@ async function changeLanguage(lang) {
     window.__i18n.translations = translations;
 
     if (!window.__i18n.pt) {
-      const ptRes = await fetch((isNested ? '../' : '') + 'translations/pt.json', { cache: 'no-store' })
-        .catch(function() { return fetch('/translations/pt.json', { cache: 'no-store' }); });
+      const ptRes = await fetch((isNested ? '../' : '') + 'translations/pt.json', { cache: 'default' })
+        .catch(function() { return fetch('/translations/pt.json', { cache: 'default' }); });
       if (ptRes && ptRes.ok) window.__i18n.pt = await ptRes.json();
     }
 
@@ -311,11 +311,13 @@ document.addEventListener('DOMContentLoaded', function () {
 // 3. Cabeçalho — efeito de scroll
 // ==================================================
 
-window.addEventListener('scroll', function() {
+(function() {
   var header = document.querySelector('.fixed-header');
   if (!header) return;
-  header.classList.toggle('scrolled', window.scrollY > 50);
-});
+  window.addEventListener('scroll', function() {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+})();
 
 
 // ==================================================

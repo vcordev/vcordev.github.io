@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://ipapi.co">
     <title id="title" data-key="titulo_pagina_cascais">Tour Cascais & Estoril — Tours Privados em Lisboa</title>
     <meta name="description" id="meta-desc" data-key="meta_description_cascais"
           content="Tour privado Cascais & Estoril desde Lisboa: Casino Estoril, Boca do Inferno, praias douradas. 4-5 horas, €130. Motorista multilingue.">
@@ -42,7 +45,7 @@
     </script>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="./pacote-detalhes.css">
-    <link rel="icon" href="../images/favicon-logo.png" type="image/png" sizes="64x64">
+    <link rel="icon" href="../images/favicon-logo.png" type="image/png" sizes="192x192">
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');</script>
 </head>
 <body>
@@ -95,21 +98,21 @@
 
             <div class="galeria">
                 <div class="imagem-principal" id="galeriaPrincipal">
-                    <img src="../images/l4.webp" alt="Costa de Cascais e Estoril" id="imagemPrincipal" loading="lazy">
+                    <img src="../images/l4.webp" alt="Costa de Cascais e Estoril" id="imagemPrincipal" loading="eager" fetchpriority="high" decoding="async">
                     <button class="fechar" onclick="fecharImagem()">&times;</button>
                     <button class="seta seta-esquerda" onclick="mudarImagem(-1)">&#10094;</button>
                     <button class="seta seta-direita" onclick="mudarImagem(1)">&#10095;</button>
                 </div>
                 <div class="miniaturas">
-                    <img src="../images/l4.webp" alt="Costa de Cascais e Estoril" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l5.webp" alt="Vista panorâmica de Lisboa" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l6.webp" alt="Telhados e miradouros de Lisboa" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l7.webp" alt="Monumentos históricos de Lisboa" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/l8.webp" alt="Bairros históricos de Lisboa" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/c1.webp" alt="Cascais — vila costeira atlântica" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/p2.webp" alt="Fortaleza de Peniche e costa atlântica" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/s1.webp" alt="Palácio da Pena em Sintra" onclick="abrirImagem(this)" loading="lazy">
-                    <img src="../images/s2.webp" alt="Serra de Sintra" onclick="abrirImagem(this)" loading="lazy">
+                    <img src="../images/l4.webp" alt="Costa de Cascais e Estoril" onclick="abrirImagem(this)" loading="lazy" decoding="async">
+                    <img src="../images/l5.webp" alt="Vista panorâmica de Lisboa" onclick="abrirImagem(this)" loading="lazy" decoding="async">
+                    <img src="../images/l6.webp" alt="Telhados e miradouros de Lisboa" onclick="abrirImagem(this)" loading="lazy" decoding="async">
+                    <img src="../images/l7.webp" alt="Monumentos históricos de Lisboa" onclick="abrirImagem(this)" loading="lazy" decoding="async">
+                    <img src="../images/l8.webp" alt="Bairros históricos de Lisboa" onclick="abrirImagem(this)" loading="lazy" decoding="async">
+                    <img src="../images/c1.webp" alt="Cascais — vila costeira atlântica" onclick="abrirImagem(this)" loading="lazy" decoding="async">
+                    <img src="../images/p2.webp" alt="Fortaleza de Peniche e costa atlântica" onclick="abrirImagem(this)" loading="lazy" decoding="async">
+                    <img src="../images/s1.webp" alt="Palácio da Pena em Sintra" onclick="abrirImagem(this)" loading="lazy" decoding="async">
+                    <img src="../images/s2.webp" alt="Serra de Sintra" onclick="abrirImagem(this)" loading="lazy" decoding="async">
                 </div>
             </div>
 
