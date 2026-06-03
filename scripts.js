@@ -461,6 +461,8 @@ document.addEventListener('DOMContentLoaded', function () {
 // 5. Menu Mobile
 // ==================================================
 
+var _menuScrollY = 0;
+
 function toggleMenu() {
   var menu = document.getElementById('mobileMenu');
   if (!menu) return;
@@ -468,6 +470,17 @@ function toggleMenu() {
   document.body.classList.toggle('menu-open', isOpen);
   var hamburger = document.querySelector('.hamburger');
   if (hamburger) hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (isOpen) {
+    _menuScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + _menuScrollY + 'px';
+    document.body.style.width = '100%';
+  } else {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, _menuScrollY);
+  }
 }
 function closeMenu() {
   var menu = document.getElementById('mobileMenu');
@@ -476,6 +489,10 @@ function closeMenu() {
   document.body.classList.remove('menu-open');
   var hamburger = document.querySelector('.hamburger');
   if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, _menuScrollY);
 }
 
 // Fechar menu ao clicar fora ou pressionar ESC
@@ -573,12 +590,18 @@ var _preloadCache = []; // mantém referências vivas para o browser cache
     }
   }
 
+  var _fsScrollY = 0;
+
   function openFullscreen(wrapper) {
     if (!wrapper) return;
     wrapper.classList.add('tela-cheia');
     var btn = wrapper.querySelector('.fechar');
     if (btn) btn.style.display = 'block';
+    _fsScrollY = window.scrollY;
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + _fsScrollY + 'px';
+    document.body.style.width = '100%';
   }
 
   function closeFullscreen(wrapper) {
@@ -587,6 +610,10 @@ var _preloadCache = []; // mantém referências vivas para o browser cache
     var btn = wrapper.querySelector('.fechar');
     if (btn) btn.style.display = 'none';
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, _fsScrollY);
   }
 
   // Devolve true apenas se o clique atingiu os pixels visíveis da imagem
