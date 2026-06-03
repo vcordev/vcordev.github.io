@@ -504,6 +504,7 @@ document.addEventListener('keydown', function(e) {
 
 var imagens = [];
 var indiceAtual = 0;
+var _preloadCache = []; // mantém referências vivas para o browser cache
 
 (function () {
   function atualizarMiniaturasAtivas(srcAtiva) {
@@ -523,13 +524,58 @@ var indiceAtual = 0;
     }
   }
 
+  // Pré-carrega todas as imagens da galeria em background
+  function preloadGalleryImages() {
+    imagens.forEach(function(src, i) {
+      if (_preloadCache[i]) return;
+      var pre = new Image();
+      pre.src = src;
+      _preloadCache[i] = pre;
+    });
+  }
+
+  // Pré-carrega imagens adjacentes ao índice actual (N±1, N±2)
+  function preloadAdjacent(index) {
+    if (!imagens.length) return;
+    [1, -1, 2, -2].forEach(function(offset) {
+      var idx = (index + offset + imagens.length) % imagens.length;
+      if (_preloadCache[idx]) return;
+      var pre = new Image();
+      pre.src = imagens[idx];
+      _preloadCache[idx] = pre;
+    });
+  }
+
+  // Troca imagem com crossfade (só em fullscreen para evitar flash no modo normal)
+  function setGalleryImage(img, src) {
+    var wrapper = img.parentElement;
+    var isFullscreen = wrapper && wrapper.classList.contains('tela-cheia');
+    var applied = false;
+
+    function applyImage() {
+      if (applied) return;
+      applied = true;
+      img.src = src;
+      if (isFullscreen) img.style.opacity = '1';
+    }
+
+    if (isFullscreen) img.style.opacity = '0';
+
+    var check = new Image();
+    check.onload  = applyImage;
+    check.onerror = applyImage;
+    check.src = src;
+    if (check.complete) applyImage(); // já em cache: aplica imediatamente
+  }
+
   function mudarImagemLocal(direcao) {
     if (!imagens.length) syncImagensFromThumbs();
     indiceAtual = (indiceAtual + direcao + imagens.length) % imagens.length;
     var img = document.getElementById('imagemPrincipal');
     if (img) {
-      img.src = imagens[indiceAtual];
+      setGalleryImage(img, imagens[indiceAtual]);
       atualizarMiniaturasAtivas(imagens[indiceAtual]);
+      preloadAdjacent(indiceAtual);
     }
   }
 
@@ -553,6 +599,11 @@ var indiceAtual = 0;
     syncImagensFromThumbs();
     var wrapper = document.getElementById('galeriaPrincipal');
     var img     = document.getElementById('imagemPrincipal');
+
+    // Pré-carregar imagens adjacentes imediatamente e todas as restantes após 800ms
+    preloadAdjacent(indiceAtual);
+    setTimeout(preloadGalleryImages, 800);
+
     if (!wrapper || !img) return;
 
     wrapper.addEventListener('click', function(e) {
@@ -582,11 +633,12 @@ var indiceAtual = 0;
     var img     = document.getElementById('imagemPrincipal');
     var wrapper = img && img.parentElement;
     if (!img || !wrapper) return;
-    img.src = miniatura.src;
+    openFullscreen(wrapper); // abre primeiro para o crossfade funcionar
+    setGalleryImage(img, miniatura.src);
     indiceAtual = imagens.indexOf(miniatura.src);
     if (indiceAtual < 0) indiceAtual = 0;
     atualizarMiniaturasAtivas(miniatura.src);
-    openFullscreen(wrapper);
+    preloadAdjacent(indiceAtual);
   };
   window.fecharImagem = function() {
     var img     = document.getElementById('imagemPrincipal');
