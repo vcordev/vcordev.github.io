@@ -6,9 +6,18 @@
 const META_PIXEL_ID = '219798650101295';
 const GA4_ID        = 'G-RB6QPB1VVW';
 
-/** Inicializa o Meta Pixel — apenas após consentimento. */
+/** Inicializa o Meta Pixel — apenas após consentimento. Carrega o SDK dinamicamente. */
 function initMetaPixel() {
-  if (typeof fbq !== 'function' || window.fbqInitialized) return;
+  if (window.fbqInitialized) return;
+  if (!window.fbq) {
+    var n = window.fbq = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+    if (!window._fbq) window._fbq = n;
+    n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+  }
+  var t = document.createElement('script');
+  t.async = true;
+  t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+  document.head.appendChild(t);
   fbq('init', META_PIXEL_ID);
   fbq('track', 'PageView');
   window.fbqInitialized = true;
@@ -142,7 +151,7 @@ async function changeLanguage(lang) {
   }
 }
 
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function() {
   changeLanguage(localStorage.getItem('language') || 'pt');
 });
 
@@ -176,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
       prefixo.value = '+';
     }
   }
-  autoDetectCountry();
+  form.addEventListener('focusin', autoDetectCountry, { once: true });
 
   // Atualizar prefixo quando o país muda
   pais.addEventListener('change', function() {
@@ -449,22 +458,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ==================================================
-// 5. Navegação Suave
-// ==================================================
-
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    var target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-    }
-  });
-});
-
-
-// ==================================================
-// 6. Menu Mobile
+// 5. Menu Mobile
 // ==================================================
 
 function toggleMenu() {
