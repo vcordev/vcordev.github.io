@@ -1,0 +1,17 @@
+# Dependências Node (usadas pontualmente para scripts de manutenção)
+node_modules/
+package.json
+package-lock.json
+
+# Ficheiros temporários
+*.tmp
+*.bak
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/settings.json
+*.swp
