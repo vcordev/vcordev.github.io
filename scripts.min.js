@@ -106,12 +106,9 @@ function t(key, fallback) {
 async function changeLanguage(lang) {
   const previousLang = window.__i18n.lang;
   try {
-    const isNested = location.pathname.split('/').filter(Boolean).length > 1;
-    const primaryUrl  = (isNested ? '../' : '') + 'translations/' + lang + '.json';
-    const fallbackUrl = '/translations/' + lang + '.json';
+    const primaryUrl = '/translations/' + lang + '.json';
 
     let response = await fetch(primaryUrl, { cache: 'default' });
-    if (!response.ok) response = await fetch(fallbackUrl, { cache: 'default' });
     if (!response.ok) throw new Error('Erro ao carregar traduções: ' + response.status);
 
     const translations = await response.json();
@@ -119,8 +116,7 @@ async function changeLanguage(lang) {
     window.__i18n.translations = translations;
 
     if (!window.__i18n.pt) {
-      const ptRes = await fetch((isNested ? '../' : '') + 'translations/pt.json', { cache: 'default' })
-        .catch(function() { return fetch('/translations/pt.json', { cache: 'default' }); });
+      const ptRes = await fetch('/translations/pt.json', { cache: 'default' });
       if (ptRes && ptRes.ok) window.__i18n.pt = await ptRes.json();
     }
 
@@ -778,6 +774,6 @@ document.addEventListener('click', function(e) {
 
 // Visualização de pacote — detectado por URL, enviado após consentimento
 (function() {
-  var match = window.location.pathname.match(/\/pacotes\/([^/.]+)\.html/);
+  var match = window.location.pathname.match(/\/pacotes\/([^/]+)\//);
   if (match) window.__pendingPackageView = match[1];
 })();
