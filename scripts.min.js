@@ -589,6 +589,24 @@ var _preloadCache = []; // mantém referências vivas para o browser cache
     document.body.style.overflow = '';
   }
 
+  // Devolve true apenas se o clique atingiu os pixels visíveis da imagem
+  // (exclui as barras de letterbox do object-fit: contain)
+  function isClickOnVisibleImage(e, img) {
+    var rect = img.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    if (x < 0 || x > rect.width || y < 0 || y > rect.height) return false;
+    if (!img.naturalWidth || !img.naturalHeight) return true;
+    var ratio    = img.naturalWidth / img.naturalHeight;
+    var boxRatio = rect.width / rect.height;
+    var rW, rH;
+    if (ratio > boxRatio) { rW = rect.width;  rH = rect.width  / ratio; }
+    else                  { rH = rect.height; rW = rect.height * ratio; }
+    var rL = (rect.width  - rW) / 2;
+    var rT = (rect.height - rH) / 2;
+    return x >= rL && x <= rL + rW && y >= rT && y <= rT + rH;
+  }
+
   window.addEventListener('load', function() {
     syncImagensFromThumbs();
     var wrapper = document.getElementById('galeriaPrincipal');
@@ -602,15 +620,11 @@ var _preloadCache = []; // mantém referências vivas para o browser cache
 
     wrapper.addEventListener('click', function(e) {
       if (e.target && e.target.classList.contains('fechar')) return;
-      if (wrapper.classList.contains('tela-cheia') && e.currentTarget === e.target) {
-        closeFullscreen(wrapper);
-      } else if (!wrapper.classList.contains('tela-cheia')) {
+      if (wrapper.classList.contains('tela-cheia')) {
+        if (!isClickOnVisibleImage(e, img)) closeFullscreen(wrapper);
+      } else {
         openFullscreen(wrapper);
       }
-    });
-
-    img.addEventListener('click', function(e) {
-      if (wrapper.classList.contains('tela-cheia')) e.stopPropagation();
     });
 
     wrapper.querySelectorAll('.seta-esquerda, .seta-direita, .fechar').forEach(function(btn) {
