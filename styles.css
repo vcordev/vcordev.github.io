@@ -26,6 +26,7 @@
 }
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: clamp(80px, 10vw, 110px);
 }
 html, body {
   width: 100%;
@@ -994,6 +995,9 @@ footer {
 
 /* Mobile — ≤ 768px */
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: 88px;
+  }
   body {
     padding-top: 88px;
   }
