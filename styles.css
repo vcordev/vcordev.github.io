@@ -322,6 +322,7 @@ body.menu-open.fixed-lock {
   margin-top: 20px;
   padding: 13px 24px;
   font-size: 1.2rem;
+  white-space: normal;
 }
 .mobile-menu .language-buttons {
   margin-top: 24px;
