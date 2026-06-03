@@ -44,8 +44,7 @@ function gtagEvent(name, params) {
 /** Cria e injeta o banner de consentimento de cookies (texto traduzido via t()). */
 function mostrarBannerCookies() {
   if (document.getElementById('cookie-banner')) return;
-  const nested = location.pathname.split('/').filter(Boolean).length > 1;
-  const privUrl = nested ? '../privacidade.html' : 'privacidade.html';
+  const privUrl = '/privacidade.html';
   const banner = document.createElement('div');
   banner.id = 'cookie-banner';
   banner.className = 'cookie-banner';
