@@ -458,7 +458,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ==================================================
-// 5. Menu Mobile
+// 5. Navegação sem hash na URL
+// ==================================================
+
+// Anchors na mesma página (#pacotes, #sobre, etc.) — scroll sem alterar a URL
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    var href = this.getAttribute('href');
+    if (!href || href === '#' || href === '#home-anchor') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    var target = document.querySelector(href);
+    if (!target) return;
+    var headerH = (document.querySelector('.fixed-header') || {}).offsetHeight || 88;
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - headerH, behavior: 'smooth' });
+  });
+});
+
+// Ao chegar de outra página com hash (ex: /#contactos), limpa o hash da URL
+// após o browser ter feito scroll ao elemento (via scroll-padding-top CSS)
+if (window.location.hash) {
+  window.addEventListener('load', function() {
+    history.replaceState(null, '', location.pathname);
+  });
+}
+
+
+// ==================================================
+// 6. Menu Mobile
 // ==================================================
 
 var _menuScrollY = 0;
