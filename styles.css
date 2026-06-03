@@ -316,13 +316,15 @@ body.menu-open.fixed-lock {
 }
 .mobile-menu a:hover { color: var(--cor-secundaria); }
 .mobile-menu .cta-button {
+  display: block;
   width: 100%;
   max-width: 220px;
   text-align: center;
   margin-top: 20px;
-  padding: 13px 24px;
-  font-size: 1.2rem;
+  padding: 13px 20px;
+  font-size: 1.1rem;
   white-space: normal;
+  word-break: break-word;
 }
 .mobile-menu .language-buttons {
   margin-top: 24px;
